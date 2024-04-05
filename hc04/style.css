@@ -1,0 +1,71 @@
+/*
+.personal-info {
+  margin-bottom: 2px;
+}
+
+#name {
+  margin-left: 99px;
+}
+#sname {
+  margin-left: 79px;
+}
+#age {
+  margin-left: 96px;
+  width: 60px;
+}
+#email {
+  margin-left: 43px;
+}
+#img {
+  margin-left: 31px;
+}
+*/
+body {
+  width: 800px;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+}
+
+.personal-info {
+  display: grid;
+  width: 50%;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2px;
+}
+
+#age {
+  width: 45px;
+}
+
+.sektör__text {
+  margin-left: 40px;
+}
+
+.sektör__giris {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.sektör__deneyim {
+  display: grid;
+  width: 66%;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.lang {
+  display: grid;
+  width: 67%;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+#onay {
+  margin-left: 25px;
+}
