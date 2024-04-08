@@ -1,0 +1,58 @@
+h1 {
+  color: red;
+  text-align: center;
+}
+
+.container {
+  /* color: blue; */
+}
+
+#par1 {
+  color: blue;
+  text-align: center;
+  font-size: 1.3rem;
+  text-shadow: 5px 5px 10px black;
+
+  column-count: 3;
+  column-rule: 3px solid red;
+  -moz-column-count: 3;
+  -moz-column-count: 3;
+}
+
+#par2 {
+  text-align: right;
+  direction: rtl;
+}
+
+#par3 {
+  text-align: justify;
+  background-color: rgba(0, 0, 0, 0.649);
+  color: yellow;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px black;
+  text-indent: 10px;
+}
+
+#par4 {
+  color: green;
+  text-transform: uppercase;
+  text-decoration: underline;
+  letter-spacing: 5px;
+  line-height: 1.5;
+  word-spacing: 10px;
+}
+
+#par5 {
+  text-transform: lowercase;
+  text-decoration: overline wavy;
+}
+
+#par6 {
+  text-transform: capitalize;
+  /* text-decoration: line-through overline underline; */
+  direction: rtl;
+  unicode-bidi: bidi-override;
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
