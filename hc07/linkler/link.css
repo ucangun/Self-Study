@@ -1,0 +1,18 @@
+.link {
+  text-decoration: none;
+  border: 2px solid darkorange;
+  padding: 5px;
+  color: darkorange;
+  background-color: gray;
+  border-radius: 10px;
+  margin: 15px;
+}
+
+.link:hover {
+  background-color: darkorange;
+  color: gray;
+}
+
+.link:active {
+  background-color: red;
+}
