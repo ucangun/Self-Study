@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Glass+Antiqua&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Glass+Antiqua&family=Gochi+Hand&family=Tac+One&display=swap");
+
+.font1 {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 900;
+}
+
+.font2 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-style: italic;
+  font-weight: 900;
+}
+
+.font3 {
+  font-family: "Gochi Hand", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font4 {
+  font-family: "Poiret One", sans-serif;
+}
+
+.font5 {
+  font-family: "Glass Antiqua", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "umut";
+  src: url(./font/Ephesis-Regular.ttf);
+}
+
+.font6 {
+  font-family: "umut";
+}
