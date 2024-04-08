@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: orange;
+}
+
+.box1 {
+  background-color: magenta;
+  width: 150px;
+  height: 150px;
+}
+
+.box2 {
+  background-color: rgba(255, 255, 0, 0.574);
+  width: 150px;
+  height: 150px;
+  padding: 20px;
+  margin: 10px;
+  margin-top: -40px;
+}
+
+.box3 {
+  background-color: rgba(0, 0, 255, 0.5);
+  width: 150px;
+  height: 150px;
+  margin-top: -30px;
+}
