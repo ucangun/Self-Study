@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+.card {
+  width: 50%;
+  background-color: bisque;
+  margin: 1rem;
+  border-radius: 1rem;
+  padding: 1rem;
+
+  box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.2);
+  transition: all 0.5s;
+}
+
+.card:hover {
+  background-color: teal;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.card img + h2 {
+  color: brown;
+}
+
+.card img + h2::first-letter {
+  /* font-size: 30px; */
+}
+
+.card > p {
+  font-size: 1.2rem;
+}
+
+.card > p::first-line {
+  font-weight: bold;
+}
+
+.emCheck {
+  font-size: 30px;
+}
+
+.emCheck p {
+  font-size: 2em;
+}
+
+.card img + h2::before {
+  content: "🪴";
+  /* font-size: 0.5rem; */
+}
+
+.card img + h2::after {
+  content: "🪴";
+}
+
+/* Attribute Selector */
+
+p[title="par"] {
+  background-color: aqua;
+}
