@@ -1,0 +1,18 @@
+.abs {
+  font-size: 50px;
+}
+
+.rel1 {
+  background-color: crimson;
+  width: 50%;
+}
+
+.rel2 {
+  background-color: aqua;
+  width: 50%;
+}
+
+.rel3 {
+  background-color: coral;
+  width: 70vw;
+}
