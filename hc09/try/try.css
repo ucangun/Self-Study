@@ -1,0 +1,22 @@
+body,
+html {
+  height: 100%;
+}
+
+.page1 {
+  background-image: url("https://picsum.photos/id/684/600/400");
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.page2 {
+  background-image: url("https://picsum.photos/id/685/600/400");
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
