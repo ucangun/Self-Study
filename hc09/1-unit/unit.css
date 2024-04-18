@@ -16,3 +16,14 @@
   background-color: coral;
   width: 70vw;
 }
+
+.card {
+  border: 1px solid red;
+  width: 50%;
+  height: 400px;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+}
