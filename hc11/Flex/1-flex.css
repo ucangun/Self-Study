@@ -11,7 +11,7 @@
 }
 
 .container div {
-  background-color: rgb(225, 88, 88);
+  background-color: rgba(225, 88, 88, 0.841);
   width: 5rem;
   height: 5rem;
   border: 1px solid red;
@@ -64,7 +64,7 @@
 }
 
 ul {
-  background-color: crimson;
+  background-color: rgba(220, 20, 60, 0.866);
   height: 30rem;
   list-style-type: none;
   display: flex;
@@ -75,6 +75,10 @@ ul {
   align-content: center;
 
   /* çok satırlı bir kapsayıcımız varsa, child ları dikeyde hizalamak için align-items yeterli gelmez, onun yerine tüm child lar etkilensin diye, align-content key ini kullanıyoruz */
+
+  gap: 6rem 3rem;
+
+  /* ilk value childların alt üst boşluğunu, ikinci value ise sağ sol aralarındaki boşluğu temsil eder */
 }
 
 li {
