@@ -1,0 +1,84 @@
+.container {
+  background-color: antiquewhite;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: flex-start;
+  justify-content: flex-end;
+  justify-content: space-between;
+  justify-content: space-around;
+  justify-content: space-evenly;
+}
+
+.container div {
+  background-color: rgb(225, 88, 88);
+  width: 5rem;
+  height: 5rem;
+  border: 1px solid red;
+}
+
+.container1 {
+  background-color: aqua;
+  height: 20rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  align-items: center;
+  align-items: flex-start;
+  align-items: flex-end;
+  /* align-items: stretch; */
+  align-items: baseline;
+
+  /*! Dikey Hizalama => align-items
+  /**flex-start: Nesneler, kapsayıcının en üstünden başlayarak dizilirler.
+/**flex-end: Nesneler, kapsayıcının en altından başlayarak, yukarı doğru dizilirler.
+/**center: Nesneler ortalı bir şekilde dikey olarak sıralanırlar.
+/**baseline: yazıların yerine bakılır, sıradanlığı bozan yazı tipi göz önüne alınarak hizalanmaya başlanılır.
+/**stretch: Tüm nesneler kapsayıcı yüksekliğine eşit olacak şekilde dizilirler. özel height ları yoksa çalışır*/
+}
+
+.container1 div {
+  background-color: pink;
+  width: 5rem;
+  height: 5rem;
+  border: 1px solid red;
+  text-align: center;
+}
+
+/* baseline value özelliğini görebilmek için child lara özellikler verdik */
+
+.container1 div:nth-child(1) {
+  height: 6rem;
+}
+
+.container1 div:nth-child(2) {
+  padding-top: 4rem;
+}
+
+.container1 div:nth-child(3) {
+  height: 2rem;
+  padding: 5rem 0;
+  font-size: 5rem;
+}
+
+ul {
+  background-color: crimson;
+  height: 30rem;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: flex-end;
+  align-content: center;
+
+  /* çok satırlı bir kapsayıcımız varsa, child ları dikeyde hizalamak için align-items yeterli gelmez, onun yerine tüm child lar etkilensin diye, align-content key ini kullanıyoruz */
+}
+
+li {
+  background-color: magenta;
+  width: 4rem;
+  height: 5rem;
+}
