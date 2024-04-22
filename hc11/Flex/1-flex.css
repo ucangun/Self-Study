@@ -82,3 +82,29 @@ li {
   width: 4rem;
   height: 5rem;
 }
+
+.container2 {
+  background-color: yellow;
+  padding: 1rem 0;
+  color: #fff;
+  display: flex;
+}
+
+.container2 div {
+  background-color: blue;
+  width: 5rem;
+  margin: 1rem;
+}
+
+.grow1 {
+  flex-grow: 1;
+}
+.grow2 {
+  flex-grow: 2;
+}
+.grow3 {
+  flex-grow: 3;
+}
+.grow4 {
+  flex-grow: 0;
+}
