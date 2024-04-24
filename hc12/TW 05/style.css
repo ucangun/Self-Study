@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 60rem;
+  margin: 0 auto;
+  background-color: #f4f4f4;
+}
+
+/* ------------------------ */
+/*          HEADER          */
+/* ------------------------ */
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem 3rem;
+}
+
+.slogan {
+  max-width: 38rem;
+}
+
+/* ------------------------ */
+/*           MAIN           */
+/* ------------------------ */
+
+.photos {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  padding: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.img-box {
+  position: relative;
+}
+
+img {
+  border-radius: 5px;
+  box-shadow: 2px 2px 20px black;
+  margin: 1rem 0;
+}
+
+.job {
+  transform: rotate(90deg);
+  text-transform: uppercase;
+  position: absolute;
+  font-size: 0.5rem;
+  width: 8rem;
+  right: -5rem;
+  top: 5rem;
+}
+
+.img2,
+.img5 {
+  margin-top: 3rem;
+}
+
+@media (max-width: 909px) {
+  .headword {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 730px) {
+  .img5 {
+    margin-top: 0;
+  }
+
+  .img2,
+  .img4,
+  .img6 {
+    margin-top: 3rem;
+  }
+}
