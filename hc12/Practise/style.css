@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  border: none;
+}
+
+body {
+  background-color: var(--bg);
+
+  padding: 10px;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+:root {
+  --light-green: #58ff57;
+  --dark-green: #00ad00;
+  --blue: #00b0f0;
+  --red: #e33617;
+  --gold: #dc8e13;
+  --bg: #3f3f3f;
+  --bg-light: #f3969d;
+}
+
+.container {
+  width: 600px;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+}
+
+/* ------------------------ */
+/*           ROW1           */
+/* ------------------------ */
+.row1 {
+  padding: 0.3rem;
+  background-color: var(--bg-light);
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.logo {
+  background-color: var(--light-green);
+  height: 4rem;
+}
+
+.menu {
+  background-color: var(--blue);
+  height: 4rem;
+}
+
+/* ------------------------ */
+/*           ROW2           */
+/* ------------------------ */
+
+.banner {
+  background-color: var(--red);
+  height: 8rem;
+}
+.con2 {
+  margin-bottom: 0.5rem;
+}
+
+/* ------------------------ */
+/*           ROW3           */
+/* ------------------------ */
+
+.row3 {
+  height: 6rem;
+  gap: 0.3rem;
+  margin-bottom: 2rem;
+}
+
+.bx1 {
+  background-color: #58ff57;
+}
+
+/* ------------------------ */
+/*           ROW4           */
+/* ------------------------ */
+
+.row4 {
+  height: 5rem;
+  gap: 2rem;
+  margin: 2rem 2.5rem;
+}
+
+.bx2 {
+  background-color: var(--gold);
+}
+
+/* ------------------------ */
+/*           ROW5           */
+/* ------------------------ */
+
+.row5 {
+  height: 6rem;
+  gap: 1rem;
+  margin: 1.2rem 1rem;
+}
+
+.bx3 {
+  background-color: var(--dark-green);
+}
+
+/* --------------------------- */
+
+.col-2 {
+  width: 16.66666%;
+}
+
+.col-3 {
+  width: 25%;
+}
+
+.col-4 {
+  width: 33.33333%;
+}
+
+.col-6 {
+  width: 50%;
+}
+
+.col-9 {
+  width: 75%;
+}
+
+.col-12 {
+  width: 100%;
+}
