@@ -84,8 +84,23 @@ h1 {
   }
 }
 
+/*! 576px e kadar üstteki stiller kullanılsın (ilk baştakiler ve tablet koduyla ezilenler varsa onlar)  576px ve altında bir alttaki stiller kullanılsın*/
+
 @media screen and (max-width: 576px) {
   body {
     background-color: var(--mor-1);
+  }
+
+  .header {
+    display: none;
+  }
+
+  .navbar a {
+    text-align: center;
+    display: block;
+  }
+
+  .col {
+    width: 100%;
   }
 }
