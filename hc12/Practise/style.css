@@ -12,7 +12,7 @@ body {
 body {
   background-color: var(--bg);
 
-  padding: 10px;
+  padding: 20px;
 }
 
 .flex {
@@ -49,16 +49,19 @@ body {
   background-color: var(--bg-light);
   gap: 0.5rem;
   margin-bottom: 1.2rem;
+  border: 1px solid black;
 }
 
 .logo {
   background-color: var(--light-green);
   height: 4rem;
+  border: 1px solid black;
 }
 
 .menu {
   background-color: var(--blue);
   height: 4rem;
+  border: 1px solid black;
 }
 
 /* ------------------------ */
@@ -68,6 +71,7 @@ body {
 .banner {
   background-color: var(--red);
   height: 8rem;
+  border: 1px solid black;
 }
 .con2 {
   margin-bottom: 0.5rem;
@@ -85,6 +89,7 @@ body {
 
 .bx1 {
   background-color: #58ff57;
+  border: 1px solid black;
 }
 
 /* ------------------------ */
@@ -99,6 +104,7 @@ body {
 
 .bx2 {
   background-color: var(--gold);
+  border: 1px solid black;
 }
 
 /* ------------------------ */
@@ -113,6 +119,7 @@ body {
 
 .bx3 {
   background-color: var(--dark-green);
+  border: 1px solid black;
 }
 
 /* --------------------------- */
