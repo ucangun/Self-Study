@@ -1,0 +1,12 @@
+@import "./theme.css";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: 500;
+  font-family: var(--ff-montserrat);
+}
+
+body {
+  background-color: var(--blue-light-4);
+}
