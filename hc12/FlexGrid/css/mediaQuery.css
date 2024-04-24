@@ -69,3 +69,23 @@ h1 {
   background-color: var(--gri-8);
   width: 15%;
 }
+
+/*! üstteki stiller  en büyük ekranlarda kullanılsın. ta ki 992px e kadar (tablete kadar). 992px den sonra (tablette) alttaki stiller kullanılmaya başlansın */
+
+@media screen and (max-width: 992px) {
+  body {
+    background-color: var(--acik-kirmizi);
+    color: #fff;
+  }
+
+  .col {
+    width: 50%;
+    margin: 0.5rem 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  body {
+    background-color: var(--mor-1);
+  }
+}
