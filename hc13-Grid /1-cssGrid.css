@@ -1,0 +1,35 @@
+.container {
+  display: grid;
+  grid-template-columns: 250px 400px 350px;
+  grid-template-rows: 250px 300px 100px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.box {
+  text-align: center;
+}
+
+.box:nth-child(odd) {
+  background-color: lightgrey;
+}
+
+.box:nth-child(even) {
+  background-color: pink;
+}
+
+.one {
+  background-image: url("https://picsum.photos/id/684/600/400");
+  background-size: cover;
+}
+
+.four {
+  overflow: auto;
+  background-color: orange !important;
+  /* pseudo ile verdigimiz stil baskindir, ezmek istersek (overriding) !important ekliyoruz */
+}
+
+.five {
+  background-image: url("https://picsum.photos/id/678/600/400");
+  background-size: cover;
+}
