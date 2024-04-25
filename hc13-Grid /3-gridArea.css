@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 30% 50% 20%;
+  grid-template-rows: 20% 40% 20% 20%;
+
+  grid-template-areas:
+    "header header header"
+    "main main sidebar"
+    "footer footer footer"
+    "footer footer footer";
+}
+
+.box {
+  background-color: bisque;
+  border: 1px solid red;
+}
+
+.box1 {
+  /* 1.sütundan 4.sütuna kadar git */
+  grid-area: header;
+  background-color: aqua;
+}
+
+.box2 {
+  grid-area: main;
+  background-color: lightgreen;
+}
+
+.box3 {
+  grid-area: sidebar;
+  background-color: crimson;
+}
+
+.box4 {
+  grid-area: footer;
+  background-color: lightcoral;
+}
