@@ -193,3 +193,39 @@ section#menu button:hover {
   outline: 5px solid #fff;
   border-radius: 5px;
 }
+
+/* ---------------------------------- */
+/*               CONTACT              */
+/* ---------------------------------- */
+
+section#contact {
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.509),
+      rgba(188, 108, 37, 1)
+    ),
+    url(./img/slider2.jpg);
+  height: 100vh;
+}
+
+label {
+  font-style: italic;
+}
+
+.form-control {
+  background-color: transparent !important;
+  width: 100% !important;
+}
+
+.form-control:focus {
+  background-color: var(--primary-color) !important;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #fff;
+}
+
+iframe {
+  border-radius: 10px;
+  filter: grayscale(90%);
+}
