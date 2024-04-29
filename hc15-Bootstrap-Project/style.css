@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
 :root {
   --primary-color: #bc6c25;
   --secondary-color: #4d3822;
@@ -105,6 +107,7 @@
 
 section#about {
   background-color: var(--secondary-color);
+  /* padding-bottom: 5.6rem; */
 }
 
 .img-container {
@@ -131,4 +134,30 @@ section#about {
 section#about button {
   background-color: var(--primary-color);
   color: #000;
+}
+
+/* ---------------------------------- */
+/*             MEET PEOPLE            */
+/* ---------------------------------- */
+
+section#meet {
+  background-color: var(--section-color);
+}
+
+section#meet .container {
+  background-color: var(--secondary-color);
+}
+
+.card {
+  background-color: #bc6c25;
+  border-color: #bc6c25;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.icon-box i {
+  font-size: 1.5rem;
 }
