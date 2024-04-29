@@ -161,3 +161,35 @@ section#meet .container {
 .icon-box i {
   font-size: 1.5rem;
 }
+
+/* ---------------------------------- */
+/*              OUR MENU              */
+/* ---------------------------------- */
+
+section#menu {
+  background-color: var(--secondary-color);
+}
+
+section#menu h1 {
+  color: var(--primary-color);
+}
+
+section#menu .container {
+  background-color: var(--primary-color);
+}
+
+section#menu button {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  margin-right: 1rem;
+}
+
+section#menu button:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.tab-content .row img {
+  outline: 5px solid #fff;
+  border-radius: 5px;
+}
