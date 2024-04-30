@@ -193,11 +193,6 @@ section#menu button:hover {
   color: var(--primary-color);
 }
 
-.tab-content .row img {
-  outline: 5px solid #fff;
-  border-radius: 5px;
-}
-
 /* ---------------------------------- */
 /*               CONTACT              */
 /* ---------------------------------- */
