@@ -204,6 +204,9 @@ section#contact {
       rgba(188, 108, 37, 1)
     ),
     url(./img/slider2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 label {
@@ -212,7 +215,6 @@ label {
 
 .form-control {
   background-color: transparent !important;
-  width: 100% !important;
 }
 
 .form-control:focus {
@@ -223,8 +225,13 @@ label {
   color: #fff;
 }
 
+textarea {
+  resize: none;
+  height: 100px !important;
+}
+
 iframe {
-  border-radius: 10px;
+  border-radius: 1rem;
   filter: grayscale(90%);
 }
 
