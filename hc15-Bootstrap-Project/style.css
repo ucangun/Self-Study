@@ -22,6 +22,10 @@
   width: 100%;
 }
 
+.navbar-toggler {
+  background-color: #fff;
+}
+
 .navbar .container {
   background-color: rgba(0, 0, 0, 0.7) !important;
 }
@@ -205,7 +209,6 @@ section#contact {
       rgba(188, 108, 37, 1)
     ),
     url(./img/slider2.jpg);
-  height: 100vh;
 }
 
 label {
@@ -229,3 +232,7 @@ iframe {
   border-radius: 10px;
   filter: grayscale(90%);
 }
+
+/* ---------------------------------- */
+/*               FOOTER               */
+/* ---------------------------------- */
