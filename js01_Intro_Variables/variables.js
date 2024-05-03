@@ -53,3 +53,55 @@ var sayi4 = 37;
 sayi4 = 1907;
 
 console.log(sayi4);
+
+console.log("************************************");
+
+var ilk = "global";
+console.log(ilk);
+
+{
+  console.log(ilk);
+  ilk = "naber";
+  console.log(ilk);
+
+  var ikinci = "nasilsin";
+}
+
+console.log(ilk);
+console.log(ikinci); // var oldugu icin süslünün icindeki degiskene süslünün disindan da erisebildim
+
+console.log("************************************");
+// ! LET SCOPE
+let first = "osman";
+console.log(first);
+
+{
+  console.log(first);
+  first = "ali";
+
+  let second = 45;
+  second = 46;
+  console.log(second);
+}
+console.log(first);
+//console.log(second);
+
+//block taki elemana dışarıdan erişemeyiz (const ve let için)
+
+console.log("************************************");
+// ! CONST SCOPE
+
+const erste = "mustafa";
+console.log(erste);
+
+{
+  console.log(erste);
+  //erste = "uslu"; // const degistiremem
+
+  const zweite = "ayca";
+  console.log(zweite);
+}
+
+console.log(zweite);
+
+// const ve let icin scope icinde olan scope icinde kalir.
