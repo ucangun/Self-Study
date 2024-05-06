@@ -247,8 +247,30 @@ console.log(typeof +z.toFixed(2));
 
 //* prompt komutu da toFixed gibi kullanılan sayıyı string yapar.
 
+/*
 const age = prompt("Lütfen yasinizi giriniz");
 console.log(typeof age); // String
 
 const age2 = +prompt("Lütfen yasinizi giriniz");
 console.log(typeof age2); // number
+*/
+
+/* ---------------------------------- */
+/*         //*   GENERAL              */
+/* ---------------------------------- */
+
+console.log(typeof null);
+
+let n = null;
+console.log(Boolean(n));
+
+console.log(null - 5);
+console.log(null + 5);
+
+console.log(null == undefined); //true
+console.log(null === undefined); //false
+
+console.log(Number("asdf"));
+console.log(Number("1234"));
+
+console.log(null === null);
