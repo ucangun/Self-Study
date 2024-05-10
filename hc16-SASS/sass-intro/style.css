@@ -145,4 +145,45 @@ header ul a {
   color: indigo;
 }
 
+/* ---------------------------------- */
+/*               Footer               */
+/* ---------------------------------- */
+footer p {
+  background-color: gray;
+}
+footer .social-icon {
+  display: flex;
+  height: 10rem;
+}
+footer .social-icon .social1 {
+  width: 20%;
+  background-color: #1a1aff;
+  font-size: 1rem;
+  color: #990000;
+}
+footer .social-icon .social2 {
+  width: 20%;
+  background-color: #3333ff;
+  font-size: 2rem;
+  color: #55004e;
+}
+footer .social-icon .social3 {
+  width: 20%;
+  background-color: #4d4dff;
+  font-size: 3rem;
+  color: #0fa8a1;
+}
+footer .social-icon .social4 {
+  width: 20%;
+  background-color: #6666ff;
+  font-size: 4rem;
+  color: #dcacf1;
+}
+footer .social-icon .social5 {
+  width: 20%;
+  background-color: #8080ff;
+  font-size: 5rem;
+  color: #64c217;
+}
+
 /*# sourceMappingURL=style.css.map */
