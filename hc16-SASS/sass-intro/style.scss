@@ -14,6 +14,8 @@ $fontSize: 1.2rem;
 $fontColor: #fff;
 $navbgColor: #30a7c3;
 $myBorder: 2px solid brown;
+$bannerColor: hotpink;
+$buttonColor: rgb(143, 20, 81);
 
 body {
   background-color: $bgColor;
@@ -23,14 +25,14 @@ body {
 }
 
 /* ---------------------------------- */
-/*               header               */
+/*               Header               */
 /* ---------------------------------- */
 
 header {
   background-color: $navbgColor;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 1rem;
 
   img {
@@ -55,5 +57,40 @@ header {
       color: $fontColor;
       text-decoration: none;
     }
+  }
+}
+
+/* ---------------------------------- */
+/*               Banner               */
+/* ---------------------------------- */
+
+.banner {
+  background-color: $bannerColor;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  line-height: 2rem;
+
+  aside {
+    button {
+      border: none;
+      padding: 0.5rem;
+      background-color: $buttonColor;
+      color: $fontColor;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: rgb(225, 11, 118);
+        cursor: pointer;
+        transform: scale(0.97);
+      }
+    }
+  }
+
+  img {
+    width: 30%;
+    max-width: 400px;
+    min-width: 250px;
   }
 }
