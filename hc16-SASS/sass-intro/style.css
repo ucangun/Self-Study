@@ -73,4 +73,53 @@ header ul a {
   min-width: 250px;
 }
 
+/* ---------------------------------- */
+/*                CARDS               */
+/* ---------------------------------- */
+.cards {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+.cards .card1 {
+  width: 25%;
+  height: 15rem;
+  background-color: blue;
+  border-radius: 10px;
+  color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cards .card2 {
+  width: 25%;
+  height: 15rem;
+  background-color: magenta;
+  border-radius: 10px;
+  color: purple;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cards .card3 {
+  width: 25%;
+  height: 15rem;
+  background-color: yellow;
+  border-radius: 10px;
+  color: cadetblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cards .card4 {
+  width: 25%;
+  height: 15rem;
+  background-color: gray;
+  border-radius: 10px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /*# sourceMappingURL=style.css.map */
