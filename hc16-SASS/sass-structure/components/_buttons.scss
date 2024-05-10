@@ -1,0 +1,13 @@
+button {
+  border: none;
+  padding: 0.5rem;
+  background-color: $buttonColor;
+  color: $fontColor;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: rgb(225, 11, 118);
+    cursor: pointer;
+    transform: scale(0.97);
+  }
+}
