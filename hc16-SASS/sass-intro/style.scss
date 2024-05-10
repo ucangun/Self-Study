@@ -23,6 +23,12 @@ $buttonColor: rgb(143, 20, 81);
   justify-content: space-between;
 }
 
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 body {
   background-color: $bgColor;
   font-family: $fontFamily;
@@ -107,9 +113,7 @@ header {
   background-color: $backColor;
   border-radius: 10px;
   color: $color;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexCenter();
 }
 
 .cards {
@@ -128,5 +132,30 @@ header {
   }
   .card4 {
     @include myBox(gray, black);
+  }
+}
+
+/* ---------------------------------- */
+/*              Articles              */
+/* ---------------------------------- */
+
+.articles {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+
+  .article1 {
+    background-color: gray;
+    width: 50%;
+    height: 10rem;
+    border-radius: 10px;
+    border: 2px solid black;
+    @include flexCenter();
+  }
+
+  .article2 {
+    @extend .article1;
+    background-color: indianred;
+    color: indigo;
   }
 }

@@ -122,4 +122,27 @@ header ul a {
   align-items: center;
 }
 
+/* ---------------------------------- */
+/*              Articles              */
+/* ---------------------------------- */
+.articles {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+.articles .article1, .articles .article2 {
+  background-color: gray;
+  width: 50%;
+  height: 10rem;
+  border-radius: 10px;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.articles .article2 {
+  background-color: indianred;
+  color: indigo;
+}
+
 /*# sourceMappingURL=style.css.map */
