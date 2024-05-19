@@ -109,7 +109,6 @@ alert("Giriş başarılı! Girdiğiniz sayı: " + number1);
 //? yaziniz. Program her hesaplamadan sonra tekrar başkası için hesaplama yapilmak
 //? istenip istenmedigini soracak cevap 'e' veya 'E' ise yeniden not
 //? isteyecek ve islemleri tekrar edecektir.
-
 /*
 let devam;
 do {
@@ -121,7 +120,6 @@ do {
   devam = prompt("Devam icin e tusuna basiniz");
 } while (devam.toLowerCase() === "e");
 */
-
 //? ORNEK3: klavyeden q karakteri girilene kadar sayı girişi isteyen bir programı döngü kullanarak yazınız.
 
 /*

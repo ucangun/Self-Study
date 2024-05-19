@@ -55,9 +55,9 @@ function yasHesapla(isim, tarih) {
 
   return new Date().getFullYear() - tarih;
 }
-
-// alert(yasHesapla("umut", 1998));
-
+alert(yasHesapla("umut", 1998));
+*/
+/*
 const umut = yasHesapla("umut", 1998);
 const berfin = yasHesapla("berfin", 2001);
 const berra = yasHesapla("berra", 2000);
@@ -66,7 +66,6 @@ const berra = yasHesapla("berra", 2000);
 
 alert((umut + berra + berfin) / 3);
 */
-
 // ** ÖRNEK 4
 
 /*
