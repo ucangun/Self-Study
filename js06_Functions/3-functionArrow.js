@@ -63,3 +63,22 @@ const fibonacciNumber = (n) => {
 
 console.log(fibonacciNumber(7));
 //console.log(fibonacciNumber(8));
+
+/* -------------------------------------------------------------------------- */
+// Çok fazla sayıda gönderilen değerler için tek tek değişken yazmak yerine function declaration ve exp functionda arguments keyword ü kullanılır .Ancak arrow functionda arguments kelimesi tanımlı değildir
+// const arg2 = function () {
+//   console.log(arguments);
+// };
+// arg2(45, 78, 42, 23, 56);
+
+const arg = () => {
+  console.log(arguments);
+};
+// arg(34,55,78,89,12,345,67) //arrow desteklemedi
+
+//!arrow function da arguments desteklenmediği için, TÜÜÜMMMMM fonksiyonlarda geçerli (bu konuyu sonra göreceğiz) ... yani rest operatörü kullanabiliriz
+const arg3 = (...a) => {
+  console.log(a); //[34, 55, 78, 89, 12, 345, 67]
+};
+arg3(34, 55, 78, 89, 12, 345, 67);
+arg3("merhaba", "hi", "hallo");

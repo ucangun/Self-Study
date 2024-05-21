@@ -60,7 +60,7 @@ console.log(number);
   let y = x + 15;
   console.log(y); //!block-scope
 }
-// console.log(y);
+//console.log(y);
 console.log(number); //46
 
 //?VAR
