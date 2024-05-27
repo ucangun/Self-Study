@@ -240,3 +240,19 @@ for (let i = 0; i < sal.length - 1; i++) {
 }
 
 console.log("Kayıp sayı:", kayipSayi);
+
+//! 12- let string="altı,bir,iki,dört,beş,üç,yedi,sekiz,dokuz"
+//! 612453789   bu hale dönüştüren program
+
+//! 13- Size bir dizi kelime verildi. "Nemo" kelimesini bulmanız ve şuna benzer bir dize döndürmeniz gerekir:
+//? "[Nemo'yu bulduğunuz kelimenin sırası] 'nda Nemo'yu buldum!"
+
+//? Nemo'yu bulamıyorsanız, "I can't find Nemo :(" yazın.
+
+//? findNemo("I am finding Nemo !") ➞ "I found Nemo at 4!"
+
+//? findNemo("Nemo is me") ➞ "I found Nemo at 1!"
+
+//? findNemo("I Nemo am") ➞ "I found Nemo at 2!"
+
+//! 14- Bir öğe dizisini alan, tüm yinelenen öğeleri kaldıran ve eski diziyle aynı sırada yeni bir dizi döndüren bir fonksiyon oluşturan program

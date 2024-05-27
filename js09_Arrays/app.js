@@ -1,7 +1,7 @@
 // ?=========================================================
 // ?                DİZİLER (ARRAYS)
 // ?=========================================================
-
+/*
 //* Dizi Tanımlama
 //* ---------------------------------------------------------
 
@@ -94,3 +94,114 @@ const number = [3, 5, 1, 35, 10, 22, 55, 77, 231];
 
 number.sort((a, b) => a - b);
 console.log(number);
+*/
+//? ===========================================================
+//?  DİZİ ERİŞİM METOTLARI (diziyi değiştirmezler)
+//? ===========================================================
+
+const sayilar1 = [3, 5, 2, "2", "uc", 2, 2, "bes", 5, 6];
+
+//***includes */
+
+console.log(sayilar1.includes("bes")); //true
+console.log(sayilar1.includes("5")); //false
+
+//***indexOf, lastIndexOf() */
+
+console.log(sayilar1.indexOf("2"));
+console.log(sayilar1.lastIndexOf("bes"));
+console.log(sayilar1.lastIndexOf(5));
+console.log(sayilar1.indexOf(5, 2));
+
+//********** */ Örnek
+//* kullanıcıdan sayı isteyin. girilen sayının hem string hem number hali sayılar dizisinde var mı araştır, varsa index ini döndür
+// const sayilar1 = [3, 5, 2, "2", "uc", 2, "bes", 5, "6"];
+/*
+const numberString = prompt("Lütfen bir sayi giriniz");
+const numberNumber = Number(numberString);
+
+if (sayilar1.includes(numberString)) {
+  console.log(
+    `Aradiginiz sayinin string hali dizide var ${sayilar1.indexOf(
+      numberString
+    )}`
+  );
+} else {
+  console.log("Aradiginiz sayinin string hali yok");
+}
+
+if (sayilar1.includes(numberNumber)) {
+  console.log(
+    `Aradiginiz sayinin number hali dizide var ${sayilar1.indexOf(
+      numberNumber
+    )}`
+  );
+} else {
+  console.log("Aradiginiz sayinin string hali yok");
+}
+*/
+
+//* join()
+//*-----------------------------------------------------------
+//? join, dizinin elamanlari birlestirip string hale cevirir.join("x")=>varolan virgül+boşluk sil, elemanların aralarına x koy(mesela join parantezinde boşluk yerine 2 varsa her eleman arasına 2 koy demek)
+//* split(" ")=>string i boşluklardan ayırır,boşlukları silip virgül+boşluk yapar ve yeni dizi döndürür.orijinal diziyi değiştirmez
+
+console.log(sayilar1.join(" "));
+console.log(sayilar1.join(""));
+console.log(sayilar1.join("A"));
+
+const meyveler = ["Elma", "Erik", "Armut", "Muz", "Kivi"];
+console.log(meyveler[3].split("").reverse().join(""));
+
+//*toString()
+//? toString fonksiyonu sadece dizinin elemanlarinin aralarina
+//? (virgul) koyarak birlestirir ve string yapar.
+console.log(sayilar1.toString());
+
+//* slice()
+
+const araba = ["BMW", "Mercedes", "Audi", "Ferrari", "Lamborghini"];
+
+console.log(araba.slice(3));
+console.log(araba.slice(1, 3));
+
+//* concat()
+
+const kisiler = ["özlem", "esra", "nihal", "fatih", "hüseyin"];
+const rakamlar = [1, 2, 3, 4, 5, 6];
+
+console.log(kisiler.concat(rakamlar));
+
+const birlesik = kisiler.concat(
+  rakamlar,
+  true,
+  "ayse",
+  "gokce",
+  ["fatih", "kemal"],
+  3,
+  [["ayca", "mustafa"]]
+);
+
+console.log(birlesik);
+
+//****every() */
+
+//? Tum diziyi itere eder ve aldigi callback fonksiyonuna gore
+//? test gerceklestirir.Tum elemanlar icin test basarili ise
+//? true aksi takdirde false deger dondurur.
+
+const yas = [18, 23, 34, 45, 56, 89, 15];
+
+console.log(yas.every((i) => i >= 18)); // False
+console.log(yas.every((i) => i <= 90)); // True
+
+//!1 tane bile şarta uymayan varsa false döndürür, hepsi şarta uyarsa true döndürür
+
+//*****some() */
+
+//? Aldigi callback fonksiyonuna (bizim yazdığımız fonksiyon) gore test gerceklestirir.
+//? En az bir eleman icin bile test basarili ise true aksi
+//? takdirde false deger dondurur.
+
+console.log(yas.some((i) => i > 70)); //True
+console.log(yas.some((i) => i > 90)); //False
