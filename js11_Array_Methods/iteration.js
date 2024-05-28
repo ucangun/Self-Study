@@ -220,3 +220,33 @@ const zengin = fiyatlar2.filter((a) => a > 100).map((a) => a * 1.1);
 const fakir = fiyatlar2.filter((a) => a <= 100).map((a) => a * 1.15);
 
 console.log(zengin.concat(fakir));
+
+//* ======================================================
+//*             REDUCE tek bir eleman döndürür
+//*            reduce(accumulator, currentValue);
+//* ======================================================
+
+//* salaries dizisindeki maaşları toplayınız (reduce metodu kullanın)
+
+const salaries = [3000, 5000, 4000, 6000, 7500];
+
+// const result = salaries.reduce((toplam, eleman) => toplam + eleman,0);
+//  console.log( salaries.reduce((toplam,eleman)=>toplam + eleman,0))
+// alttaki kodu yukarıdaki gibi görür ve toplam değişkenine 0 ı assign eder, yazmamıza gerek yok
+
+const result = salaries.reduce((toplam, eleman) => toplam + eleman);
+console.log(result);
+
+//! forEach metodu dizilerde kullanılabilir, reduce tek bir eleman döndürdüğü için, burada forEach kullanamayız
+
+console.log(salaries.reduce((acc, current) => acc * current));
+
+//*** ÖRNEK */
+// alttaki 1 den 7 ye kadar olan sayıların bulunduğu bir dizi verilmiş ancak bir eleman unutulmuş, unutulan elemanı bulunuz
+const nummern = [5, 1, 4, 7, 2, 3];
+
+let total = ((nummern.length + 1) * (nummern.length + 2)) / 2;
+
+const sumArr = nummern.reduce((acc, curr) => acc + curr);
+
+console.log(total - sumArr);
