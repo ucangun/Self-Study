@@ -162,6 +162,10 @@ const people = [
 
 console.log(people);
 
+//* Ornek yası 33 ün üstünde olan kişilerin name lerini listele
+
+people.filter((a) => a.age > 33).forEach((a) => console.log(a.name));
+
 //* Ornek1 people dizisindeki job lari göster
 
 people.forEach((a) => console.log(a.job));
