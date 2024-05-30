@@ -229,3 +229,64 @@ console.log(developer);
 console.log(
   people.reduce((toplam, eleman) => toplam + eleman.age, 0) / people.length
 );
+
+//?    nested objects
+
+const menschen = {
+  person1: {
+    name: "Can",
+    surname: "Canan",
+    dob: "1990",
+    job: "developer",
+    salary: "140000",
+    drivingLicense: true,
+  },
+  person2: {
+    name: "John",
+    surname: "Sweet",
+    dob: "1990",
+    job: "tester",
+    salary: "110000",
+    drivingLicense: false,
+  },
+  person3: {
+    name: "Steve",
+    surname: "Job",
+    dob: "2000",
+    job: "developer",
+    salary: "90000",
+    drivingLicense: true,
+  },
+};
+
+//! Nested Objectlerde FOR - IN kullanılabilir, index sonuçta. Ama for of kullanılamaz , dizilerde verileri almak için itere eden for of object te çalışmaz
+//!!!!JavaScript'te, iterable protokolü uygulamadıkça Objects iterable değildir. Bu nedenle, bir object in özellikleri üzerinde iterate yapmak için for…of (forEach, map, filter da) kullanamazsınız. sadece klasik for döngüsü ve for in kullanılabilir
+
+//! FOR IN
+
+for (let i in menschen) {
+  console.log(i);
+
+  console.log(menschen[i]);
+  console.log(menschen[i].name);
+}
+
+//!FOR OF
+
+// for (let i of menschen) {
+//   console.log(i);  //menschen is not iterable
+
+// }
+for (let i of Object.keys(menschen)) {
+  console.log(i); //person1,person2...
+
+  console.log(menschen[i]);
+}
+
+console.log(Object.values(menschen)); //bütün süslüleri diziye attı
+
+for (let i of Object.values(menschen)) {
+  console.log(i); //bütün süslüleri getirdi
+}
+
+//console.log(Object.entries(menschen));
