@@ -214,6 +214,44 @@ console.log(kisi1, kisi2, kisi4);
 //* REST (...)
 //* ======================================
 
+//? REST operatoru kullanici tarafindan girilen degerleri dizi
+//? icerisine konumlandirir. Cesitli kullanim alanlari vardir.
+
+//! 1- Bir dizi veya object'deki bazi degerlerden geri kalanlarini ayri dizi yada objelere kopyalanmasini saglayabilir.
+
+//?ARRAY
+
+const araclar = ["Kamyon", "Tir", "Kamyonet", " Motosiklet", "Minibüs", "Taxi"];
+
+const [arac1, arac2, arac3, , ...binekAraclar] = araclar;
+console.log(arac3);
+console.log(binekAraclar);
+
+//? OBJECT
+
+const person = {
+  ad: "Hazel",
+  soyad: "Nut",
+  is: "team lead",
+  yas: 40,
+};
+
+const { ad, yas, ...geriKalanlar } = person;
+console.log(geriKalanlar);
+
+//! 2- Bir fonksiyonun argümanlarini diziye cervirmek icin kullanilabilir.
+
+const topla = (a, b) => a + b;
+console.log(topla(1, 5, 7, 9, 3));
+
+//*
+const toplam = (...sayilar) => {
+  return sayilar.reduce((a, b) => a + b);
+};
+console.log(toplam(1, 5, 7, 9, 3));
+
+//? REST (...) ile non-iterable olan sayilari iterable hale (diziye) cevirmis olduk.
+
 //* ======================================
 //* SPREAD (...)
 //* ======================================
