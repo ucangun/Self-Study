@@ -255,3 +255,22 @@ console.log(toplam(1, 5, 7, 9, 3));
 //* ======================================
 //* SPREAD (...)
 //* ======================================
+
+//? Spread operatoru ile iterables olan bir elemani bireysel degerler haline getirir.
+
+const ucanAraclar = ["helicopter", "drone", "ucak", "fuze"];
+const karaAracları = ["araba", "bisiklet", "marti"];
+
+const flatTasitlar = [...ucanAraclar, ...karaAracları];
+console.log(flatTasitlar);
+
+//? Ornek
+
+const cumle = "Uzun ince bir yoldayim";
+const cumleDizisi = [...cumle];
+console.log(cumleDizisi);
+
+//? Ornek
+
+const numbers = [1, 3, 4, 5];
+console.log(Math.max(...numbers));
