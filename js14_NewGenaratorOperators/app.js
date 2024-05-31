@@ -274,3 +274,64 @@ console.log(cumleDizisi);
 
 const numbers = [1, 3, 4, 5];
 console.log(Math.max(...numbers));
+
+//? nested
+const sahislar = {
+  sahis1: {
+    name: "Can",
+    surname: "Canan",
+    dob: "1990",
+    job: "developer",
+    salary: "140000",
+    drivingLicense: true,
+  },
+  sahis2: {
+    name: "John",
+    surname: "Sweet",
+    dob: "1990",
+    job: "tester",
+    salary: "110000",
+    drivingLicense: false,
+  },
+  sahis3: {
+    name: "Steve",
+    surname: "Job",
+    dob: "2000",
+    job: "developer",
+    salary: "90000",
+    drivingLicense: true,
+  },
+};
+
+//? Javascript'de Objeler default olarak iterable degildir.
+//? Ama for in ve for of donguleri ile itere edilebilirler.
+//? Objelerin key ve value'larini okumak icin built-in metotlar vardir.
+//? Bu mettotlar aslinda objelerin key ve/veya value'lari bir dizi olarak dondurur.
+
+//! FOR - IN
+
+for (let s in sahislar) {
+  console.log(s);
+  console.log(sahislar[s]);
+  console.log(sahislar[s].salary);
+}
+
+//? Kullanışlı Object metotları
+console.log(Object.keys(sahislar)); //? objenin key'leri array olarak doner
+console.log(Object.values(sahislar)); //? objenin value'larını array olarak doner
+console.log(Object.values(sahislar.sahis2)); //? objenin value'larını array olarak doner
+console.log(Object.entries(sahislar)); //? objenin key-value ciftini array olarak doner
+console.log(Object.entries(sahislar.sahis1)); //? objenin key-value ciftini array olarak doner
+
+//! FOR - OF
+
+for (let key of Object.keys(sahislar)) {
+  console.log(sahislar[key].salary);
+}
+
+console.log("******************************************");
+
+for (let v of Object.values(sahislar)) {
+  console.log(v);
+  console.log(v.salary);
+}
