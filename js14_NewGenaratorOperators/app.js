@@ -195,12 +195,25 @@ printData(data);
 printDataDestr(data);
 printDataAir(data);
 
+console.log("**********************");
+console.log("**********************");
+console.log("**********************");
+
 //* ======================================
 //* DESTRUCTING (ARRAY)
 //* ======================================
+
+const people = ["Ali", "Veli", "Harvey", "Ashley"];
+let ali = people[0];
+console.log(ali);
+
+const [kisi1, kisi2, , kisi4] = people;
+console.log(kisi1, kisi2, kisi4);
+
 //* ======================================
 //* REST (...)
 //* ======================================
+
 //* ======================================
 //* SPREAD (...)
 //* ======================================
