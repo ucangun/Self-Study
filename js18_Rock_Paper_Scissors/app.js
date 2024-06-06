@@ -54,8 +54,16 @@ const calculateResult = () => {
   //console.log(userSelection, pcRandom);
 
   if (userSelection === pcRandom) {
-    console.log("DRAW");
+    //console.log("DRAW");
     draw();
+  } else {
+    if (userSelection === "rock") {
+      pcRandom === "paper" ? youLost() : youWin();
+    } else if (userSelection === "scissor") {
+      pcRandom === "rock" ? youLost() : youWin();
+    } else if (userSelection === "paper") {
+      pcRandom === "scissor" ? youLost() : youWin();
+    }
   }
 };
 
@@ -63,4 +71,16 @@ const draw = () => {
   messagePar.textContent = "It's a DRAW!";
   messagePar.style.backgroundColor = "YELLOW";
   scoreCardSection.style.color = "YELLOW";
+};
+
+const youLost = () => {
+  messagePar.textContent = "You Lost!";
+  messagePar.style.backgroundColor = "RED";
+  scoreCardSection.style.color = "RED";
+};
+
+const youWin = () => {
+  messagePar.textContent = "You Win!";
+  messagePar.style.backgroundColor = "GREEN";
+  scoreCardSection.style.color = "GREEN";
 };
