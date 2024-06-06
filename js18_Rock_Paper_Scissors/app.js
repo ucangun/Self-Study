@@ -23,6 +23,9 @@ let pcArr = [];
 
 //! Score
 const scoreCardSection = document.querySelector(".score-card");
+const pcScoreSpan = document.getElementById("pc-score");
+const yourScoreSpan = document.getElementById("your-score");
+const topScoreSpan = document.getElementById("top-score");
 
 //! Selection
 const selectionArticle = document.querySelector(".selection");
@@ -54,7 +57,6 @@ const calculateResult = () => {
   //console.log(userSelection, pcRandom);
 
   if (userSelection === pcRandom) {
-    //console.log("DRAW");
     draw();
   } else {
     if (userSelection === "rock") {
@@ -77,10 +79,12 @@ const youLost = () => {
   messagePar.textContent = "You Lost!";
   messagePar.style.backgroundColor = "RED";
   scoreCardSection.style.color = "RED";
+  pcScoreSpan.textContent++;
 };
 
 const youWin = () => {
   messagePar.textContent = "You Win!";
   messagePar.style.backgroundColor = "GREEN";
   scoreCardSection.style.color = "GREEN";
+  yourScoreSpan.textContent++;
 };
