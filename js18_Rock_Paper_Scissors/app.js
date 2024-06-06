@@ -25,7 +25,7 @@ let pcArr = [];
 const scoreCardSection = document.querySelector(".score-card");
 const pcScoreSpan = document.getElementById("pc-score");
 const yourScoreSpan = document.getElementById("your-score");
-const topScoreSpan = document.getElementById("top-score");
+const domTopScore = document.getElementById("top-score");
 
 //? Modal
 const modalCardSection = document.querySelector(".modal-card");
@@ -114,6 +114,7 @@ const openModal = () => {
     finalMessage.textContent = "You Win 🎉";
     modal.style.backgroundColor = "GREEN";
     playAgainButton.style.color = "GREEN";
+    updateTopScore();
   } else {
     finalMessage.textContent = "You Lost 😞";
     modal.style.backgroundColor = "RED";
@@ -123,4 +124,19 @@ const openModal = () => {
 
 playAgainButton.addEventListener("click", () => {
   window.location.reload();
+});
+
+//! Top Score Check
+const storedScore = localStorage.getItem("highScore"); // Local Storage den veri alir
+const topScore = storedScore ? `10 : ${storedScore}` : "0 : 0";
+domTopScore.textContent = topScore; // DOM a yazdir
+
+function updateTopScore() {
+  if (!storedScore || storedScore > +pcScoreSpan.textContent) {
+    localStorage.setItem("highScore", pcScoreSpan.textContent);
+  }
+}
+
+domTopScore.addEventListener("dblclick", () => {
+  localStorage.removeItem("highScore");
 });
