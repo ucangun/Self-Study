@@ -1,19 +1,19 @@
-//! Secim Selextors
+//? Secim Selextors
 
 let yourCoiceDiv = document.getElementById("your-choice");
 const pcCoiceDiv = document.getElementById("pc-choice");
 
-//! message
+//? message
 
 const messagePar = document.querySelector(".message");
 
-//! Colors
+//? Colors
 
 const YELLOW = "#FFC538";
 const RED = "#FB778B";
 const GREEN = "#5AB7AC";
 
-//! Variables
+//? Variables
 
 const userSelectImg = document.createElement("img");
 const pcSelectImg = document.createElement("img");
@@ -21,13 +21,19 @@ let userSelection; // Kullanicinin secimi
 let pcRandom; // Pc nin rastgele ürettigi
 let pcArr = [];
 
-//! Score
+//? Score
 const scoreCardSection = document.querySelector(".score-card");
 const pcScoreSpan = document.getElementById("pc-score");
 const yourScoreSpan = document.getElementById("your-score");
 const topScoreSpan = document.getElementById("top-score");
 
-//! Selection
+//? Modal
+const modalCardSection = document.querySelector(".modal-card");
+const finalMessage = document.querySelector("#final-message");
+const playAgainButton = document.querySelector("#play-again");
+const modal = document.querySelector(".modal");
+
+//? Selection
 const selectionArticle = document.querySelector(".selection");
 
 selectionArticle.addEventListener("click", (event) => {
@@ -67,6 +73,10 @@ const calculateResult = () => {
       pcRandom === "scissor" ? youLost() : youWin();
     }
   }
+
+  if (pcScoreSpan.textContent === "10" || yourScoreSpan.textContent === "10") {
+    openModal();
+  }
 };
 
 const draw = () => {
@@ -88,3 +98,21 @@ const youWin = () => {
   scoreCardSection.style.color = "GREEN";
   yourScoreSpan.textContent++;
 };
+
+const openModal = () => {
+  modalCardSection.classList.add("show");
+
+  if (yourScoreSpan.textContent === "10") {
+    finalMessage.textContent = "You Win 🎉";
+    modal.style.backgroundColor = "GREEN";
+    playAgainButton.style.color = "GREEN";
+  } else {
+    finalMessage.textContent = "You Lost 😞";
+    modal.style.backgroundColor = "RED";
+    playAgainButton.style.color = "RED";
+  }
+};
+
+playAgainButton.addEventListener("click", () => {
+  window.location.reload();
+});
