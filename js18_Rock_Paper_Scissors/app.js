@@ -33,7 +33,7 @@ const finalMessage = document.querySelector("#final-message");
 const playAgainButton = document.querySelector("#play-again");
 const modal = document.querySelector(".modal");
 
-//? Selection
+//! Selection
 const selectionArticle = document.querySelector(".selection");
 
 selectionArticle.addEventListener("click", (event) => {
@@ -41,6 +41,7 @@ selectionArticle.addEventListener("click", (event) => {
 
   if (userSelection) {
     userSelectImg.src = `./assets/${userSelection}.png`;
+    userSelectImg.id = "you";
     yourCoiceDiv.appendChild(userSelectImg);
   }
 
@@ -54,6 +55,7 @@ const createPCSelection = () => {
   //console.log(pcRandom);
 
   pcSelectImg.src = `./assets/${pcRandom}.png`;
+  pcSelectImg.id = "pcs";
   pcCoiceDiv.appendChild(pcSelectImg);
 
   calculateResult();
@@ -66,11 +68,11 @@ const calculateResult = () => {
     draw();
   } else {
     if (userSelection === "rock") {
-      pcRandom === "paper" ? youLost() : youWin();
+      pcRandom === "paper" ? youLost(userSelection) : youWin(pcRandom);
     } else if (userSelection === "scissor") {
-      pcRandom === "rock" ? youLost() : youWin();
+      pcRandom === "rock" ? youLost(userSelection) : youWin(pcRandom);
     } else if (userSelection === "paper") {
-      pcRandom === "scissor" ? youLost() : youWin();
+      pcRandom === "scissor" ? youLost(userSelection) : youWin(pcRandom);
     }
   }
 
@@ -85,18 +87,24 @@ const draw = () => {
   scoreCardSection.style.color = "YELLOW";
 };
 
-const youLost = () => {
+const youLost = (userSelection) => {
   messagePar.textContent = "You Lost!";
   messagePar.style.backgroundColor = "RED";
   scoreCardSection.style.color = "RED";
   pcScoreSpan.textContent++;
+  document
+    .getElementById("you")
+    .setAttribute("src", `./assets/${userSelection}l.png`);
 };
 
-const youWin = () => {
+const youWin = (pcRandom) => {
   messagePar.textContent = "You Win!";
   messagePar.style.backgroundColor = "GREEN";
   scoreCardSection.style.color = "GREEN";
   yourScoreSpan.textContent++;
+  document
+    .getElementById("pcs")
+    .setAttribute("src", `./assets/${pcRandom}l.png`);
 };
 
 const openModal = () => {
