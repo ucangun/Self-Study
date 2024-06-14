@@ -39,6 +39,10 @@ window.addEventListener("load", () => {
   gelirler = Number(localStorage.getItem("gelirler")) || 0;
   gelirinizTd.textContent = new Intl.NumberFormat().format(gelirler);
   tarihInput.valueAsDate = new Date();
+  harcamaListesi = JSON.parse(localStorage.getItem("harcamalar")) || [];
+  harcamaListesi.forEach((harcama) => {
+    harcamaYaz(harcama);
+  });
 });
 
 harcamaFormu.addEventListener("submit", (e) => {
