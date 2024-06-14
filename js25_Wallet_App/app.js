@@ -107,9 +107,30 @@ const hesapla = () => {
   // console.log(giderler)
   giderinizTd.textContent = new Intl.NumberFormat().format(giderler);
   gelirinizTd.textContent = new Intl.NumberFormat().format(gelirler);
-  kalanTd.textContent = gelirler - giderler;
+  kalanTd.textContent = new Intl.NumberFormat().format(gelirler - giderler);
 
   const borclu = gelirler - giderler < 0;
   kalanTd.classList.toggle("text-danger", borclu);
   document.getElementById("kalanTh").classList.toggle("text-danger", borclu);
 };
+
+harcamaBody.addEventListener("click", (e) => {
+  if (e.target.classList.contains("fa-trash-can")) {
+    // Domdan ilgili satiri alir
+    e.target.parentElement.parentElement.remove();
+
+    const id = e.target.id; // satirin id sini alir
+
+    // ilgili satiri harcama lsitesinden kaldirdik
+    harcamaListesi = harcamaListesi.filter((harcama) => {
+      harcama.id != id;
+
+      // yeni olusan harcama listesinin local storage da güncelle
+
+      localStorage.setItem("harcamalar", JSON.stringify(harcamaListesi));
+
+      // silinme isleminden sonra hesap kismini güncelle
+      hesapla();
+    });
+  }
+});
