@@ -3,6 +3,7 @@
 const ekleBtn = document.getElementById("ekle-btn");
 const gelirInput = document.getElementById("gelir-input");
 const ekleFormu = document.getElementById("ekle-formu");
+const temizleBtn = document.getElementById("temizle-btn");
 
 //^ Hesap Tablosu
 const gelirinizTd = document.getElementById("geliriniz");
@@ -120,6 +121,8 @@ harcamaBody.addEventListener("click", (e) => {
     e.target.parentElement.parentElement.remove();
 
     const id = e.target.id; // satirin id sini alir
+    console.log(e.target);
+    console.log(id);
 
     // ilgili satiri harcama lsitesinden kaldirdik
     harcamaListesi = harcamaListesi.filter((harcama) => {
@@ -132,5 +135,19 @@ harcamaBody.addEventListener("click", (e) => {
       // silinme isleminden sonra hesap kismini güncelle
       hesapla();
     });
+  }
+});
+
+//! Bilgileri temizle Butonu
+
+temizleBtn.addEventListener("click", () => {
+  if (confirm("Tüm Bilgilere Silmek istediginize emin misiniz ?")) {
+    harcamaListesi = [];
+    gelirler = 0;
+    harcamaBody.innerHTML = "";
+    //localStorage.clear();
+    localStorage.removeItem("gelirler");
+    localStorage.removeItem("harcamalar");
+    hesapla();
   }
 });
