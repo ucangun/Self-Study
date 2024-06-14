@@ -33,11 +33,11 @@ ekleFormu.addEventListener("submit", (e) => {
   ekleFormu.reset();
   localStorage.setItem("gelirler", gelirler);
   gelirinizTd.textContent = new Intl.NumberFormat().format(gelirler);
+  hesapla();
 });
 
 window.addEventListener("load", () => {
   gelirler = Number(localStorage.getItem("gelirler")) || 0;
-  gelirinizTd.textContent = new Intl.NumberFormat().format(gelirler);
   tarihInput.valueAsDate = new Date();
   harcamaListesi = JSON.parse(localStorage.getItem("harcamalar")) || [];
   harcamaListesi.forEach((harcama) => harcamaYaz(harcama));
@@ -106,4 +106,10 @@ const hesapla = () => {
 
   // console.log(giderler)
   giderinizTd.textContent = new Intl.NumberFormat().format(giderler);
+  gelirinizTd.textContent = new Intl.NumberFormat().format(gelirler);
+  kalanTd.textContent = gelirler - giderler;
+
+  const borclu = gelirler - giderler < 0;
+  kalanTd.classList.toggle("text-danger", borclu);
+  document.getElementById("kalanTh").classList.toggle("text-danger", borclu);
 };
