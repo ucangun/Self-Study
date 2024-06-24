@@ -52,7 +52,7 @@ setTimeout(() => {
 //***************************** */
 
 //?setInterval non-blocking (kod burada takılı kalmaz alttaki kodlarda çalışır)
-
+/*
 let counter = 0;
 const interval1 = setInterval(() => {
   console.log(counter++);
@@ -60,4 +60,17 @@ const interval1 = setInterval(() => {
   if (counter === 7) {
     clearInterval(interval1);
   }
+}, 1000);
+*/
+
+// //?callback hell
+
+setTimeout(() => {
+  console.log("ayse:s.a. ahmet");
+  setTimeout(() => {
+    console.log("ahmet:a.s. ayse nasılsın");
+    setTimeout(() => {
+      console.log("ayse:iyiyim sağol");
+    }, 1000);
+  }, 1000);
 }, 1000);
