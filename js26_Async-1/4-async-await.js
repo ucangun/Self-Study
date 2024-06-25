@@ -17,11 +17,25 @@ const defaultImage =
   "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/220px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg";
 
 const getData = async () => {
-  const res = await fetch("https://api.tvmaze.com/search/shows?q=girls");
+  try {
+    const res = await fetch("https://api.tvmaze.com/search/shows?q=girls");
 
-  const data = await res.json();
+    //?
+    if (!res.ok) {
+      throw new Error(`url de hata var ${res.status}`);
+      console.log("hata");
+    }
 
-  ekranaBastir(data);
+    const data = await res.json();
+
+    ekranaBastir(data);
+  } catch (error) {
+    console.log(error);
+    console.log("try-catch sayesinde code devam ediyor");
+    document.querySelector("section").innerHTML = `
+    <h1>${error}</h1>
+    <img src="./img/404.png"/>`;
+  }
 };
 
 //getData();
