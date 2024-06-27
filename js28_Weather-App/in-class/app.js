@@ -121,11 +121,27 @@ const getWeatherData = async () => {
         }
       });
     } else {
-      alertMessage.classList.remove("d-none");
-      alertMessage.textContent = `You already know the weather for ${name}, Please search for another city 😉`;
+      if (lang == "de") {
+        alertMessage.textContent = `Sie kennen das Wetter für die ${name} bereits. Bitte suchen Sie nach einer anderen Stadt 😉`;
+      } else {
+        alertMessage.textContent = `You already know the weather for ${name}, Please search for another city 😉`;
+      }
+      alertMessage.classList.replace("d-none", "d-block");
       setTimeout(() => {
-        alertMessage.classList.add("d-none");
+        alertMessage.classList.replace("d-block", "d-none");
       }, 3000);
     }
-  } catch (error) {}
+  } catch (error) {
+    if (lang == "de") {
+      alertMessage.textContent = `Stadt nicht gefunden`;
+    } else {
+      alertMessage.textContent = `City Not Found!`;
+    }
+
+    alertMessage.classList.replace("d-none", "d-block");
+
+    setTimeout(() => {
+      alertMessage.classList.replace("d-block", "d-none");
+    }, 3000);
+  }
 };
