@@ -32,8 +32,11 @@ form.addEventListener("submit", (e) => {
 
 const getWeatherData = async () => {
   try {
-    const response = await fetch(url);
-    const data = await response.json();
+    // const response = await fetch(url); //* fetch ile
+    // const data = await response.json();
+
+    //const response = await axios(url); //* axios ile
+    const { data } = await axios(url);
 
     // ? data destructure
     const { main, name, weather, sys } = data;
