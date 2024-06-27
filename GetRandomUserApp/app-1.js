@@ -2,22 +2,24 @@
 //! the user's title, first name, last name, email, phone, and thumbnail image, within a framed container.
 
 const userContainer = document.querySelector(".container");
+const button = document.querySelector("button");
+const card = document.createElement("div");
+
+button.addEventListener("click", () => getUser());
 
 const getUser = async () => {
-  const response = await fetch("https://randomuser.me/api/");
-  const { results } = await response.json();
+  try {
+    const response = await fetch("https://randomuser.me/api/");
+    const { results } = await response.json();
 
-  console.log(results);
-  showUser(results);
+    showUser(results);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-getUser();
-
 const showUser = (users) => {
-  const card = document.createElement("div");
-
   users.forEach((user) => {
-    console.log(user);
     card.classList.add("card");
 
     card.innerHTML = `
