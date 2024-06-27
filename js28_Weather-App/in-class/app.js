@@ -8,6 +8,7 @@ const cardContainer = document.getElementById("card-container");
 const alertMessage = document.getElementById("alert");
 const locate = document.getElementById("locate");
 const locationDiv = document.getElementById("userLocation");
+const langButton = document.querySelector(".language");
 
 //! Variables
 let apiKey = "75b251ce9d3d5c7bf9e4f1832b237076";
@@ -40,6 +41,16 @@ locate.addEventListener("click", () => {
     userLocation = true;
     getWeatherData();
   });
+});
+
+langButton.addEventListener("click", (e) => {
+  if (e.target.textContent === "DE") {
+    input.setAttribute("placeholder", "Suche nach einer Stadt");
+    lang = "de";
+  } else if (e.target.textContent === "EN") {
+    input.setAttribute("placeholder", "Search for a city");
+    lang = "en";
+  }
 });
 
 //! Functions
