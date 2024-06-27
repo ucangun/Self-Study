@@ -6,6 +6,8 @@ const form = document.querySelector("form");
 const input = document.querySelector("form input.form-control");
 const cardContainer = document.getElementById("card-container");
 const alertMessage = document.getElementById("alert");
+const locate = document.getElementById("locate");
+const locationDiv = document.getElementById("userLocation");
 
 //! Variables
 let apiKey = "75b251ce9d3d5c7bf9e4f1832b237076";
@@ -13,6 +15,7 @@ let url; // api request
 let units = "metric"; // Fahrenheit - imperial
 let lang = "en"; // for Deutsch DE
 let cities = [];
+let userLocation = false;
 
 //! Event Listeners
 
@@ -23,9 +26,20 @@ form.addEventListener("submit", (e) => {
     const city = input.value;
 
     url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&lang=${lang}&appid=${apiKey}`;
+
     getWeatherData();
   }
   form.reset();
+});
+
+locate.addEventListener("click", () => {
+  navigator.geolocation.getCurrentPosition(({ coords }) => {
+    //console.log(coords);
+    const { latitude, longitude } = coords;
+    url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&lang=${lang}&appid=${apiKey}`;
+    userLocation = true;
+    getWeatherData();
+  });
 });
 
 //! Functions
@@ -78,7 +92,13 @@ const getWeatherData = async () => {
           </ul>
   </div>
   `;
-      cardContainer.appendChild(card);
+
+      if (userLocation) {
+        locationDiv.appendChild(card);
+        userLocation = false;
+      } else {
+        cardContainer.appendChild(card);
+      }
 
       //! Remove Elements
       document.addEventListener("click", (e) => {
