@@ -79,6 +79,16 @@ const getWeatherData = async () => {
   </div>
   `;
       cardContainer.appendChild(card);
+
+      //! Remove Elements
+      document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("bi-x-circle")) {
+          const card = e.target.closest(".col");
+          cities = cities.filter((city) => city !== card.id);
+          //cities.splice(cities.indexOf(card), 1);
+          card.remove();
+        }
+      });
     } else {
       alertMessage.classList.remove("d-none");
       alertMessage.textContent = `You already know the weather for ${name}, Please search for another city 😉`;
@@ -88,10 +98,3 @@ const getWeatherData = async () => {
     }
   } catch (error) {}
 };
-
-document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("bi-x-circle")) {
-    const card = e.target.closest(".card");
-    card.remove();
-  }
-});
