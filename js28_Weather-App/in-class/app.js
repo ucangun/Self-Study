@@ -85,3 +85,10 @@ const getWeatherData = async () => {
     }
   } catch (error) {}
 };
+
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("bi-x-circle")) {
+    const card = e.target.closest(".card");
+    card.remove();
+  }
+});
