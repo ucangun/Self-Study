@@ -94,7 +94,72 @@ function removeUrun() {
   });
 }
 
-//! Adet degistirme fonksiyonu
+//! Adet değiştirme fonksiyonu
+function pieceUrun() {
+  document.querySelectorAll(".adet-controller").forEach((kutu) => {
+    const minus = kutu.firstElementChild;
+    const plus = kutu.lastElementChild;
+    const adet = kutu.children[1];
+    // const adet=plus.previousElementSibling
+
+    plus.onclick = () => {
+      //!adeti ekranda güncelledik
+      adet.textContent = Number(adet.textContent) + 1;
+
+      //!ürünToplamın ekranda güncellenmesi
+      plus.closest(".card-body").querySelector(".product-total").textContent =
+        plus.closest(".card-body").querySelector(".indirim-price").textContent *
+        adet.textContent;
+
+      calculateTotal();
+
+      //! sepettekiler dizisinde de adeti güncelle
+
+      sepettekiler.map((ürün) => {
+        // console.log(plus.closest(".card-body").querySelector("h5").textContent);
+        if (
+          ürün.name ==
+          plus.closest(".card-body").querySelector("h5").textContent
+        ) {
+          // ürün.piece=ürün.piece+1
+          ürün.piece = Number(adet.textContent);
+        }
+      });
+      //   console.log(sepettekiler);
+    };
+
+    minus.onclick = () => {
+      //!adeti ekranda güncelledik
+      adet.textContent = Number(adet.textContent) - 1;
+
+      //!ürünToplamın ekranda güncellenmesi
+      minus.closest(".card-body").querySelector(".product-total").textContent =
+        minus.closest(".card-body").querySelector(".indirim-price")
+          .textContent * adet.textContent;
+
+      calculateTotal();
+
+      //! sepettekiler dizisinde de adeti güncelle
+
+      sepettekiler.map((ürün) => {
+        // console.log(plus.closest(".card-body").querySelector("h5").textContent);
+        if (
+          ürün.name ==
+          minus.closest(".card-body").querySelector("h5").textContent
+        ) {
+          ürün.piece = Number(adet.textContent);
+        }
+      });
+
+      //!eğer adet 1 iken tekrar eksi ye basılırsa ürün silinsin
+
+      if (adet.textContent < 1) {
+        alert("ürünü sileyim mi?");
+        minus.closest(".card").remove();
+      }
+    };
+  });
+}
 
 function calculateTotal() {
   //? productsToplam= en alttaki tüm ürünler için vergi ve kargo hariç sepettekilerin indirimli fiyat toplamı
