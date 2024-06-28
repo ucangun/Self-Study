@@ -25,7 +25,7 @@ function showScreen() {
 
       <div class="card-body">
       
-        <h5 class="card-title">${name} </h5>
+        <h5 class="card-title">${name}</h5>
         
              <div class="ürün-price">
                     <p class="text-warning h2">$
@@ -44,7 +44,7 @@ function showScreen() {
                       <button class="btn btn-secondary btn-sm minus">
                         <i class="fas fa-minus"></i>
                       </button>
-                      <p class="d-inline mx-4" id="ürün-adet">${piece} </p>
+                      <p class="d-inline mx-4" id="ürün-adet">${piece}</p>
                       <button class="btn btn-secondary btn-sm plus">
                         <i class="fas fa-plus"></i>
                       </button>
@@ -73,17 +73,28 @@ function showScreen() {
   });
   calculateTotal();
   removeUrun();
+  pieceUrun();
 }
 
 function removeUrun() {
-  document.addEventListener("click", (e) => {
-    e.preventDefault();
-    if (e.target.classList.contains("remove-product")) {
-      const card = e.target.closest(".card");
-      card.remove();
-    }
+  document.querySelectorAll(".remove-product").forEach((buton) => {
+    buton.onclick = () => {
+      //!ekrandan sildik
+      buton.closest(".card").remove();
+      // console.log(buton.closest(".card").querySelector("h5").textContent)
+
+      //! diziden sil
+      sepettekiler = sepettekiler.filter(
+        (ürün) =>
+          ürün.name != buton.closest(".card").querySelector("h5").textContent
+      );
+      //  console.log(sepettekiler);
+      calculateTotal();
+    };
   });
 }
+
+//! Adet degistirme fonksiyonu
 
 function calculateTotal() {
   //? productsToplam= en alttaki tüm ürünler için vergi ve kargo hariç sepettekilerin indirimli fiyat toplamı
