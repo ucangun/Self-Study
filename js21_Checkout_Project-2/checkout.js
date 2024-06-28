@@ -72,6 +72,17 @@ function showScreen() {
     `;
   });
   calculateTotal();
+  removeUrun();
+}
+
+function removeUrun() {
+  document.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (e.target.classList.contains("remove-product")) {
+      const card = e.target.closest(".card");
+      card.remove();
+    }
+  });
 }
 
 function calculateTotal() {
@@ -81,7 +92,6 @@ function calculateTotal() {
     document.querySelectorAll(".product-total")
   ).reduce((acc, item) => acc + Number(item.textContent), 0);
 
-  console.log(ürünToplam);
   document.querySelector(".productstoplam").textContent = ürünToplam;
 
   document.querySelector(".kargo").textContent = shipping;
