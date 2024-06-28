@@ -71,10 +71,26 @@ function showScreen() {
 </div>
     `;
   });
+  calculateTotal();
 }
 
-calculateTotal();
-
 function calculateTotal() {
+  //? productsToplam= en alttaki tüm ürünler için vergi ve kargo hariç sepettekilerin indirimli fiyat toplamı
+  //?Reduce tam olarak Array istiyor, nodelist yeterli değil
+  const ürünToplam = Array.from(
+    document.querySelectorAll(".product-total")
+  ).reduce((acc, item) => acc + Number(item.textContent), 0);
+
+  console.log(ürünToplam);
+  document.querySelector(".productstoplam").textContent = ürünToplam;
+
   document.querySelector(".kargo").textContent = shipping;
+
+  document.querySelector(".vergi").textContent = (ürünToplam * tax).toFixed(2);
+
+  document.querySelector(".toplam").textContent = (
+    shipping +
+    ürünToplam +
+    ürünToplam * tax
+  ).toFixed(2);
 }
