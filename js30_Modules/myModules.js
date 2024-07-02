@@ -1,5 +1,3 @@
-console.log("myModule 'den selamlar ");
-
 //*************************************/
 //* ES-MODULES
 //*************************************/
@@ -25,3 +23,18 @@ const decrease = (miktar) => (counter -= miktar);
 const myName = "Felix";
 
 export { increase, decrease, myName };
+
+//* default export
+//? bir sayfada 1 tane default export olabilir
+//? tüm yapi tek seferde export edilir
+//? import ederken istedigimiz isimle import edip kullanabiliriz
+
+// function ugurla() {
+//   console.log("görüsürüz JS");
+// }
+
+// export default ugurla;
+
+export default function ugurla() {
+  console.log("görüsürüz JS");
+}

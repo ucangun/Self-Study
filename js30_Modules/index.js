@@ -1,16 +1,21 @@
-console.log("selamlar");
+//? named export yapilmis degiskenleri import yaparken "as" aliasi ile isim degistirerek import edebiliriz
+//? default exportlarda istedigimiz isimle import edebiliriz
 
-import {
+import by, {
   topla,
   calismaSaati,
-  increase,
-  decrease,
+  increase as inc,
+  decrease as dec,
   myName,
 } from "./myModules.js";
+
+//import ugurla from "./myModules.js";
 
 console.log(topla(3, 5));
 console.log(calismaSaati);
 
-console.log(increase(5));
-console.log(decrease(1));
+console.log(inc(5));
+console.log(dec(1));
 console.log(myName);
+// ugurla()
+by();
