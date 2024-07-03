@@ -1,9 +1,10 @@
 import "./App.css";
+import Msg from "./msg/Msg";
 
 function App() {
   return (
-    <div className="App">
-      <h1>DE09</h1>
+    <div>
+      <Msg />
     </div>
   );
 }
