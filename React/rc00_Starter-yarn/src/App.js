@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import logo from "./logo.svg";
-=======
->>>>>>> refs/remotes/origin/main
 import "./App.css";
 
 function App() {
