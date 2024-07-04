@@ -7,6 +7,8 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../img/logo.png";
 
 const MyNavbar = () => {
+  //!navbar scrolling   expand="lg"=yazılar, lg ekranlarda görünmeye başlar. navbarScroll=hamburger açılınca sığmayan linkler için scrollbar
+
   return (
     <Navbar expand="lg" bg="light">
       <Container fluid>
