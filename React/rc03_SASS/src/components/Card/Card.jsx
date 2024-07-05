@@ -4,9 +4,9 @@ import "./Card.scss";
 const Card = () => {
   return (
     <div className="container">
-      {data.map(({ name, job, comment, img }) => {
+      {data.map(({ name, job, comment, img, id }) => {
         return (
-          <div className="card">
+          <div className="card" key={id}>
             <h1>{name}</h1>
             <h2>{job}</h2>
             <p>{comment}</p>
