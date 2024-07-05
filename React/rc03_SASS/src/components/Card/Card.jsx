@@ -4,13 +4,13 @@ import "./Card.scss";
 const Card = () => {
   return (
     <div className="container">
-      {data.map((item) => {
+      {data.map(({ name, job, comment, img }) => {
         return (
           <div className="card">
-            <h1>{item.name}</h1>
-            <h2>{item.job}</h2>
-            <p>{item.comment}</p>
-            <img src={item.img} alt={item.img} />
+            <h1>{name}</h1>
+            <h2>{job}</h2>
+            <p>{comment}</p>
+            <img src={img} alt={img} />
 
             <div className="btn-div">
               <button className="btn-div--small">Small</button>
