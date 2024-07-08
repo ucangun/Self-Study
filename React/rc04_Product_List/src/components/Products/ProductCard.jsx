@@ -1,5 +1,3 @@
-import "./ProductCard.scss";
-
 const ProductCard = ({ id, title, price, image }) => {
   return (
     <div className="card" key={id}>

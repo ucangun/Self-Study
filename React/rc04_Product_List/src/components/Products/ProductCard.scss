@@ -1,0 +1,53 @@
+@import "../../scss/variable";
+@import "../../scss/mixin";
+
+.productList {
+  @include flex(row, space-evenly, $cardPadding);
+  margin: 1rem;
+  .card {
+    width: 350px;
+    height: $cardHeight;
+    position: relative;
+    color: $cardColor;
+    border-radius: $borderRadius;
+    overflow: hidden;
+
+    .price {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $cardBgColor;
+      font-size: 0.9rem;
+      color: $cardColor;
+      padding: $cardPadding;
+      border-radius: $borderRadius;
+      z-index: 3;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      filter: sepia(50%);
+    }
+
+    &_over {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      transform: translateX(100%);
+      transition: transform 0.7s ease-in-out;
+      background-color: $cardBgColor;
+      font-size: 1.2rem;
+      padding: $cardPadding;
+      border-radius: $borderRadius;
+    }
+
+    &:hover img {
+      filter: none;
+    }
+    &:hover .card_over {
+      transform: translateX(0);
+    }
+  }
+}
