@@ -1,6 +1,6 @@
 import "./App.scss";
 import Header from "./components/Header/Header";
-import ProductCard from "./components/ProductCard/ProductCard";
+import Products from "./components/Products/Products";
 
 import { products, categories } from "./helper/data";
 
@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <Header categories={categories} />
-      <ProductCard />
+      <Products products={products} />
     </div>
   );
 }
