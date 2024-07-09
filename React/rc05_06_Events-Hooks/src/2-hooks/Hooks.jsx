@@ -19,10 +19,31 @@ import { useState } from "react";
 
 const Hooks = () => {
   const [sayac, setSayac] = useState(0);
+  const [kisi, setKisi] = useState({
+    isim: "mustafa",
+    meslek: "developer",
+    yas: 45,
+    renk: "red",
+  });
 
   const arttir = () => {
     setSayac(sayac + 1);
   };
+
+  //!1.yol
+  const changeAll = () => {
+    if (kisi.isim === "mustafa") {
+      setKisi({ isim: "erkan", meslek: "Full-stack", yas: 35, renk: "green" });
+    } else {
+      setKisi({
+        isim: "mustafa",
+        meslek: "developer",
+        yas: 45,
+        renk: "red",
+      });
+    }
+  };
+
   return (
     <div>
       <h1>****************************************</h1>
@@ -31,6 +52,17 @@ const Hooks = () => {
       <button onClick={arttir} className="btn btn-primary">
         ARTTIR
       </button>
+
+      <h1 className="mt-5"> USESTATE OBJECT KULLANIMI</h1>
+      <div style={{ color: kisi.renk }}>
+        <h1> {kisi.isim}</h1>
+        <h2> {kisi.meslek}</h2>
+        <h3> {kisi.yas}</h3>
+      </div>
+      <button onClick={changeAll} className="btn btn-primary m-2">
+        CHANGEall
+      </button>
+      <button className="btn btn-info">CHANGEname</button>
     </div>
   );
 };
