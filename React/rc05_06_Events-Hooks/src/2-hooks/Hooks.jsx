@@ -16,6 +16,7 @@
 //?    https://react.dev/reference/react/hooks#state-hooks
 //* =============================================================
 import { useState } from "react";
+import Events from "../1-events-hooksIntro/Events";
 
 const Hooks = () => {
   const [sayac, setSayac] = useState(0);
@@ -26,22 +27,49 @@ const Hooks = () => {
     renk: "red",
   });
 
+  const [toggle, setToggle] = useState(true);
+
   const arttir = () => {
     setSayac(sayac + 1);
   };
 
   //!1.yol
+  // const changeAll = () => {
+  //   if (kisi.isim === "mustafa") {
+  //     setKisi({ isim: "erkan", meslek: "Full-stack", yas: 35, renk: "green" });
+  //   } else {
+  //     setKisi({
+  //       isim: "mustafa",
+  //       meslek: "developer",
+  //       yas: 45,
+  //       renk: "red",
+  //     });
+  //   }
+  // };
+
+  //!2.yol
   const changeAll = () => {
-    if (kisi.isim === "mustafa") {
-      setKisi({ isim: "erkan", meslek: "Full-stack", yas: 35, renk: "green" });
-    } else {
+    setToggle(!toggle);
+
+    if (!toggle) {
       setKisi({
         isim: "mustafa",
         meslek: "developer",
         yas: 45,
         renk: "red",
       });
+    } else {
+      setKisi({
+        isim: "erkan",
+        meslek: "Fullstack",
+        yas: 35,
+        renk: "green",
+      });
     }
+  };
+
+  const changeName = () => {
+    setKisi({ ...kisi, isim: "osman", renk: "blue" });
   };
 
   return (
@@ -62,7 +90,24 @@ const Hooks = () => {
       <button onClick={changeAll} className="btn btn-primary m-2">
         CHANGEall
       </button>
-      <button className="btn btn-info">CHANGEname</button>
+      <button onClick={changeName} className="btn btn-info">
+        CHANGEname
+      </button>
+
+      <button
+        className="btn btn-success m-2"
+        onClick={() => setKisi({ ...kisi, yas: 30 })}
+      >
+        CHANGEyas
+      </button>
+
+      <button onClick={() => setToggle(!toggle)} className="btn btn-secondary">
+        SHOW
+      </button>
+      {/* Toggle true ise Events componentini goster aksi takdirde gosterme, alttakini yorumdan çıkarmak istersek App.js deki Events comp. yoruma almalıyız */}
+
+      {toggle && <Events />}
+      {/* {toggle ? <Events />:""} */}
     </div>
   );
 };
