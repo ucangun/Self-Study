@@ -15,9 +15,24 @@
 //*    (Custom hook’lar icerisinde bir hook cagrilabilir)
 //?    https://react.dev/reference/react/hooks#state-hooks
 //* =============================================================
+import { useState } from "react";
 
 const Hooks = () => {
-  return <div>Hooks</div>;
+  const [sayac, setSayac] = useState(0);
+
+  const arttir = () => {
+    setSayac(sayac + 1);
+  };
+  return (
+    <div>
+      <h1>****************************************</h1>
+      <h1>USESTATE</h1>
+      <h2 className="text-danger">COUNT: {sayac}</h2>
+      <button onClick={arttir} className="btn btn-primary">
+        ARTTIR
+      </button>
+    </div>
+  );
 };
 
 export default Hooks;
