@@ -1,5 +1,12 @@
 import { useState } from "react";
 
+// !JSX ile HTML arasında çok fazla fark olmamakla birlikte bazı önemli farklar da mevcut elbette.
+//! HTML'de class olarak tanımlanan nitelik JSX'de className olarak tanımlanmalı.
+//! HTML'de tek kelime olmayan tabindex gibi nitelikler JSX'de camelCase yapısına uygun olarak tabIndex şeklinde dönüştürülür.
+//! HTML'de onclick, onchange gibi nitelikler yukarıdaki camelCase örneğine göre onClick, onChange şeklinde dönüştürülür.
+//! HTML'de label etiketinde belirtilen for attribute ü JSX'de htmlFor olarak tanımlanmalı.
+//! Ayrıca JSX de  javascript ifadeleri {} içinde çalıştırılabilir. Buna map, && gibi yapılarda dahil.
+
 const Form = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -8,6 +15,8 @@ const Form = () => {
 
   const sendToDatabase = (e) => {
     e.preventDefault();
+    //? ileride bir submit islemin neticesinde verilerin nasıl post edilebileceğini gostermek adina eklenmistir.
+    //? const res = axios.post("url", { name, pass, country })
     alert(`
       name: ${name}
       password :${password}
@@ -15,13 +24,15 @@ const Form = () => {
       remember : ${remember}
       
       `);
+    //!database e yollandıktan sonra değişkenlerin içini temizledik, bunu ekranda da temiz görmek için inputlarda value değişkenleri tanımladık
+    //? eğer input değerlerini state'e bağlı olarak kontrol etmek istersek inputların value proplarına state'leri bağlamamız gerekir. bu duruma kontrolsüz komponentten kontrollü komponente çevirme denir.
     setName("");
     setPassword("");
     setCountry("");
     setRemember("");
   };
   return (
-    <div className="mt-4">
+    <div className="mt-4 container">
       <div className="text-center">
         <h1>******************************************</h1>
         <h2>FORM EVENTS</h2>
@@ -39,6 +50,7 @@ const Form = () => {
             id="name"
             aria-describedby="emailHelp"
             onChange={(e) => setName(e.target.value)}
+            required
           />
         </div>
         <div className="mb-3">
@@ -52,6 +64,7 @@ const Form = () => {
             className="form-control"
             id="password"
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
         <div className="mb-3">
