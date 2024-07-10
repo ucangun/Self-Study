@@ -4,6 +4,7 @@ import Counter from "./3-classComponents/Counter";
 import Form from "./4-form/Form";
 import FormObject from "./4-form/FormObject";
 import MouseEvents from "./5-mouse-events/MouseEvents";
+import Keyboard from "./6-keyboard-events/Keyboard";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -15,7 +16,8 @@ function App() {
       {/* <Counter /> */}
       {/* <Form /> */}
       {/* <FormObject /> */}
-      <MouseEvents />
+      {/* <MouseEvents /> */}
+      <Keyboard />
     </div>
   );
 }
