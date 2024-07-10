@@ -37,7 +37,7 @@ const FormObject = () => {
       <form onSubmit={sendToDatabase}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
-            Name: <span className="text-danger">{} </span>
+            Name: <span className="text-danger">{name} </span>
           </label>
           <input
             type="text"
@@ -50,7 +50,7 @@ const FormObject = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
-            Email: <span className="text-danger">{} </span>
+            Email: <span className="text-danger">{email} </span>
           </label>
           <input
             type="email"
@@ -66,7 +66,7 @@ const FormObject = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="password" className="form-label">
-            Password: <span className="text-danger">{} </span>
+            Password: <span className="text-danger">{password} </span>
           </label>
           <input
             type="password"
