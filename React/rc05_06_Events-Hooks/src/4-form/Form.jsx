@@ -5,13 +5,28 @@ const Form = () => {
   const [password, setPassword] = useState("");
   const [country, setCountry] = useState("");
   const [remember, setRemember] = useState("");
+
+  const sendToDatabase = (e) => {
+    e.preventDefault();
+    alert(`
+      name: ${name}
+      password :${password}
+      country : ${country}
+      remember : ${remember}
+      
+      `);
+    setName("");
+    setPassword("");
+    setCountry("");
+    setRemember("");
+  };
   return (
     <div className="mt-4">
       <div className="text-center">
         <h1>******************************************</h1>
         <h2>FORM EVENTS</h2>
       </div>
-      <form>
+      <form onSubmit={sendToDatabase}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
             Name : <span className="text-danger">{name}</span>
@@ -19,6 +34,7 @@ const Form = () => {
 
           <input
             type="text"
+            value={name}
             className="form-control"
             id="name"
             aria-describedby="emailHelp"
@@ -32,6 +48,7 @@ const Form = () => {
 
           <input
             type="password"
+            value={password}
             className="form-control"
             id="password"
             onChange={(e) => setPassword(e.target.value)}
@@ -43,6 +60,7 @@ const Form = () => {
           </label>
           <select
             id="country"
+            value={country}
             className="form-select"
             onChange={(e) => setCountry(e.target.value)}
           >
@@ -58,6 +76,7 @@ const Form = () => {
             type="checkbox"
             className="form-check-input"
             id="remember"
+            checked={remember}
             onChange={(e) => setRemember(e.target.checked)}
           />
           <label className="form-check-label" htmlFor="remember">
