@@ -50,6 +50,7 @@ const Form = () => {
             id="name"
             aria-describedby="emailHelp"
             onChange={(e) => setName(e.target.value)}
+            //* required alanların çalışması için formları onSubmit ile göndermeliyiz. onClick ile gönderdiğimizde çalışmaz
             required
           />
         </div>
