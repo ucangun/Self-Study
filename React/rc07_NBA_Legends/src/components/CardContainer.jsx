@@ -5,7 +5,7 @@ import PlayerCard from "./PlayerCard";
 const CardContainer = () => {
   return (
     <>
-      <Container>
+      <Container className="cardContainer">
         <Row>
           {data.map((player, index) => (
             <Col key={index}>

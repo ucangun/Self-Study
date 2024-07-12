@@ -8,3 +8,37 @@ body {
   background-color: #f4d467;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+/* ---------------------------------- */
+/*            CARDCONTAINER           */
+/* ---------------------------------- */
+
+.cardContainer {
+  background-image: url("https://p4.wallpaperbetter.com/wallpaper/661/973/110/cool-nba-logo-wallpaper-preview.jpg");
+}
+
+/* ---------------------------------- */
+/*             PLAYERCARDS            */
+/* ---------------------------------- */
+
+.playerCard {
+  height: 400px;
+  max-width: 280px;
+}
+.playerCard:hover {
+  box-shadow: 3px 3px 20px 5px rgba(0, 0, 0, 0.5);
+}
+
+.playerCard:hover .playerImg {
+  transform: scale(0.95);
+}
+
+.playerImg {
+  height: 350px;
+  object-fit: cover;
+  transition: transform 0.9s;
+}
+
+.playerImg {
+  height: 350px;
+  object-fit: cover;
+}
