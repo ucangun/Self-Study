@@ -1,4 +1,4 @@
-const PlayerCard = () => {
+const PlayerCard = ({ name, img, statistics }) => {
   return <div>PlayerCard</div>;
 };
 
