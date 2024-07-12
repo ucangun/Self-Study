@@ -1,10 +1,13 @@
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Container from "react-bootstrap/Container";
+import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="App">
-      <h1>DE 09</h1>
-    </div>
+    <Container className="text-center">
+      <Header />
+    </Container>
   );
 }
 
