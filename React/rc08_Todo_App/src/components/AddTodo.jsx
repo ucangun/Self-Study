@@ -16,7 +16,10 @@ const Todo = ({ doing, setDoing }) => {
       isDone: false,
     };
 
-    setDoing([...doing, newDoing]);
+    const actualDoing = [...doing, newDoing];
+    setDoing(actualDoing);
+    localStorage.setItem("doing", JSON.stringify(actualDoing));
+
     setText("");
     setDay("");
   };

@@ -3,15 +3,17 @@ import { FaCheckCircle } from "react-icons/fa";
 
 const TodoList = ({ doing, setDoing }) => {
   const deleteTodo = (id) => {
-    setDoing(doing.filter((item) => item.id !== id));
+    const actualDoing = doing.filter((item) => item.id !== id);
+    setDoing(actualDoing);
+    localStorage.setItem("doing", JSON.stringify(actualDoing));
   };
 
   const checkTodo = (id) => {
-    setDoing(
-      doing.map((item) =>
-        item.id === id ? { ...item, isDone: !item.isDone } : item
-      )
+    const actualDoing = doing.map((item) =>
+      item.id === id ? { ...item, isDone: !item.isDone } : item
     );
+    setDoing(actualDoing);
+    localStorage.setItem("doing", JSON.stringify(actualDoing));
   };
 
   return (

@@ -4,7 +4,9 @@ import TodoList from "../components/TodoList";
 import AddTodo from "../components/AddTodo";
 
 const Home = () => {
-  const [doing, setDoing] = useState(Data);
+  const [doing, setDoing] = useState(
+    () => JSON.parse(localStorage.getItem("doing")) || []
+  );
 
   return (
     <div>
