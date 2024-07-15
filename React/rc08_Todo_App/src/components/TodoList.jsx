@@ -9,8 +9,12 @@ const TodoList = ({ doing, setDoing }) => {
           <h3>
             {x.text}
             <div>
-              <FaCheckCircle style={{ color: "green", fontSize: "20px" }} />
-              <MdDeleteForever style={{ color: "red", fontSize: "25px" }} />
+              <FaCheckCircle
+                style={{ color: "green", fontSize: "20px", cursor: "pointer" }}
+              />
+              <MdDeleteForever
+                style={{ color: "red", fontSize: "25px", cursor: "pointer" }}
+              />
             </div>
           </h3>
           <h6>{x.day}</h6>
