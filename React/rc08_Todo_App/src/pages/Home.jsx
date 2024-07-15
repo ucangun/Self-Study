@@ -5,7 +5,7 @@ import AddTodo from "../components/AddTodo";
 
 const Home = () => {
   const [doing, setDoing] = useState(
-    () => JSON.parse(localStorage.getItem("doing")) || []
+    () => JSON.parse(localStorage.getItem("doing")) || Data
   );
 
   return (
