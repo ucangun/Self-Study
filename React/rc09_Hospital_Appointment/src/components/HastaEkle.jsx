@@ -1,4 +1,5 @@
 import { useState } from "react";
+import uuid from "react-uuid";
 
 const HastaEkle = ({ hastalar, setHastalar }) => {
   const [hastaName, setHastaName] = useState("");
@@ -7,8 +8,22 @@ const HastaEkle = ({ hastalar, setHastalar }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    setHastalar([
+      ...hastalar,
+      {
+        id: uuid(),
+        text: hastaName,
+        day: hastaTarih,
+        isDone: false,
+        myDoctor: "Dr. Ayse Okur",
+      },
+    ]);
+
+    // setHastalar a gidildiğinde hemen altta console.log varsa çalışıverir ve biz useState nin yaptığı işi göremeyiz. bunun için log bu submit fonksiyonunun dışında olmalı.
+
     setHastaName("");
     setTarih("");
+    // submit sonrası inputlardan value temizlemek için, hem üstteki işlemler yapılır, hemde inputlarda value={isim} yazarak browser da boşluksa boşluk isimse isim gözükmesi sağlanır
   };
 
   return (
