@@ -1,7 +1,7 @@
 import { useState } from "react";
 import uuid from "react-uuid";
 
-const HastaEkle = ({ hastalar, setHastalar, doktorlar }) => {
+const HastaEkle = ({ hastalar, setHastalar, doktorlar, tikla }) => {
   const [hastaName, setHastaName] = useState("");
   const [hastaTarih, setTarih] = useState("");
 

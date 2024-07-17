@@ -18,7 +18,12 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        display: tikla ? "block" : "flex",
+        justifyContent: "space-between",
+      }}
+    >
       <div>
         <header className="header">
           <h1>HOSPITAL</h1>
@@ -52,17 +57,17 @@ const Home = () => {
             hastalar={hastalar}
             setHastalar={setHastalar}
             doktorlar={doktorlar}
+            tikla={tikla}
           />
         )}
       </div>
-      {tikla && (
-        <HastaListe
-          hastalar={hastalar}
-          setHastalar={setHastalar}
-          doktorlar={doktorlar}
-          setDoktorlar={setDoktorlar}
-        />
-      )}
+
+      <HastaListe
+        hastalar={hastalar}
+        setHastalar={setHastalar}
+        doktorlar={doktorlar}
+        setDoktorlar={setDoktorlar}
+      />
     </div>
   );
 };
