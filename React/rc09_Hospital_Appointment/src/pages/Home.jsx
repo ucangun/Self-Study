@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { doctorData } from "../helper/Data";
+import HastaEkle from "../components/HastaEkle";
+import HastaListe from "../components/HastaListe";
 
 const Home = () => {
   const [doktorlar, setDoktorlar] = useState(doctorData);
@@ -32,9 +34,9 @@ const Home = () => {
             ))}
           </div>
         </header>
-        <div>HastaEkle</div>
+        <HastaEkle />
       </div>
-      hastaliste
+      <HastaListe />
     </div>
   );
 };

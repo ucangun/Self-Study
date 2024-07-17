@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  color: #ed5252;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+body {
+  font-family: "Poppins", sans-serif;
+
+  background-image: url("https://wallpapers.com/images/hd/white-old-paper-with-dark-stains-tlxzuvap31mxywve-tlxzuvap31mxywve.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.container {
+  background-image: url("https://wallpapers.com/images/hd/blank-crumpled-paper-ce2xfk1vk85mutcp-ce2xfk1vk85mutcp.webp");
+
+  margin: 3rem auto;
+  max-width: 950px;
+  padding: 2rem;
+  border: 2px solid gray;
+  border-radius: 5px;
+}
+
+.header {
+  text-align: center;
+  margin: 1rem;
+}
+/* doktor resimleri  */
+.btn {
+  border: none;
+  cursor: pointer;
+
+  /* outline: none; */
+  padding: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
