@@ -6,34 +6,35 @@ const HastaListe = ({ hastalar, setHastalar, doktorlar }) => {
     <div>
       {hastalar.map((hasta) => (
         <div key={hasta.id}>
-          {doktorlar.map((a) =>
-            a.doctorName === hasta.myDoctor ? (
-              <div
-                className={hasta.isDone ? "trueStil" : "falseStyle"}
-                onDoubleClick={() =>
-                  setHastalar(
-                    hastalar.map((h) =>
-                      h.id === hasta.id ? { ...h, isDone: !h.isDone } : h
+          {doktorlar.map(
+            (a) =>
+              a.doctorName === hasta.myDoctor && (
+                <div
+                  className={hasta.isDone ? "trueStil" : "falseStyle"}
+                  onDoubleClick={() =>
+                    setHastalar(
+                      hastalar.map((h) =>
+                        h.id === hasta.id ? { ...h, isDone: !h.isDone } : h
+                      )
                     )
-                  )
-                }
-                key={a.doctorName} // Her bir öğe için benzersiz bir anahtar ekleyin
-              >
-                <div>
-                  <h2>{hasta.text}</h2>
-                  <h4>{hasta.day}</h4>
-                  <h3>{hasta.myDoctor}</h3>
+                  }
+                  key={a.doctorName}
+                >
+                  <div>
+                    <h2>{hasta.text}</h2>
+                    <h4>{hasta.day}</h4>
+                    <h3>{hasta.myDoctor}</h3>
+                  </div>
+                  <div>
+                    <FaTimesCircle
+                      style={{ color: "red" }}
+                      onClick={() =>
+                        setHastalar(hastalar.filter((h) => h.id !== hasta.id))
+                      }
+                    />
+                  </div>
                 </div>
-                <div>
-                  <FaTimesCircle
-                    style={{ color: "red" }}
-                    onClick={() =>
-                      setHastalar(hastalar.filter((h) => h.id !== hasta.id))
-                    }
-                  />
-                </div>
-              </div>
-            ) : null
+              )
           )}
         </div>
       ))}
