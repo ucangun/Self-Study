@@ -37,7 +37,12 @@ const Home = () => {
         </header>
         <HastaEkle hastalar={hastalar} setHastalar={setHastalar} />
       </div>
-      <HastaListe />
+      <HastaListe
+        hastalar={hastalar}
+        setHastalar={setHastalar}
+        doktorlar={doktorlar}
+        setDoktorlar={setDoktorlar}
+      />
     </div>
   );
 };
