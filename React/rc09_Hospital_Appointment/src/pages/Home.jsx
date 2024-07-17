@@ -47,7 +47,13 @@ const Home = () => {
             ))}
           </div>
         </header>
-        {!tikla && <HastaEkle hastalar={hastalar} setHastalar={setHastalar} />}
+        {!tikla && (
+          <HastaEkle
+            hastalar={hastalar}
+            setHastalar={setHastalar}
+            doktorlar={doktorlar}
+          />
+        )}
       </div>
       {tikla && (
         <HastaListe

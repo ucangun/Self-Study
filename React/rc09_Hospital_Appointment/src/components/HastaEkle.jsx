@@ -1,7 +1,7 @@
 import { useState } from "react";
 import uuid from "react-uuid";
 
-const HastaEkle = ({ hastalar, setHastalar }) => {
+const HastaEkle = ({ hastalar, setHastalar, doktorlar }) => {
   const [hastaName, setHastaName] = useState("");
   const [hastaTarih, setTarih] = useState("");
 
@@ -15,7 +15,7 @@ const HastaEkle = ({ hastalar, setHastalar }) => {
         text: hastaName,
         day: hastaTarih,
         isDone: false,
-        myDoctor: "Dr. Ayse Okur",
+        myDoctor: doktorlar[0].doctorName,
       },
     ]);
 
@@ -50,7 +50,8 @@ const HastaEkle = ({ hastalar, setHastalar }) => {
         </div>
 
         <button type="submit" className="kayit btn-submit">
-          <span style={{ color: "#6a0707" }}>dr ad</span> icin kayit olustur
+          <span style={{ color: "#6a0707" }}>{doktorlar[0].doctorName}</span>{" "}
+          icin kayit olustur
         </button>
       </form>
     </div>
