@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { doctorData } from "../helper/Data";
+import { doctorData, hastaData } from "../helper/Data";
 import HastaEkle from "../components/HastaEkle";
 import HastaListe from "../components/HastaListe";
 
 const Home = () => {
   const [doktorlar, setDoktorlar] = useState(doctorData);
+  const [hastalar, setHastalar] = useState(hastaData);
   return (
     <div>
       <div>
@@ -34,7 +35,7 @@ const Home = () => {
             ))}
           </div>
         </header>
-        <HastaEkle />
+        <HastaEkle hastalar={hastalar} setHastalar={setHastalar} />
       </div>
       <HastaListe />
     </div>
