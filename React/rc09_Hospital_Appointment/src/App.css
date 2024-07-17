@@ -74,3 +74,50 @@ body {
   border-radius: 5px;
   border: none;
 }
+
+/*! data daki isDone kısmı false iken görünecek stil */
+.falseStyle {
+  display: flex;
+  justify-content: space-between;
+
+  background-image: url("https://img.freepik.com/free-vector/watercolor-background_220290-15.jpg?w=2000");
+
+  background-size: cover;
+  background-position: center center;
+  margin: 5px;
+  padding: 10px 40px;
+  cursor: pointer;
+}
+.falseStyle h2 {
+  color: green;
+}
+.falseStyle h3 {
+  color: #152bbb;
+}
+/*! data daki isDone kısmı true iken görünecek stil */
+.trueStil {
+  display: flex;
+  justify-content: space-between;
+  border-left: 10px solid #2037b9;
+  background-color: #5dd5f9;
+  padding: 10px 20px;
+}
+
+.trueStil h3,
+.trueStil h2 {
+  text-decoration: line-through;
+  color: blue;
+}
+.btn + h4 {
+  padding: 10px 20px;
+
+  /* btn className li img den sonraki h4 
+doktor isimleri*/
+}
+
+/* ilk sayfadaki 4 doktor resim ve isimlerinin div i */
+.dr {
+  display: flex;
+  gap: 2rem 1rem;
+  justify-content: center;
+}
