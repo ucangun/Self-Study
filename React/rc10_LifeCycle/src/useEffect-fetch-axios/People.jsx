@@ -11,10 +11,10 @@ const People = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div>
-        {people.map(({ id, name, username, email }) => (
-          <div key={id}>
+    <div className="container text-center mt-4">
+      <div className="row">
+        {people.map(({ id, name, username, phone }) => (
+          <div className="col-12 col-sm-6 col-md-4 col-lg-3 " key={id}>
             <img
               src={`https://api.dicebear.com/9.x/avataaars/svg?seed=${name}`}
               alt="avatar"
@@ -22,7 +22,7 @@ const People = () => {
             />
             <h5>{name}</h5>
             <h6>{username}</h6>
-            <h4>{email}</h4>
+            <h4>{phone}</h4>
           </div>
         ))}
       </div>
