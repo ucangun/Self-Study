@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 // //?==================================================================
 // //?                       USEEFFECT HOOK
 // //?==================================================================
@@ -27,8 +29,44 @@
 // //!   };
 // //! }, [var1, var2]);
 
+import moment from "moment";
+
 const Clock = () => {
-  return <div>Clock</div>;
+  const [zaman, setZaman] = useState(moment());
+  const [sayac, setSayac] = useState(0);
+
+  //! component ilk yüklendiginde calis componentDidMount()
+
+  useEffect(() => {
+    const timeZ = setInterval(() => {
+      setZaman(moment());
+    }, 1000);
+
+    //!component kapandığında yada başka sayfaya gidildiğinde çalışmamız dursun istersek alttaki return ü yazıyoruz
+    //!componentWillUnmount()
+
+    return () => {
+      clearInterval(timeZ);
+    };
+  }, []);
+
+  //! component update edildiginde calis componentDidupdate()
+
+  useEffect(() => {
+    // alert("Hey");
+  }, [sayac]);
+
+  return (
+    <div>
+      <div>
+        {zaman.format("HH")}:{zaman.format("mm")}:{zaman.format("ss")}
+      </div>
+      <h1 className="text-danger">SAYAC : {sayac} </h1>
+      <button onClick={() => setSayac(sayac + 1)} className="btn btn-primary">
+        ARTTIR
+      </button>
+    </div>
+  );
 };
 
 export default Clock;
