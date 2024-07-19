@@ -1,5 +1,5 @@
 import React from "react";
-const EditBilgi = () => {
+const EditBilgi = ({ editItem, setEditItem }) => {
   return (
     <div
       className="modal fade"
@@ -31,6 +31,10 @@ const EditBilgi = () => {
                 className="form-control"
                 id="title"
                 placeholder="Enter your title"
+                value={editItem.title}
+                onChange={(e) =>
+                  setEditItem({ ...editItem, title: e.target.value })
+                }
               />
             </div>
             <div className="mb-3">
@@ -42,6 +46,10 @@ const EditBilgi = () => {
                 className="form-control"
                 id="desc"
                 placeholder="Enter your Description"
+                value={editItem.description}
+                onChange={(e) =>
+                  setEditItem({ ...editItem, description: e.target.value })
+                }
               />
             </div>
           </div>
