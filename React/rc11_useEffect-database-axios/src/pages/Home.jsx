@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import BilgiList from "../components/BilgiList";
+import AddBilgi from "../components/AddBilgi";
 
 const Home = () => {
   const [tutorials, setTutorials] = useState([]);
@@ -25,6 +26,7 @@ const Home = () => {
 
   return (
     <div>
+      <AddBilgi />
       <BilgiList tutorials={tutorials} deleteBilgi={deleteBilgi} />
     </div>
   );
