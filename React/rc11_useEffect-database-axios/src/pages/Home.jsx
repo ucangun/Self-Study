@@ -1,9 +1,33 @@
-import React from 'react'
+import axios from "axios";
+import { useEffect, useState } from "react";
+import BilgiList from "../components/BilgiList";
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+  const [tutorials, setTutorials] = useState([]);
 
-export default Home
+  const url = "https://tutorial-api.fullstack.clarusway.com/tutorials/";
+
+  //! GET - READ
+
+  const getBilgiler = async () => {
+    const res = await axios.get(url);
+    setTutorials(res.data);
+  };
+
+  useEffect(() => {
+    getBilgiler();
+  }, []);
+
+  const deleteBilgi = async (id) => {
+    await axios.delete(`${url}${id}/`);
+    setTutorials(tutorials.filter((tutorial) => tutorial.id !== id));
+  };
+
+  return (
+    <div>
+      <BilgiList tutorials={tutorials} deleteBilgi={deleteBilgi} />
+    </div>
+  );
+};
+
+export default Home;

@@ -1,7 +1,7 @@
 import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
-import EditBilgi from "./EditBilgi";
-const BilgiList = () => {
+
+const BilgiList = ({ tutorials, deleteBilgi }) => {
   return (
     <div className="container mt-4">
       <table className="table table-striped">
@@ -16,17 +16,18 @@ const BilgiList = () => {
           </tr>
         </thead>
         <tbody>
-          {[].map(() => {
+          {tutorials.map(({ id, title, description }) => {
             return (
-              <tr>
-                <th></th>
-                <td></td>
-                <td> </td>
+              <tr key={id}>
+                <th>{id}</th>
+                <td>{title}</td>
+                <td>{description}</td>
                 <td className="text-center ">
                   <AiFillDelete
                     type="button"
                     size={22}
                     className="text-danger cursor-pointer"
+                    onClick={() => deleteBilgi(id)}
                   />
 
                   <FaEdit
