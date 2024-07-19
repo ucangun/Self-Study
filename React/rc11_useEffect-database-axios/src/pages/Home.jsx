@@ -32,10 +32,21 @@ const Home = () => {
     getBilgiler();
   };
 
+  //! put update islemi
+
+  const putBilgiler = async (editItem) => {
+    await axios.put(`${url}${editItem.id}/`, editItem);
+    getBilgiler();
+  };
+
   return (
     <div>
       <AddBilgi postBilgi={postBilgi} />
-      <BilgiList tutorials={tutorials} deleteBilgi={deleteBilgi} />
+      <BilgiList
+        tutorials={tutorials}
+        deleteBilgi={deleteBilgi}
+        putBilgiler={putBilgiler}
+      />
     </div>
   );
 };

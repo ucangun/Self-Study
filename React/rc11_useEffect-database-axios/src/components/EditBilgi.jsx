@@ -1,5 +1,5 @@
 import React from "react";
-const EditBilgi = ({ editItem, setEditItem }) => {
+const EditBilgi = ({ editItem, setEditItem, putBilgiler }) => {
   return (
     <div
       className="modal fade"
@@ -58,6 +58,7 @@ const EditBilgi = ({ editItem, setEditItem }) => {
               type="button"
               className="btn btn-secondary"
               data-bs-dismiss="modal"
+              onClick={() => putBilgiler(editItem)}
             >
               Save
             </button>
