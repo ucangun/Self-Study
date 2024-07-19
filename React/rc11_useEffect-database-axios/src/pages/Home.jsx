@@ -19,14 +19,22 @@ const Home = () => {
     getBilgiler();
   }, []);
 
+  //! delete
   const deleteBilgi = async (id) => {
     await axios.delete(`${url}${id}/`);
     getBilgiler();
   };
 
+  //! post veri gönderme
+
+  const postBilgi = async (yeniVeri) => {
+    await axios.post(url, yeniVeri);
+    getBilgiler();
+  };
+
   return (
     <div>
-      <AddBilgi />
+      <AddBilgi postBilgi={postBilgi} />
       <BilgiList tutorials={tutorials} deleteBilgi={deleteBilgi} />
     </div>
   );
