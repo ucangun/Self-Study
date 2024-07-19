@@ -20,7 +20,7 @@ const Home = () => {
 
   const deleteBilgi = async (id) => {
     await axios.delete(`${url}${id}/`);
-    setTutorials(tutorials.filter((tutorial) => tutorial.id !== id));
+    getBilgiler();
   };
 
   return (
