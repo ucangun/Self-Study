@@ -1,11 +1,7 @@
-
-
 import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
 import EditBilgi from "./EditBilgi";
 const BilgiList = () => {
-  
-
   return (
     <div className="container mt-4">
       <table className="table table-striped">
@@ -22,7 +18,7 @@ const BilgiList = () => {
         <tbody>
           {[].map(() => {
             return (
-              <tr >
+              <tr>
                 <th></th>
                 <td></td>
                 <td> </td>
@@ -31,8 +27,6 @@ const BilgiList = () => {
                     type="button"
                     size={22}
                     className="text-danger cursor-pointer"
-                 
-
                   />
 
                   <FaEdit
@@ -41,7 +35,6 @@ const BilgiList = () => {
                     size={20}
                     type="button"
                     className="me-2 text-warning cursor-pointer"
-                
                   />
                 </td>
               </tr>
@@ -49,12 +42,8 @@ const BilgiList = () => {
           })}
         </tbody>
       </table>
-      <EditBilgi  />
     </div>
   );
 };
 
 export default BilgiList;
-
-
-
