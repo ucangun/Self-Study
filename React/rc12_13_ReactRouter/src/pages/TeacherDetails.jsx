@@ -14,10 +14,12 @@ const TeacherDetails = () => {
       .then((res) => setPerson(res.data));
   }, [id]);
 
+  const { name, email } = person;
+
   return (
     <div>
-      <h3>{person.name}</h3>
-      <h2>{person.email}</h2>
+      <h3>{name}</h3>
+      <h2>{email}</h2>
     </div>
   );
 };
