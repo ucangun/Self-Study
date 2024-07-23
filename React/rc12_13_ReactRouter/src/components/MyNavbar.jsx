@@ -28,7 +28,9 @@ const MyNavbar = () => {
             <NavLink className="nav-link" to="/paths">
               Paths
             </NavLink>
-            <Nav.Link href="">Github</Nav.Link>
+            <Nav.Link href="https://github.com/" target="_blank">
+              Github
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

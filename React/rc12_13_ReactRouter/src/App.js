@@ -6,6 +6,7 @@ import MyNavbar from "./components/MyNavbar";
 import Teacher from "./pages/Teacher";
 import CourseCard from "./pages/CourseCard";
 import ContactForm from "./pages/ContactForm";
+import Paths from "./pages/Paths";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Route path="/teacher" element={<Teacher />} />
           <Route path="/courses" element={<CourseCard />} />
           <Route path="/contact" element={<ContactForm />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/paths" element={<Paths />} />
         </Routes>
       </Router>
     </div>
