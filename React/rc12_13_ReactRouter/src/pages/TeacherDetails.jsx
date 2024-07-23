@@ -17,6 +17,7 @@ const TeacherDetails = () => {
   return (
     <div>
       <h3>{person.name}</h3>
+      <h2>{person.email}</h2>
     </div>
   );
 };
