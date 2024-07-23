@@ -9,13 +9,13 @@ const Slider = () => {
   return (
     <Carousel>
       <Carousel.Item>
-        <img src={isa} alt="isa" />
+        <img className="w-100" src={isa} alt="isa" />
       </Carousel.Item>
       <Carousel.Item>
-        <img src={devops} alt="devops" />
+        <img className="w-100" src={devops} alt="devops" />
       </Carousel.Item>
       <Carousel.Item>
-        <img src={about} alt="about" />
+        <img className="w-100" src={about} alt="about" />
       </Carousel.Item>
     </Carousel>
   );
