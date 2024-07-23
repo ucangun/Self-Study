@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MyNavbar from "./components/MyNavbar";
 import Teacher from "./pages/Teacher";
+import CourseCard from "./pages/CourseCard";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/teacher" element={<Teacher />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/courses" element={<CourseCard />} />
           <Route path="/" element={<Home />} />
           <Route path="/" element={<Home />} />
         </Routes>
