@@ -13,19 +13,49 @@ const MyNavbar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavLink className="nav-link" to="">
+            <NavLink
+              style={({ isActive }) => ({
+                color: isActive && "red",
+              })}
+              className="nav-link"
+              to=""
+            >
               Home
             </NavLink>
-            <NavLink className="nav-link" to="/teacher">
+            <NavLink
+              style={({ isActive }) => ({
+                fontSize: isActive && "30px",
+              })}
+              className="nav-link"
+              to="/teacher"
+            >
               Teacher
             </NavLink>
-            <NavLink className="nav-link" to="/courses">
+            <NavLink
+              style={({ isActive }) => ({
+                background: isActive && "aqua",
+              })}
+              className="nav-link"
+              to="/courses"
+            >
               Courses
             </NavLink>
-            <NavLink className="nav-link" to="/contact">
+            <NavLink
+              style={({ isActive }) => ({
+                border: isActive && "1px solid blue",
+              })}
+              className="nav-link"
+              to="/contact"
+            >
               Contact
             </NavLink>
-            <NavLink className="nav-link" to="/paths">
+            <NavLink
+              style={({ isActive }) => ({
+                color: isActive && "red",
+              })}
+              className="nav-link"
+              to="/paths"
+            >
               Paths
             </NavLink>
             <Nav.Link href="https://github.com/" target="_blank">
