@@ -15,7 +15,10 @@ const Paths = () => {
         experts!
       </p>
       <div>
-        <button className="btn btn-success w-25" onClick={() => navigate("fs")}>
+        <button
+          className="btn btn-success w-25"
+          onClick={() => navigate("/paths/fs")}
+        >
           FS
         </button>
 

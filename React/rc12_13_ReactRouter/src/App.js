@@ -30,7 +30,7 @@ function App() {
           <Route path="/contact" element={<ContactForm />} />
 
           <Route path="/paths" element={<Paths />}>
-            <Route path="fs" element={<FS />} />
+            <Route path="/paths/fs" element={<FS />} />
             <Route path="aws" element={<AWS />} />
           </Route>
 
