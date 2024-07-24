@@ -1,7 +1,9 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const CardDetails = () => {
+  const navigate = useNavigate();
+
   const {
     state: { data },
   } = useLocation();
@@ -12,6 +14,14 @@ const CardDetails = () => {
         <img src={data.img} alt="logo" width="400px" />
         <h3 className="mt-4">{data.text}</h3>
         <h4 className="text-danger">{data.yorum}</h4>
+      </div>
+      <div>
+        <button onClick={() => navigate(-1)} className="btn btn-primary">
+          GO BACK
+        </button>
+        <button onClick={() => navigate("/")} className="btn btn-warning">
+          GO HOME
+        </button>
       </div>
     </div>
   );
