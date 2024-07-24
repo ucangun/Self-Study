@@ -5,6 +5,8 @@ import isa from "../img/isa.jpeg";
 import devops from "../img/devops.jpeg";
 import about from "../img/about.jpeg";
 
+import "./slider.css";
+
 const Slider = () => {
   return (
     <Carousel>
