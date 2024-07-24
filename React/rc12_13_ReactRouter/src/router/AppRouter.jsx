@@ -10,32 +10,34 @@ import NotFound from "../pages/NotFound";
 import CardDetails from "../pages/CardDetails";
 import FS from "../pages/FS";
 import AWS from "../pages/AWS";
+import PrivateRouter from "./PrivateRouter";
 
 const AppRouter = () => {
   return (
-    <div>
-      <Router>
-        <MyNavbar />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          {/* "/" (ana yol) tüm yollara dahil edilmiştir, bu nedenle onu "/" ile başlayan diğer yollardan ayırt etmek için exact anahtar kelimesine sahip olması gerekir . */}
-          <Route path="/teacher" element={<Teacher />} />
-          <Route path="/teacher/:id" element={<TeacherDetails />} />
+    <Router>
+      <MyNavbar />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        {/* "/" (ana yol) tüm yollara dahil edilmiştir, bu nedenle onu "/" ile başlayan diğer yollardan ayırt etmek için exact anahtar kelimesine sahip olması gerekir . */}
+        <Route path="/teacher" element={<Teacher />} />
+        <Route path="/teacher/:id" element={<TeacherDetails />} />
 
-          <Route path="/courses" element={<CourseCard />} />
-          <Route path="/courses/:name" element={<CardDetails />} />
+        <Route path="/courses" element={<CourseCard />} />
+        <Route path="/courses/:name" element={<CardDetails />} />
 
-          <Route path="/contact" element={<ContactForm />} />
+        <Route path="/contact" element={<PrivateRouter />}>
+          <Route path="" element={<ContactForm />} />
+        </Route>
+        {/* <Route path="/contact" element={<ContactForm />} /> */}
 
-          <Route path="/paths" element={<Paths />}>
-            <Route path="/paths/fs" element={<FS />} />
-            <Route path="aws" element={<AWS />} />
-          </Route>
+        <Route path="/paths" element={<Paths />}>
+          <Route path="/paths/fs" element={<FS />} />
+          <Route path="aws" element={<AWS />} />
+        </Route>
 
-          <Route path="/*" element={<NotFound />} />
-        </Routes>
-      </Router>
-    </div>
+        <Route path="/*" element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 };
 
