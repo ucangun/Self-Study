@@ -15,19 +15,24 @@ const Teacher = () => {
   return (
     <div className="container text-center mt-4">
       <div className="row">
-        {people.map(({ id, name, username, phone }) => (
-          <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={id}>
+        {people.map((person) => (
+          <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={person.id}>
             {/* https://www.dicebear.com/styles/avataaars/ */}
 
             <img
-              src={`https://api.dicebear.com/9.x/avataaars/svg?seed=${name}`}
+              src={`https://api.dicebear.com/9.x/avataaars/svg?seed=${person.name}`}
               alt=""
-              onClick={() => navigate(`/teacher/${id}`)}
+              onClick={() =>
+                navigate(`/teacher/${person.id}`, { state: { person } })
+              }
+
+              // 1.yol un navigate ile gönderim şekli
+              //  onClick={()=>navigateee(`/teacher/${id}`)}
             />
 
-            <h5>{name}</h5>
-            <h6>{username} </h6>
-            <h4>{phone} </h4>
+            <h5>{person.name}</h5>
+            <h6>{person.username} </h6>
+            <h4>{person.phone} </h4>
           </div>
         ))}
       </div>
