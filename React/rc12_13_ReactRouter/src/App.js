@@ -10,6 +10,8 @@ import Paths from "./pages/Paths";
 import TeacherDetails from "./pages/TeacherDetails";
 import NotFound from "./pages/NotFound";
 import CardDetails from "./pages/CardDetails";
+import FS from "./pages/FS";
+import AWS from "./pages/AWS";
 
 function App() {
   return (
@@ -26,7 +28,12 @@ function App() {
           <Route path="/courses/:name" element={<CardDetails />} />
 
           <Route path="/contact" element={<ContactForm />} />
-          <Route path="/paths" element={<Paths />} />
+
+          <Route path="/paths" element={<Paths />}>
+            <Route path="fs" element={<FS />} />
+            <Route path="aws" element={<AWS />} />
+          </Route>
+
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </Router>
