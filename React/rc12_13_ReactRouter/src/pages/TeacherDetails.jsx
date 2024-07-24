@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
-import { useParams } from "react-router-dom";
-import NotFound from "./NotFound";
+// import axios from "axios";
+// import { useParams } from "react-router-dom";
+// import NotFound from "./NotFound";
 
 const TeacherDetails = () => {
   /*
@@ -19,14 +19,13 @@ const TeacherDetails = () => {
       .catch((err) => setError(true));
   }, [id]);
 
-  //! *************************
-
-
   // error durumlarında alttaki gibi js alanına yazılarak error sayfasına yönlendirme  yapılabilir
   if (error) {
     return <NotFound />;
   }
 */
+  //! *************************
+
   //! 2 .YOL******
   const {
     state: { person },

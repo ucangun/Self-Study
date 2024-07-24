@@ -9,6 +9,7 @@ import ContactForm from "./pages/ContactForm";
 import Paths from "./pages/Paths";
 import TeacherDetails from "./pages/TeacherDetails";
 import NotFound from "./pages/NotFound";
+import CardDetails from "./pages/CardDetails";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
           <Route path="/teacher/:id" element={<TeacherDetails />} />
 
           <Route path="/courses" element={<CourseCard />} />
+          <Route path="/courses/:name" element={<CardDetails />} />
+
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/paths" element={<Paths />} />
           <Route path="/*" element={<NotFound />} />

@@ -27,7 +27,7 @@ const Teacher = () => {
               }
 
               // 1.yol un navigate ile gönderim şekli
-              //  onClick={()=>navigateee(`/teacher/${id}`)}
+              //  onClick={()=>navigate(`/teacher/${id}`)}
             />
 
             <h5>{person.name}</h5>
