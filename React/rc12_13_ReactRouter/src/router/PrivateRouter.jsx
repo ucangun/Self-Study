@@ -1,6 +1,4 @@
 import React from "react";
-import ContactForm from "../pages/ContactForm";
-import NotFound from "../pages/NotFound";
 import { Navigate, Outlet } from "react-router-dom";
 
 const PrivateRouter = () => {
