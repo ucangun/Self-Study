@@ -1,9 +1,23 @@
 import React from "react";
+import axios from "axios";
 
 // parseFloat=kullanıcı tam sayı bile girse virgüllü sayıya çevirir,ekrana öyle basar
 
-const ProductCard = ({ urun }) => {
+const ProductCard = ({ urun, getData }) => {
   const { id, name, image, price, dampingRate, amount } = urun;
+
+  const BASE_URL = "https://63f4e5583f99f5855db9e941.mockapi.io/products";
+
+  const handleDelete = async () => {
+    await axios.delete(`${BASE_URL}/${id}`);
+    getData();
+  };
+
+  const handleMinus = () => {
+    if (amount > 0) {
+    }
+  };
+  const handlePlus = () => {};
 
   return (
     <div className="card shadow-lg mb-3">
@@ -31,19 +45,28 @@ const ProductCard = ({ urun }) => {
             </div>
             <div className="border border-1 border-dark shadow-lg d-flex justify-content-center p-2">
               <div className="quantity-controller">
-                <button className="btn btn-secondary btn-sm">
+                <button
+                  onClick={handleMinus}
+                  className="btn btn-secondary btn-sm"
+                >
                   <i className="fas fa-minus"></i>
                 </button>
                 <p className="d-inline mx-4" id="product-quantity">
                   {amount}
                 </p>
-                <button className="btn btn-secondary btn-sm">
+                <button
+                  onClick={handlePlus}
+                  className="btn btn-secondary btn-sm"
+                >
                   <i className="fas fa-plus"></i>
                 </button>
               </div>
             </div>
             <div className="product-removal mt-4">
-              <button className="btn btn-danger btn-sm w-100 remove-product">
+              <button
+                onClick={handleDelete}
+                className="btn btn-danger btn-sm w-100 remove-product"
+              >
                 <i className="fa-solid fa-trash-can me-2"></i>Remove
               </button>
             </div>

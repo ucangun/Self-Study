@@ -38,7 +38,7 @@ const ProductList = () => {
           <>
             <article id="product-panel" className="col-md-6">
               {urunler.map((urun) => (
-                <ProductCard key={urun.id} urun={urun} />
+                <ProductCard key={urun.id} urun={urun} getData={getData} />
               ))}
             </article>
             <article>
