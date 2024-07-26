@@ -13,11 +13,23 @@ const ProductCard = ({ urun, getData }) => {
     getData();
   };
 
-  const handleMinus = () => {
-    if (amount > 0) {
+  const handleMinus = async () => {
+    if (amount > 1) {
+      await axios.put(`${BASE_URL}/${id}`, { ...urun, amount: amount - 1 });
+      getData();
+    } else {
+      const confirmDelete = window.confirm(
+        "Are you sure you want to delete this item?"
+      );
+      if (confirmDelete) {
+        handleDelete();
+      }
     }
   };
-  const handlePlus = () => {};
+  const handlePlus = async () => {
+    await axios.put(`${BASE_URL}/${id}`, { ...urun, amount: amount + 1 });
+    getData();
+  };
 
   return (
     <div className="card shadow-lg mb-3">
