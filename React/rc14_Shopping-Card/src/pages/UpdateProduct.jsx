@@ -1,12 +1,24 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios"
-
-
+import axios from "axios";
 
 const UpdateProduct = () => {
+  const {
+    state: { urun },
+  } = useLocation();
 
+  const [yeniVeri, setYeniVeri] = useState(urun);
+  const navigate = useNavigate();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await axios.put(
+      `https://63f4e5583f99f5855db9e941.mockapi.io/products/${yeniVeri.id}`,
+      yeniVeri
+    );
+    navigate(-1);
+  };
 
   return (
     <div className="container">
@@ -16,7 +28,7 @@ const UpdateProduct = () => {
       >
         <h1 className="text-center">update Product</h1>
 
-        <form  className="p-2">
+        <form onSubmit={handleSubmit} className="p-2">
           <div className="mb-3">
             <label htmlFor="add-name" className="form-label">
               Product Name
@@ -25,8 +37,8 @@ const UpdateProduct = () => {
               type="text"
               className="form-control"
               name="name"
-              value={""}
-              
+              value={yeniVeri.name}
+              onChange={(e) => setYeniVeri({ ...urun, name: e.target.value })}
               required
             />
           </div>
@@ -38,9 +50,9 @@ const UpdateProduct = () => {
               type="number"
               className="form-control"
               name="price"
-              value={""}
+              value={yeniVeri.price}
+              onChange={(e) => setYeniVeri({ ...urun, price: e.target.value })}
               required
-            
             />
           </div>
           <div className="mb-3">
@@ -51,9 +63,9 @@ const UpdateProduct = () => {
               type="number"
               className="form-control"
               name="amount"
-              value={""}
+              value={yeniVeri.amount}
+              onChange={(e) => setYeniVeri({ ...urun, amount: e.target.value })}
               required
-            
             />
           </div>
           <label htmlFor="add-image" className="form-label">
@@ -67,10 +79,10 @@ const UpdateProduct = () => {
               type="url"
               className="form-control"
               name="image"
-              value={""}
+              value={yeniVeri.image}
+              onChange={(e) => setYeniVeri({ ...urun, image: e.target.value })}
               aria-describedby="basic-addon3"
               required
-            
             />
           </div>
           <div className="text-center">
@@ -82,7 +94,6 @@ const UpdateProduct = () => {
             </button>
           </div>
         </form>
-      
       </article>
     </div>
   );
