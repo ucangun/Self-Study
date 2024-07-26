@@ -16,7 +16,7 @@ body {
   min-height: calc(100vh - 60px);
   position: relative;
   > div {
-    border:2px solid red;
+    border: 2px solid red;
     text-align: center;
     color: white;
     position: absolute;
@@ -106,7 +106,6 @@ body {
   height: 40px;
   background-color: #135058;
 }
-
 
 /* about taki butonlar */
 
