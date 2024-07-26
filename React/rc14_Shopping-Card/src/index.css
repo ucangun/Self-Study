@@ -16,7 +16,6 @@ body {
   min-height: calc(100vh - 60px);
   position: relative;
   > div {
-    border: 2px solid red;
     text-align: center;
     color: white;
     position: absolute;
