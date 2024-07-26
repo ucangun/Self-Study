@@ -43,8 +43,8 @@ const ProductCard = ({ urun, getData }) => {
             className="w-100 h-100 rounded-start"
             alt={"name"}
             title={name}
-            // onClick={() => navigate(`/update/${id}`)}
-            onClick={() => navigate("/update", { state: { urun } })}
+            onClick={() => navigate(`/update/${id}`)}
+            // onClick={() => navigate("/update", { state: { urun } })}
           />
         </div>
         <div className="col-md-7">
