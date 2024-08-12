@@ -13,8 +13,14 @@ const KullaniciProvider = ({ children }) => {
       .then((data) => setUsers(data));
   }, []);
 
+  const changeWidth = (id, size) => {
+    setUsers(
+      users.map((user) => (user.id === id ? { ...user, width: size } : user))
+    );
+  };
+
   return (
-    <KullaniciContext.Provider value={{ users }}>
+    <KullaniciContext.Provider value={{ users, changeWidth }}>
       {children}
     </KullaniciContext.Provider>
   );
