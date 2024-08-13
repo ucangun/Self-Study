@@ -1,17 +1,19 @@
 import React from "react";
+import Display from "./styles/DisplayStyle";
+import Image, { Logo } from "./styles/ImageStyle";
 
 const Header = () => {
   return (
     <div>
-      <div>
-        <img src="" alt="" />
+      <Display>
+        <Logo src="./images/logo.png" alt="logo" />
         <div>
           <button>Apply Courses</button>
           <button>Talk to Adviser</button>
         </div>
-      </div>
+      </Display>
 
-      <div>
+      <Display>
         <div>
           <h1>The IT Career of Your Dreams Starts Here</h1>
           <p>
@@ -23,8 +25,8 @@ const Header = () => {
           <button>Details</button>
         </div>
 
-        <img src="" alt="" />
-      </div>
+        <Image src="./images/hero.jpg" alt="hero" />
+      </Display>
     </div>
   );
 };
