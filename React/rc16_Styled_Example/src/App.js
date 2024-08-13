@@ -1,10 +1,13 @@
-import "./App.css";
+import Card from "./components/Card";
+import Header from "./components/Header";
+import Container from "./components/styles/ContainerStyle";
 
 function App() {
   return (
-    <div className="App">
-      <h1>DE 09</h1>
-    </div>
+    <Container>
+      <Header />
+      <Card />
+    </Container>
   );
 }
 
