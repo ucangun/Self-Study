@@ -5,6 +5,11 @@ const Display = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  /* responsive */
+  @media screen and (max-width: ${({ theme }) => theme.responsive}) {
+    flex-direction: column;
+  }
 `;
 
 export default Display;
