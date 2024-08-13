@@ -1,6 +1,7 @@
 import React from "react";
 import Display from "./styles/DisplayStyle";
 import Image, { Logo } from "./styles/ImageStyle";
+import Button, { DetailButton } from "./styles/ButtonStyle";
 
 const Header = () => {
   return (
@@ -8,8 +9,8 @@ const Header = () => {
       <Display>
         <Logo src="./images/logo.png" alt="logo" />
         <div>
-          <button>Apply Courses</button>
-          <button>Talk to Adviser</button>
+          <Button primary="red">Apply Courses</Button>
+          <Button secondary>Talk to Adviser</Button>
         </div>
       </Display>
 
@@ -21,8 +22,8 @@ const Header = () => {
             class online with other trainees and learn coding skills with a
             highly-skilled instructor.
           </p>
-          <button>New Career</button>
-          <button>Details</button>
+          <Button secondary>New Career</Button>
+          <DetailButton>Details</DetailButton>
         </div>
 
         <Image src="./images/hero.jpg" alt="hero" />
