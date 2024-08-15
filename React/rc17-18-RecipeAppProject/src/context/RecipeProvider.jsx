@@ -30,10 +30,8 @@ const RecipeProvider = ({ children }) => {
     const { data } = await axios.get(url);
     console.log(data);
     setRecipes(data.hits);
+    console.log(recipes);
   };
-  useEffect(() => {
-    getData();
-  }, []);
 
   return (
     <RecipeContext.Provider
@@ -44,9 +42,7 @@ const RecipeProvider = ({ children }) => {
         setPassword,
         recipes,
         setRecipes,
-        query,
         setQuery,
-        mealType,
         setMealType,
         getData,
       }}

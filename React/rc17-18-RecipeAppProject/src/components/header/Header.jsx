@@ -10,12 +10,17 @@ import {
 import { RecipeContext } from "../../context/RecipeProvider";
 
 const Header = () => {
-  const { setQuery, setMealType } = useContext(RecipeContext);
+  const { setQuery, setMealType, getData } = useContext(RecipeContext);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    getData();
+  };
 
   return (
     <HeaderContainer>
       <MainHeader>FOOD APP</MainHeader>
-      <FormContainer>
+      <FormContainer onSubmit={handleSubmit}>
         <FoodInput type="text" onChange={(e) => setQuery(e.target.value)} />
         <Button type="submit">Search</Button>
         <Select
