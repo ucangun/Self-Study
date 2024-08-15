@@ -10,8 +10,7 @@ export const MainContainer = styled.div`
 `;
 
 export const Cards = styled.div`
-
-/* search den sonra çıkan herbir yiyecek kart RECİPECARD*/
+  /* search den sonra çıkan herbir yiyecek kart RECİPECARD*/
   height: 300px;
   background: #e1f1dd;
   padding: 5px;
@@ -26,7 +25,9 @@ export const Cards = styled.div`
   &:hover {
     box-shadow: none;
     transition: all 0.3s ease-in;
-    /* box-shadow: none özelliğinin yavaşça uygulanmasını sağlar; */`;
+    /* box-shadow: none özelliğinin yavaşça uygulanmasını sağlar; */
+  }
+`;
 
 export const RecipeHeader = styled.h1`
   /* kartlardaki yiyeceklerin adları */
