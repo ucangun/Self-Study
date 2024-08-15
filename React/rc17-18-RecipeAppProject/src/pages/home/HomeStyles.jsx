@@ -1,11 +1,54 @@
 import styled from "styled-components";
 
-export const MainContainer = styled.div``;
+export const MainContainer = styled.div`
+  /* arama yapıldığında açılan yiyecek kartlarının kutusu RECİPECARD*/
+  display: flex;
+  flex-wrap: wrap;
+  /* sığmayan taşsın düşsün */
+  /* flex-direction: row; */
+  justify-content: center;
+`;
 
-export const Cards = styled.div``;
+export const Cards = styled.div`
 
-export const RecipeHeader = styled.h1``;
+/* search den sonra çıkan herbir yiyecek kart RECİPECARD*/
+  height: 300px;
+  background: #e1f1dd;
+  padding: 5px;
+  border-radius: 3px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 10px;
+  box-shadow: 8px 8px 5px black;
+  &:hover {
+    box-shadow: none;
+    transition: all 0.3s ease-in;
+    /* box-shadow: none özelliğinin yavaşça uygulanmasını sağlar; */`;
 
-export const RecipeImage = styled.img``;
+export const RecipeHeader = styled.h1`
+  /* kartlardaki yiyeceklerin adları */
+  font-size: 1.5rem;
+  text-align: center;
+`;
 
-export const RecipeButton = styled.button``;
+export const RecipeImage = styled.img`
+  /* kartların içindeki resimler RECİPECARD */
+  height: 150px;
+  border-radius: 10px;
+  border: 2px solid red;
+`;
+
+export const RecipeButton = styled.button`
+  /* view more  buton */
+  background-color: #00adb5;
+  padding: 5px;
+  /* outline: none; */
+  height: 2rem;
+  border: none;
+  margin: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+`;
