@@ -36,7 +36,21 @@ const RecipeProvider = ({ children }) => {
   }, []);
 
   return (
-    <RecipeContext.Provider value={{ name, setName, password, setPassword }}>
+    <RecipeContext.Provider
+      value={{
+        name,
+        setName,
+        password,
+        setPassword,
+        recipes,
+        setRecipes,
+        query,
+        setQuery,
+        mealType,
+        setMealType,
+        getData,
+      }}
+    >
       {children}
     </RecipeContext.Provider>
   );
