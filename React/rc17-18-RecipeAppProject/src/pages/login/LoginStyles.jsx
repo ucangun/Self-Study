@@ -74,4 +74,5 @@ export const StyledButton = styled.button`
   border: none;
   cursor: pointer;
   margin: 1rem;
+  padding: 0.4rem 1rem;
 `;

@@ -16,7 +16,7 @@ const Login = () => {
     <LoginContainer>
       <FormContainer>
         <StyledImg src={mealFoto} />
-        <Header>Clarusway Recipe</Header>
+        <Header>{"<Clarusway>"} Recipe</Header>
         <StyledForm></StyledForm>
         <StyledInput type="text" placeholder="username" required />
         <StyledInput type="password" placeholder="password" required />
