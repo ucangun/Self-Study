@@ -19,7 +19,9 @@ const RecipeCard = () => {
         <Cards key={i}>
           <RecipeHeader>{recipe.label}</RecipeHeader>
           <RecipeImage src={recipe.image} />
-          <RecipeButton onClick={() => navigate("/details")}>
+          <RecipeButton
+            onClick={() => navigate("/details", { state: { recipe } })}
+          >
             Details
           </RecipeButton>
         </Cards>
