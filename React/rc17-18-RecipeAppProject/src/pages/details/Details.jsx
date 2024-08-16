@@ -47,13 +47,29 @@ const Details = () => {
             {Math.round(recipe.totalNutrients.ENERC_KCAL.quantity)}
             {recipe.totalNutrients.ENERC_KCAL.unit}
           </span>
+          <span> Calories: {Math.round(recipe.calories)} </span>
+          <span>
+            {recipe.digest.slice(0, 4).map((item, index) => (
+              <p key={index}>
+                {item.label}: {Math.round(item.total)} {item.unit}
+              </p>
+            ))}
+          </span>
         </OtherPart>
 
         <ImgContainer>
           <img src={recipe.image} alt="food" />
         </ImgContainer>
 
-        <IngredContainer></IngredContainer>
+        <IngredContainer>
+          {recipe.ingredientLines.map((a, b) => (
+            <div key={b}>
+              <p>
+                {b + 1} * {a}
+              </p>
+            </div>
+          ))}
+        </IngredContainer>
       </DetailPart>
     </DetailContainer>
   );
