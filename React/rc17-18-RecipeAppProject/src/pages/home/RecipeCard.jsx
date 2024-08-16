@@ -7,17 +7,21 @@ import {
   RecipeHeader,
   RecipeImage,
 } from "./HomeStyles";
+import { useNavigate } from "react-router-dom";
 
 const RecipeCard = () => {
   const { recipes } = useContext(RecipeContext);
+  const navigate = useNavigate();
 
   return (
     <MainContainer>
-      {recipes.map(({ recipe }) => (
-        <Cards key={recipe.label}>
+      {recipes.map(({ recipe }, i) => (
+        <Cards key={i}>
           <RecipeHeader>{recipe.label}</RecipeHeader>
           <RecipeImage src={recipe.image} />
-          <RecipeButton>Details</RecipeButton>
+          <RecipeButton onClick={() => navigate("/details")}>
+            Details
+          </RecipeButton>
         </Cards>
       ))}
     </MainContainer>

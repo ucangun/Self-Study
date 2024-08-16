@@ -19,7 +19,7 @@ const RecipeProvider = ({ children }) => {
   const [query, setQuery] = useState("");
   const [mealType, setMealType] = useState("Breakfast");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
 
   const APP_ID = "633135cc";
   const APP_KEY = "4e352366e820300289821caacf64d308";
@@ -27,11 +27,24 @@ const RecipeProvider = ({ children }) => {
   const url = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&mealType=${mealType}`;
 
   const getData = async () => {
-    const { data } = await axios.get(url);
-    console.log(data);
-    setRecipes(data.hits);
-    console.log(recipes);
+    setLoading(true);
+    try {
+      const { data } = await axios.get(url);
+      setRecipes(data.hits);
+    } catch (error) {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
   };
+
+  if (error) {
+    return <p>Something went Wrong...</p>;
+  }
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <RecipeContext.Provider
