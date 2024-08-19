@@ -8,6 +8,7 @@ import {
   MenuItems,
 } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import Switch from "./Switch";
 
 const navigation = [
   { name: "Dashboard", href: "#", current: true },
@@ -77,6 +78,7 @@ export default function Navbar() {
               <span className="sr-only">View notifications</span>
               <BellIcon aria-hidden="true" className="h-6 w-6" />
             </button>
+            <Switch />
 
             {/* Profile dropdown */}
             <Menu as="div" className="relative ml-3">
