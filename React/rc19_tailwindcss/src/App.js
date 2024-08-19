@@ -1,7 +1,10 @@
+import Typography from "./components/Typography";
+
 function App() {
   return (
-    <div className="App">
-      <h1>DE 09</h1>
+    <div>
+      TailwindCss
+      <Typography />
     </div>
   );
 }
