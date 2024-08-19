@@ -22,6 +22,17 @@ const FlexandResponsive = () => {
         <div className="bg-red-500 ">5</div>
         <div className="bg-red-600 ">6</div>
       </div>
+
+      <h1 className="m-8">Grid - Layer Components </h1>
+
+      <div className="responsive-grid ">
+        <div className="bg-red-100  ">1</div>
+        <div className="bg-red-200  ">2</div>
+        <div className="bg-red-300 ">3</div>
+        <div className="bg-red-400 ">4</div>
+        <div className="bg-red-500 ">5</div>
+        <div className="bg-red-600 ">6</div>
+      </div>
     </div>
   );
 };
