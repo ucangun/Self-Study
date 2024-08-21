@@ -12,7 +12,7 @@ const AuthContext = ({ children }) => {
 
   //register için (sitede chain fetch işlemi var biz burada async await i tercih ettik)
 
-  const createUser = async (email, password) => {
+  const createUser = async (email, password, displayName) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       toastSuccess("Registered Successfully");
