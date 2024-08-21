@@ -1,4 +1,7 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import React, { createContext } from "react";
 import { auth } from "../auth/firebase";
 import { toastError, toastSuccess } from "../helpers/ToastNotify";
@@ -22,10 +25,23 @@ const AuthContext = ({ children }) => {
     }
   };
 
+  // login islemi
+
+  const signIn = async (email, password) => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      toastSuccess("Logged in Successfully");
+      navigate("/");
+    } catch (error) {
+      toastError(error.message);
+    }
+  };
+
   return (
     <AuthContextt.Provider
       value={{
         createUser,
+        signIn,
       }}
     >
       {children}

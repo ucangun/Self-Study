@@ -6,10 +6,11 @@ const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const { createUser } = useContext(AuthContextt);
+  const { signIn } = useContext(AuthContextt);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    signIn(email, password);
   };
 
   return (
@@ -17,12 +18,12 @@ const Login = () => {
       <div className={`form-container mt-[5vh] w-[380px] h-[580px]`}>
         <form onSubmit={handleSubmit}>
           <h2 className="text-red-main text-2xl font-[500] text-center tracking-[0.1em] mb-3">
-            Sign Up
+            Sign In
           </h2>
 
           <div className="relative z-0 w-full mb-5 group">
             <input
-              class=" peer"
+              className=" peer"
               placeholder=" "
               name="floating_email"
               type="email"
@@ -33,7 +34,7 @@ const Login = () => {
           </div>
           <div className="relative z-0 w-full mb-5 group">
             <input
-              class=" peer"
+              className=" peer"
               placeholder=" "
               name="floating_password"
               type="password"
@@ -49,7 +50,7 @@ const Login = () => {
             </span>
             <Link
               className="py-3 font-[0.75em] cursor-pointer decoration-none text-gray-500 hover:text-[#ff4b45]"
-              to=""
+              to="/register"
             >
               Sign Up
             </Link>
