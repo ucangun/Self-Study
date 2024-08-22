@@ -1,7 +1,8 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import avatar from "../assets/icons/avatar.png";
+import { AuthContextt } from "../context/AuthContext";
 
 //tailwindui.com/components/preview navigation, mobile menu button, open, Disclosure.Panel sil
 
@@ -10,6 +11,9 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  const { currentUser } = useContext(AuthContextt);
+  console.log(currentUser);
+
   // referrerPolicy = "no-referrer"; google dan gelen resimde bazen sıkıntı oluyor, olmasın diye
   return (
     <>
@@ -25,15 +29,14 @@ export default function Navbar() {
             <div className="absolute inset-y-0 right-0 flex items-center">
               {/* kullanıcı giriş yaptıysa displayName ekranda görünsün */}
 
-              <h5 className="mr-2 capitalize"> ipek bilir</h5>
+              <h5 className="mr-2 capitalize">{currentUser?.displayName}</h5>
               {/* Profile dropdown */}
               <Menu as="div" className="relative ml-3">
                 <div>
                   <Menu.Button className="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                     <img
                       className="w-8 h-8 rounded-full"
-                      // src={avatar}
-                      src={avatar}
+                      src={currentUser?.photoURL || avatar}
                       referrerPolicy="no-referrer"
                       alt=""
                     />
