@@ -8,7 +8,7 @@ const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
-  const { createUser } = useContext(AuthContextt);
+  const { createUser, signUpGoogle } = useContext(AuthContextt);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -76,6 +76,7 @@ const Register = () => {
           <button
             type="button"
             className="flex justify-between text-center btn-danger "
+            onClick={() => signUpGoogle()}
           >
             Continue with Google
             <GoogleIcon color="currentColor" />
