@@ -91,7 +91,7 @@ const AuthContext = ({ children }) => {
     try {
       await signOut(auth);
       toastSuccess("Logged out Successfully");
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       toastError(error.message);
     }
