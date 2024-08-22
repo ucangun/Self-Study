@@ -4,6 +4,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
   updateProfile,
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
@@ -84,6 +85,18 @@ const AuthContext = ({ children }) => {
     });
   };
 
+  // logout
+
+  const logout = async () => {
+    try {
+      await signOut(auth);
+      toastSuccess("Logged out Successfully");
+      navigate("/login");
+    } catch (error) {
+      toastError(error.message);
+    }
+  };
+
   return (
     <AuthContextt.Provider
       value={{
@@ -91,6 +104,7 @@ const AuthContext = ({ children }) => {
         signIn,
         signUpGoogle,
         currentUser,
+        logout,
       }}
     >
       {children}

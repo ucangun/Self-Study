@@ -11,8 +11,7 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-  const { currentUser } = useContext(AuthContextt);
-  console.log(currentUser);
+  const { currentUser, logout } = useContext(AuthContextt);
 
   // referrerPolicy = "no-referrer"; google dan gelen resimde bazen sıkıntı oluyor, olmasın diye
   return (
@@ -83,6 +82,7 @@ export default function Navbar() {
                     <Menu.Item>
                       {({ active }) => (
                         <span
+                          onClick={logout}
                           className={classNames(
                             active ? "bg-gray-100" : "",
                             "block px-4 py-2 text-sm text-gray-700 cursor-pointer"
