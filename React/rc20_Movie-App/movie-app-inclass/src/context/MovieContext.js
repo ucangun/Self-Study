@@ -10,21 +10,21 @@ const MovieContext = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoding] = useState(false);
 
-  const getMovies = () => {
+  const getMovies = (API_ADRESS) => {
     setLoding(true);
     axios
-      .get(BASE_URL)
+      .get(API_ADRESS)
       .then(({ data }) => setMovies(data.results))
       .catch((err) => console.log(err))
       .finally(() => setLoding(false));
   };
 
   useEffect(() => {
-    getMovies();
+    getMovies(BASE_URL);
   }, []);
 
   return (
-    <MovieContextt.Provider value={{ movies, loading }}>
+    <MovieContextt.Provider value={{ movies, loading, getMovies }}>
       {children}
     </MovieContextt.Provider>
   );
