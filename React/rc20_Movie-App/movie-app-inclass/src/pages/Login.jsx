@@ -6,7 +6,7 @@ const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const { signUpGoogle, signIn } = useContext(AuthContextt);
+  const { signIn, signUpGoogle, forgotPassword } = useContext(AuthContextt);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ const Login = () => {
 
           <div className="relative z-0 w-full mb-5 group">
             <input
-              className=" peer"
+              class=" peer"
               placeholder=" "
               name="floating_email"
               type="email"
@@ -34,7 +34,7 @@ const Login = () => {
           </div>
           <div className="relative z-0 w-full mb-5 group">
             <input
-              className=" peer"
+              class=" peer"
               placeholder=" "
               name="floating_password"
               type="password"
@@ -45,7 +45,10 @@ const Login = () => {
           </div>
 
           <div className="flex justify-between">
-            <span className="py-3 font-[0.75em] cursor-pointer decoration-none text-gray-500 hover:text-[#ff4b45]">
+            <span
+              className="py-3 font-[0.75em] cursor-pointer decoration-none text-gray-500 hover:text-[#ff4b45]"
+              onClick={() => forgotPassword(email)}
+            >
               Forgot Password
             </span>
             <Link
@@ -62,7 +65,7 @@ const Login = () => {
           <button
             type="button"
             className="flex justify-between text-center btn-danger "
-            onClick={signUpGoogle}
+            onClick={() => signUpGoogle()}
           >
             Continue with Google
             <GoogleIcon color="currentColor" />
