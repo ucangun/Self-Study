@@ -95,7 +95,7 @@ const TextFieldComp = () => {
           </TextField>
           {/* text-fields icon */}
 
-          <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+          <FormControl sx={{ m: 1, width: "25vh" }} variant="outlined">
             <InputLabel htmlFor="outlined-adornment-password">
               Password
             </InputLabel>
