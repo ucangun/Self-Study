@@ -1,5 +1,7 @@
 import {
+  Avatar,
   Box,
+  Button,
   Container,
   FormControl,
   IconButton,
@@ -116,6 +118,13 @@ const TextFieldComp = () => {
               label="Password"
             />
           </FormControl>
+          <Button fullWidth variant="contained" color="error">
+            Submit
+            <Avatar
+              alt="person avatar"
+              src="https://cdn.pixabay.com/photo/2019/11/29/21/30/girl-4662158_1280.jpg"
+            />
+          </Button>
         </Box>
       </Container>
     </div>
