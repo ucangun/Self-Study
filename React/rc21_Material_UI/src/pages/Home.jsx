@@ -7,7 +7,8 @@ import TextFieldComp from "../components/TextFieldComp";
 const Home = () => {
   return (
     <>
-      <TypoButtons />
+      {/* <TypoButtons /> */}
+      <TextFieldComp />
     </>
   );
 };
