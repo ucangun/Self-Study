@@ -1,9 +1,20 @@
-import React from 'react'
+import React from "react";
 
-const todoReducer = () => {
-  return (
-    <div>todoReducer</div>
-  )
-}
+const initial = {
+  gorevler: [
+    { id: 0, yazi: "Redux Çalışıyoruz", completed: false },
+    { id: 1, yazi: "köpekleri gezdir", completed: true },
+  ],
+};
 
-export default todoReducer
+const todoReducer = (state = initial, { type, payload }) => {
+  switch (type) {
+    case "EKLE":
+      break;
+
+    default:
+      return state;
+  }
+};
+
+export default todoReducer;
