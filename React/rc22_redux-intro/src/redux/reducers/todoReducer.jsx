@@ -20,6 +20,14 @@ const todoReducer = (state = initial, { type, payload }) => {
       return {
         gorevler: state.gorevler.filter((gorev) => gorev.id !== payload),
       };
+    case "DEGISTIR":
+      return {
+        gorevler: state.gorevler.map((gorev) =>
+          gorev.id === payload
+            ? { ...gorev, completed: !gorev.completed }
+            : gorev
+        ),
+      };
 
     default:
       return state;
