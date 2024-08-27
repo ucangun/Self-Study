@@ -10,7 +10,16 @@ const initial = {
 const todoReducer = (state = initial, { type, payload }) => {
   switch (type) {
     case "EKLE":
-      break;
+      return {
+        gorevler: [
+          ...state.gorevler,
+          { id: state.gorevler.length, yazi: payload, completed: false },
+        ],
+      };
+    case "SIL":
+      return {
+        gorevler: state.gorevler.filter((gorev) => gorev.id !== payload),
+      };
 
     default:
       return state;
