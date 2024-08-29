@@ -12,9 +12,13 @@ export const yetkiSlice = createSlice({
       state.email = action.payload.email;
       state.password = action.payload.password;
     },
+    resetKullanici: (state) => {
+      state.email = "";
+      state.password = "";
+    },
   },
 });
 
-export const { olusturKullanici } = yetkiSlice.actions;
+export const { olusturKullanici, resetKullanici } = yetkiSlice.actions;
 
 export default yetkiSlice.reducer;

@@ -1,6 +1,19 @@
-import React from 'react'
+import React from "react";
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { resetKullanici } from "../features/yetkiSlice";
+
 const Navbar = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { email } = useSelector((state) => state.yetkiSlice);
+
+  const handleLogOut = () => {
+    dispatch(resetKullanici());
+    navigate("/login");
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="secondary">
@@ -13,11 +26,17 @@ const Navbar = () => {
             Clarusway News
           </Typography>
 
-          <Button color="inherit">LogOut</Button>
+          {email ? (
+            <Button color="inherit" onClick={handleLogOut}>
+              LogOut
+            </Button>
+          ) : (
+            <Button color="inherit">Login</Button>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
