@@ -1,6 +1,20 @@
-import React from 'react'
-import {Avatar, Box, Button, Container, Link, TextField, Typography} from "@mui/material";
+import React from "react";
+import { useSelector } from "react-redux";
+
+import {
+  Avatar,
+  Box,
+  Button,
+  Container,
+  Link,
+  TextField,
+  Typography,
+} from "@mui/material";
 const Login = () => {
+  const { email, password, olusturKullanici } = useSelector(
+    (state) => state.yetkiSlice
+  );
+
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -22,7 +36,7 @@ const Login = () => {
         {/* noValidate=doğrulanmasın
         autocomplete=Otomatik Tamamlama listesi, siz yazmaya başladığınızda adlara ve e-posta adreslerine ilişkin önerileri görüntüleyen bir özelliktir. Bu öneriler, gönderdiğiniz e-posta mesajlarındaki ad ve e-posta adresleri listesindeki olası eşleşmelerdir.
          */}
-        <Box component="form" noValidate sx={{ mt: 1 }} >
+        <Box component="form" noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -32,7 +46,6 @@ const Login = () => {
             name="email"
             autoComplete="email"
             autoFocus
-           
           />
           <TextField
             margin="normal"
@@ -42,7 +55,6 @@ const Login = () => {
             label="Password"
             type="password"
             id="password"
-          
           />
 
           <Button
@@ -67,6 +79,6 @@ const Login = () => {
       </Typography>
     </Container>
   );
-}
+};
 
-export default Login
+export default Login;
