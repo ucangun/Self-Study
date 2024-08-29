@@ -17,8 +17,10 @@ export const haberSlice = createSlice({
   },
 
   reducers: {
-    clear: (state) => {
-      state.haberler = [];
+    clear: (state, action) => {
+      state.haberler = state.haberler.filter(
+        (item) => item.url !== action.payload
+      );
     },
   },
 

@@ -46,7 +46,7 @@ const News = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small" onClick={() => dispatch(clear())}>
+                <Button size="small" onClick={() => dispatch(clear(a.url))}>
                   CLEAR
                 </Button>
                 <Button size="small" href={a.url} target="_blank">
