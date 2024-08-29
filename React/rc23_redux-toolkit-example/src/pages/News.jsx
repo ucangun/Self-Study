@@ -18,7 +18,7 @@ const News = () => {
 
   useEffect(() => {
     dispatch(getData());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
