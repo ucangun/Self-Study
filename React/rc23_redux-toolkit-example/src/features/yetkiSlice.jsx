@@ -8,7 +8,10 @@ export const yetkiSlice = createSlice({
   },
 
   reducers: {
-    olusturKullanici: () => {},
+    olusturKullanici: (state, action) => {
+      state.email = action.payload.email;
+      state.password = action.payload.password;
+    },
   },
 });
 

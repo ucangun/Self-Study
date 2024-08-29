@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   Avatar,
@@ -10,10 +10,20 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { olusturKullanici } from "../features/yetkiSlice";
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
-  const { email, password, olusturKullanici } = useSelector(
-    (state) => state.yetkiSlice
-  );
+  let { email, password } = useSelector((state) => state.yetkiSlice);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(olusturKullanici({ email, password }));
+    navigate("/");
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -36,7 +46,7 @@ const Login = () => {
         {/* noValidate=doğrulanmasın
         autocomplete=Otomatik Tamamlama listesi, siz yazmaya başladığınızda adlara ve e-posta adreslerine ilişkin önerileri görüntüleyen bir özelliktir. Bu öneriler, gönderdiğiniz e-posta mesajlarındaki ad ve e-posta adresleri listesindeki olası eşleşmelerdir.
          */}
-        <Box component="form" noValidate sx={{ mt: 1 }}>
+        <Box onSubmit={handleSubmit} component="form" noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -46,6 +56,7 @@ const Login = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={(e) => (email = e.target.value)}
           />
           <TextField
             margin="normal"
@@ -55,6 +66,7 @@ const Login = () => {
             label="Password"
             type="password"
             id="password"
+            onChange={(e) => (password = e.target.value)}
           />
 
           <Button
