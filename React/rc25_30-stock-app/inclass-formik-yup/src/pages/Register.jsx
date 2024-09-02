@@ -89,7 +89,7 @@ const Register = () => {
               touched, //* focuslanıp focuslanmadığını yakalayan
               handleChange, //* change ecventında çalışacak olan fonksyon
               handleBlur, //* blur eventı yani kullanıcının inputdan ayrıldığında çalışacak olan
-              handleSubmit, //* form submit olduğunda
+              //handleSubmit, //* form submit olduğunda
               isSubmitting, //* başlagnıç false, submite tıklanıldığında true
               /* and other goodies */
             }) => (
@@ -151,8 +151,12 @@ const Register = () => {
                     error={touched.password && Boolean(errors.password)}
                     helperText={touched.password && errors.password}
                   />
-                  <Button type="submit" variant="contained">
-                    Sign Up
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Loading..." : "Sign Up"}
                   </Button>
                 </Box>
               </Form>
