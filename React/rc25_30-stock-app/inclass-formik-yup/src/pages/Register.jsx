@@ -11,7 +11,6 @@ import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { register } from "../apiCall/apiCall";
 
 const SignupSchema = Yup.object().shape({
   username: Yup.string()
