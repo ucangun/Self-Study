@@ -11,6 +11,7 @@ import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import { register } from "../apiCall/apiCall";
 
 const SignupSchema = Yup.object().shape({
   username: Yup.string()
@@ -81,6 +82,8 @@ const Register = () => {
             onSubmit={(values) => {
               // same shape as initial values
               console.log(values);
+              // api call to register
+              register(values);
             }}
           >
             {({
