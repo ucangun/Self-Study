@@ -1,9 +1,12 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { fetchFail, fetchStart } from "../features/authSlice";
+import { fetchFail, fetchStart, registerSuccess } from "../features/authSlice";
+import { useNavigate } from "react-router-dom";
+import { toastSuccessNotify } from "../helper/ToastNotify";
 
 const useAuthCall = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // Register
   const register = async (userInfo) => {
@@ -14,6 +17,9 @@ const useAuthCall = () => {
         userInfo
       );
       console.log(data);
+      dispatch(registerSuccess(data));
+      toastSuccessNotify("Success");
+      navigate("/stock");
     } catch (error) {
       dispatch(fetchFail());
     }

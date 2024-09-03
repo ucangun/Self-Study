@@ -11,6 +11,7 @@ import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import useAuthCall from "../hooks/useAuthCall";
 
 const SignupSchema = Yup.object().shape({
   username: Yup.string()
@@ -35,6 +36,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const Register = () => {
+  const { register } = useAuthCall();
   return (
     <Container maxWidth="lg">
       <Grid
@@ -79,8 +81,6 @@ const Register = () => {
             }}
             validationSchema={SignupSchema}
             onSubmit={(values) => {
-              // same shape as initial values
-              console.log(values);
               // api call to register
               register(values);
             }}
