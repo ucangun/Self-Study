@@ -50,6 +50,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Outlet } from "react-router-dom";
+import MenuListItems from "../components/MenuListItems";
 
 const drawerWidth = 240;
 
@@ -73,37 +74,24 @@ function Dashboard(props) {
     }
   };
 
-  const drawer = (
-    <div>
-      <Toolbar />
-      <Divider />
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  );
+  // const drawer = (
+  //   <div>
+  //     <Toolbar />
+  //     <Divider />
+  //     <List>
+  //       {["Dashboard", "Purchases", "Sales", "Drafts"].map((text, index) => (
+  //         <ListItem key={text} disablePadding>
+  //           <ListItemButton>
+  //             <ListItemIcon>
+  //               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+  //             </ListItemIcon>
+  //             <ListItemText primary={text} />
+  //           </ListItemButton>
+  //         </ListItem>
+  //       ))}
+  //     </List>
+  //   </div>
+  // );
 
   // Remove this const when copying and pasting into your project.
   const container =
@@ -157,7 +145,8 @@ function Dashboard(props) {
             },
           }}
         >
-          {drawer}
+          {/* {drawer} */}
+          <MenuListItems />
         </Drawer>
         <Drawer
           variant="permanent"
@@ -170,7 +159,7 @@ function Dashboard(props) {
           }}
           open
         >
-          {drawer}
+          <MenuListItems />
         </Drawer>
       </Box>
       <Box
