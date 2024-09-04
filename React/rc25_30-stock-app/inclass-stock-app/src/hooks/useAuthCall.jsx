@@ -48,6 +48,11 @@ const useAuthCall = () => {
   const logout = async () => {
     dispatch(fetchStart());
     try {
+      await axios("https://10002.fullstack.clarusway.com/auth/logout/", {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
       toastSuccessNotify("Logout performed");
       navigate("/");
     } catch (error) {
@@ -57,7 +62,7 @@ const useAuthCall = () => {
     }
   };
 
-  return { register, login , logout };
+  return { register, login, logout };
 };
 
 export default useAuthCall;
