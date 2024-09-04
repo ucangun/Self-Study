@@ -6,6 +6,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import useAuthCall from "../hooks/useAuthCall";
+import { Outlet } from "react-router-dom";
 
 function Dashboard() {
   const { logout } = useAuthCall();
@@ -22,6 +23,7 @@ function Dashboard() {
           </Button>
         </Toolbar>
       </AppBar>
+      <Outlet />
     </Box>
   );
 }
