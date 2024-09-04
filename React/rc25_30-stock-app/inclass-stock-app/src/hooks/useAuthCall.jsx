@@ -10,6 +10,9 @@ import {
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 const useAuthCall = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,10 +20,7 @@ const useAuthCall = () => {
   const register = async (userInfo) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axios.post(
-        "https://10002.fullstack.clarusway.com/users/",
-        userInfo
-      );
+      const { data } = await axios.post(`${BASE_URL}users/`, userInfo);
       console.log("register", data);
       dispatch(registerSuccess(data));
       navigate("/stock");
@@ -31,10 +31,7 @@ const useAuthCall = () => {
   const login = async (userInfo) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axios.post(
-        `https://10002.fullstack.clarusway.com/auth/login/`,
-        userInfo
-      );
+      const { data } = await axios.post(`${BASE_URL}auth/login/`, userInfo);
       dispatch(loginSuccess(data));
       toastSuccessNotify("Login performed");
       navigate("/stock");
@@ -49,7 +46,7 @@ const useAuthCall = () => {
   const logout = async () => {
     dispatch(fetchStart());
     try {
-      await axios("https://10002.fullstack.clarusway.com/auth/logout/", {
+      await axios(`${BASE_URL}auth/logout/`, {
         headers: {
           Authorization: `Token ${token}`,
         },
