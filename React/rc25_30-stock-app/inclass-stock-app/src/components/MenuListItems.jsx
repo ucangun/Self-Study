@@ -4,7 +4,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 
 const icon = (name) => `/assets/navbar/${name}.svg`;
@@ -43,8 +43,27 @@ const links = [
   },
 ];
 
+const btnStyle = {
+  color: "secondary.main",
+  borderRadius: "1rem",
+  transition: "all 0.6s ease-in-out",
+  "&:hover": {
+    backgroundColor: "secondary.main",
+    color: "white",
+  },
+};
+const selectedStyle = {
+  backgroundColor: "secondary.second",
+  color: "white",
+  borderRadius: "1rem",
+  "&:hover": {
+    backgroundColor: "secondary.main",
+    color: "white",
+  },
+};
 const MenuListItems = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   return (
     <div>
       <Toolbar />
@@ -53,15 +72,7 @@ const MenuListItems = () => {
           <ListItem key={item.title} disablePadding>
             <ListItemButton
               onClick={() => navigate(item.url)}
-              sx={{
-                color: "secondary.main",
-                borderRadius: "1rem",
-                transition: "all 0.4s ease-in-out",
-                "&:hover": {
-                  backgroundColor: "secondary.main",
-                  color: "white",
-                },
-              }}
+              sx={item.url === location.pathname ? selectedStyle : btnStyle}
             >
               <Box
                 sx={{
