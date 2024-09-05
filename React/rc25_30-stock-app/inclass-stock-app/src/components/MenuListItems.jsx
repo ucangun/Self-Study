@@ -55,27 +55,10 @@ const MenuListItems = () => {
   return (
     <div>
       <Toolbar />
-      <Divider />
       <List>
         {links.map((item, index) => (
           <ListItem key={item.title} disablePadding>
             <ListItemButton onClick={() => navigate(item.url)}>
-              {/* <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon> */}
-              {/* <Box 
-                sx={{
-                  backgroundImage: `url(${item.icon})`,
-                  backgroundPosition:"center",
-                  backgroundSize:"cover",
-                  backgroundRepeat:"no-repeat",
-                  width:"24px",
-                  height:"24px",
-                  backgroundColor:"red",
-                  mr:2
-                }}
-             /> */}
-
               <Box
                 sx={{
                   width: "24px",
