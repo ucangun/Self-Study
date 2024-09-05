@@ -1,15 +1,8 @@
 import React from "react";
-import Divider from "@mui/material/Divider";
-import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
-import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
@@ -58,14 +51,25 @@ const MenuListItems = () => {
       <List>
         {links.map((item, index) => (
           <ListItem key={item.title} disablePadding>
-            <ListItemButton onClick={() => navigate(item.url)}>
+            <ListItemButton
+              onClick={() => navigate(item.url)}
+              sx={{
+                color: "secondary.main",
+                borderRadius: "1rem",
+                transition: "all 0.4s ease-in-out",
+                "&:hover": {
+                  backgroundColor: "secondary.main",
+                  color: "white",
+                },
+              }}
+            >
               <Box
                 sx={{
                   width: "24px",
                   height: "24px",
                   mr: 2,
                   mask: `url(${item.icon}) no-repeat center / contain `,
-                  bgcolor: "red",
+                  bgcolor: "currentColor",
                 }}
               />
               <ListItemText primary={item.title} />
