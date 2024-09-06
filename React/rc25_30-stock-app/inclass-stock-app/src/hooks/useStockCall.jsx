@@ -1,12 +1,29 @@
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFail, fetchStart } from "../features/authSlice";
-import { firmSuccess } from "../features/stockSlice";
+import { fetchStart, getStockSuccess } from "../features/stockSlice";
+import axios from "axios";
 
 const useStockCall = () => {
   const dispatch = useDispatch();
-  const { token } = useSelector((store) => store.auth);
+  const token = useSelector((state) => state.auth.token);
 
+  const getStockData = async (endpoint) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axios(
+        `${import.meta.env.VITE_BASE_URL}${endpoint}`,
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
+      console.log(data);
+      dispatch(getStockSuccess({ stock: data.data, endpoint }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  /*
   const getFirms = async () => {
     dispatch(fetchStart());
     try {
@@ -18,10 +35,9 @@ const useStockCall = () => {
       console.log(data);
       dispatch(firmSuccess(data));
     } catch (error) {
-      dispatch(fetchFail());
+      console.log(error);
     }
   };
-
   const getBrands = async () => {
     dispatch(fetchStart());
     try {
@@ -33,11 +49,12 @@ const useStockCall = () => {
       console.log(data);
       dispatch(brandSuccess(data));
     } catch (error) {
-      dispatch(fetchFail());
+      console.log(error);
     }
   };
+*/
 
-  return { getFirms, getBrands };
+  return { getStockData };
 };
 
 export default useStockCall;
