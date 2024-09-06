@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchStart } from "../features/authSlice";
+import { fetchFail, fetchStart } from "../features/authSlice";
 import { firmSuccess } from "../features/stockSlice";
 
 const useStockCall = () => {
@@ -18,11 +18,26 @@ const useStockCall = () => {
       console.log(data);
       dispatch(firmSuccess(data));
     } catch (error) {
-      console.log(error);
+      dispatch(fetchFail());
     }
   };
 
-  return { getFirms };
+  const getBrands = async () => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axios(`${import.meta.env.VITE_BASE_URL}brands`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      console.log(data);
+      dispatch(brandSuccess(data));
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+
+  return { getFirms, getBrands };
 };
 
 export default useStockCall;
