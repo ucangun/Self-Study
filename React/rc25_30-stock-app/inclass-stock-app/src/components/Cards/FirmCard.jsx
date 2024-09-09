@@ -6,10 +6,12 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import useStockCall from "../../hooks/useStockCall";
 
 const btnStyle = { cursor: "pointer", "&:hover": { color: "red" } };
 
 export default function FirmCard({ _id, name, phone, address, image }) {
+  const { deleteStockData } = useStockCall();
   return (
     <Card
       sx={{
@@ -39,7 +41,7 @@ export default function FirmCard({ _id, name, phone, address, image }) {
       </CardContent>
 
       <CardActions sx={{ justifyContent: "center", gap: 2 }}>
-        <EditIcon sx={btnStyle} />
+        <EditIcon sx={btnStyle} onClick={() => deleteStockData("firms", _id)} />
         <DeleteIcon sx={btnStyle} />
       </CardActions>
     </Card>

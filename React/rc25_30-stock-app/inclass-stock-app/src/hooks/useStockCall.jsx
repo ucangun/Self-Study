@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { fetchStart, getStockSuccess } from "../features/stockSlice";
+import { fetchFail, fetchStart, getStockSuccess } from "../features/stockSlice";
 import axios from "axios";
 
 const useStockCall = () => {
@@ -23,38 +23,25 @@ const useStockCall = () => {
       console.log(error);
     }
   };
-  /*
-  const getFirms = async () => {
-    dispatch(fetchStart());
-    try {
-      const { data } = await axios(`${import.meta.env.VITE_BASE_URL}firms`, {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      });
-      console.log(data);
-      dispatch(firmSuccess(data));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const getBrands = async () => {
-    dispatch(fetchStart());
-    try {
-      const { data } = await axios(`${import.meta.env.VITE_BASE_URL}brands`, {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      });
-      console.log(data);
-      dispatch(brandSuccess(data));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-*/
 
-  return { getStockData };
+  const deleteStockData = async (endpoint, id) => {
+    dispatch(fetchStart());
+    try {
+      await axios.delete(`${import.meta.env.VITE_BASE_URL}${endpoint}/${id}`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      //getStockData(endpoint);
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail());
+    } finally {
+      getStockData(endpoint);
+    }
+  };
+
+  return { getStockData, deleteStockData };
 };
 
 export default useStockCall;
