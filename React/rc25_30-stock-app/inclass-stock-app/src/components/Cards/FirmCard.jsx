@@ -10,7 +10,14 @@ import useStockCall from "../../hooks/useStockCall";
 
 const btnStyle = { cursor: "pointer", "&:hover": { color: "red" } };
 
-export default function FirmCard({ _id, name, phone, address, image }) {
+export default function FirmCard({
+  _id,
+  name,
+  phone,
+  address,
+  image,
+  handleOpen,
+}) {
   const { deleteStockData } = useStockCall();
   return (
     <Card
@@ -41,8 +48,11 @@ export default function FirmCard({ _id, name, phone, address, image }) {
       </CardContent>
 
       <CardActions sx={{ justifyContent: "center", gap: 2 }}>
-        <EditIcon sx={btnStyle} onClick={() => deleteStockData("firms", _id)} />
-        <DeleteIcon sx={btnStyle} />
+        <EditIcon sx={btnStyle} onClick={handleOpen} />
+        <DeleteIcon
+          sx={btnStyle}
+          onClick={() => deleteStockData("firms", _id)}
+        />
       </CardActions>
     </Card>
   );
