@@ -61,7 +61,22 @@ const useStockCall = () => {
     }
   };
 
-  return { getStockData, deleteStockData, postStockData };
+  const putStockData = async (endpoint, info) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosWithToken.put(
+        `${endpoint}/${info._id}`,
+        info
+      );
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail());
+    } finally {
+      getStockData(endpoint);
+    }
+  };
+
+  return { getStockData, deleteStockData, postStockData, putStockData };
 };
 
 export default useStockCall;
