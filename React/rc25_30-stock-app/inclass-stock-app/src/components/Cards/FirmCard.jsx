@@ -17,6 +17,7 @@ export default function FirmCard({
   address,
   image,
   handleOpen,
+  setInitialState,
 }) {
   const { deleteStockData } = useStockCall();
   return (
@@ -48,7 +49,12 @@ export default function FirmCard({
       </CardContent>
 
       <CardActions sx={{ justifyContent: "center", gap: 2 }}>
-        <EditIcon sx={btnStyle} onClick={handleOpen} />
+        <EditIcon
+          sx={btnStyle}
+          onClick={() => {
+            handleOpen(), setInitialState({ _id, name, phone, address, image });
+          }}
+        />
         <DeleteIcon
           sx={btnStyle}
           onClick={() => deleteStockData("firms", _id)}

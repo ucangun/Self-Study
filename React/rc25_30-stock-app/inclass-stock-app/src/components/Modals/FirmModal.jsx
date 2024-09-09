@@ -18,26 +18,24 @@ const style = {
   p: 4,
 };
 
-export default function FirmModal({ open, handleClose }) {
+export default function FirmModal({ open, handleClose, initialState }) {
   const { postStockData } = useStockCall();
-
+  /*
   const [info, setInfo] = React.useState({
     name: "",
     phone: "",
     address: "",
     image: "",
   });
+  */
+  const [info, setInfo] = React.useState(initialState);
 
   const handleChange = (e) => {
-    // console.log(e.target);
-    // console.log(e.target.name);
-
     setInfo({
       ...info,
       [e.target.name]: e.target.value,
     });
   };
-  // console.log(info);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,6 +48,11 @@ export default function FirmModal({ open, handleClose }) {
     });
   };
 
+  /* 
+  React.useEffect(() => {
+    setInfo(initialState);
+  }, [initialState]);
+*/
   return (
     <div>
       {/* <Button onClick={handleOpen}>Open Modal</Button> */}
