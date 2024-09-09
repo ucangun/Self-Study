@@ -10,6 +10,7 @@ import {
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
+import useAxios, { axiosPublic } from "./useAxios";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -17,10 +18,14 @@ const useAuthCall = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { token } = useSelector((store) => store.auth);
+  const axiosWithToken = useAxios();
   const register = async (userInfo) => {
     dispatch(fetchStart());
     try {
+      /*
       const { data } = await axios.post(`${BASE_URL}users/`, userInfo);
+      */
+      const { data } = await axiosPublic.post("users/", userInfo);
       console.log("register", data);
       dispatch(registerSuccess(data));
       navigate("/stock");
@@ -46,11 +51,14 @@ const useAuthCall = () => {
   const logout = async () => {
     dispatch(fetchStart());
     try {
+      /*
       await axios(`${BASE_URL}auth/logout/`, {
         headers: {
           Authorization: `Token ${token}`,
         },
       });
+      */
+      await axiosWithToken.get("auth/logout/");
       dispatch(logoutSuccess());
       toastSuccessNotify("Logout performed");
       navigate("/");
