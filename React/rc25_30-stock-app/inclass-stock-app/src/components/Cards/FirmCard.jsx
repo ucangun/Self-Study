@@ -3,30 +3,44 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { useSelector } from "react-redux";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 
-export default function FirmCard() {
+const btnStyle = { cursor: "pointer", "&:hover": { color: "red" } };
+
+export default function FirmCard({ _id, name, phone, address, image }) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card
+      sx={{
+        height: 390,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        padding: "0.5rem",
+      }}
+    >
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {name}
+        </Typography>
+        <Typography variant="body2" sx={{ color: "text.secondary" }}>
+          {address}
+        </Typography>
+      </CardContent>
       <CardMedia
-        sx={{ height: 140 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
+        sx={{ height: 140, objectFit: "contain" }}
+        image={image}
+        component="img"
         title="green iguana"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
-        </Typography>
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
+        <Typography variant="body2">Phone: {phone}</Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+
+      <CardActions sx={{ justifyContent: "center", gap: 2 }}>
+        <EditIcon sx={btnStyle} />
+        <DeleteIcon sx={btnStyle} />
       </CardActions>
     </Card>
   );

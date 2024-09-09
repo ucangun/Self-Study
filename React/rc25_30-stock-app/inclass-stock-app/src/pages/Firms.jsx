@@ -27,7 +27,7 @@ const Firms = () => {
       <Grid container spacing={2} mt={2}>
         {firms.map((firm) => (
           <Grid item xs={12} md={6} lg={4} xl={3} key={firm._id}>
-            <FirmCard />
+            <FirmCard {...firm} />
           </Grid>
         ))}
       </Grid>
