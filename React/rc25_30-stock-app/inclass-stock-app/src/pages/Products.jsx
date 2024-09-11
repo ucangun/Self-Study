@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
 import useStockCall from "../hooks/useStockCall";
 import ProductModal from "../components/Modals/ProductModal";
+import ProductTable from "../components/Tables/ProductTable";
 
 const Products = () => {
   const { getStockData } = useStockCall();
@@ -30,6 +31,8 @@ const Products = () => {
   console.log("Products:", initialState);
   useEffect(() => {
     getStockData("products");
+    getStockData("brands");
+    getStockData("categories");
   }, []);
 
   return (
@@ -45,6 +48,8 @@ const Products = () => {
       <Button variant="contained" onClick={handleOpen}>
         New Product
       </Button>
+
+      <ProductTable />
 
       {open && (
         <ProductModal

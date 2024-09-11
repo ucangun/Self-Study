@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 
 export default function ProductModal({ open, handleClose, initialState }) {
   const [info, setInfo] = React.useState(initialState);
-  const { postStockData, putStockData } = useStockCall();
+  const { postStockData, putStockData, getStockData } = useStockCall();
   const { categories, brands } = useSelector((state) => state.stock);
 
   const handleChange = (e) => {
@@ -42,10 +42,10 @@ export default function ProductModal({ open, handleClose, initialState }) {
         <Box sx={modalStyle}>
           <Box component="form" onSubmit={handleSubmit} sx={flexColumn}>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Age</InputLabel>
+              <InputLabel id="demo-simple-select-label">Category</InputLabel>
               <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                labelId="demo-simple-category-label"
+                id="demo-simple-category"
                 value={info.categoryId}
                 name="categoryId"
                 label="Category"
@@ -58,10 +58,11 @@ export default function ProductModal({ open, handleClose, initialState }) {
                 ))}
               </Select>
             </FormControl>
+
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Age</InputLabel>
+              <InputLabel id="demo-simple-brand-label">Brand</InputLabel>
               <Select
-                labelId="demo-simple-select-label"
+                labelId="demo-simple-brand-label"
                 id="demo-simple-select"
                 value={info.brandId}
                 name="brandId"
@@ -75,6 +76,7 @@ export default function ProductModal({ open, handleClose, initialState }) {
                 ))}
               </Select>
             </FormControl>
+
             <TextField
               label="Product Name"
               name="name"
