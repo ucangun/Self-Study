@@ -1,6 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useSelector } from "react-redux";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import useStockCall from "../../hooks/useStockCall";
@@ -83,8 +83,11 @@ export default function ProductTable() {
             },
           },
         }}
-        pageSizeOptions={[5]}
-        checkboxSelection
+        pageSizeOptions={[5, 10, 15, 25]}
+        slots={{
+          toolbar: GridToolbar,
+        }}
+        // checkboxSelection
         disableRowSelectionOnClick
       />
     </Box>
