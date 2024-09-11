@@ -2,46 +2,8 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import { useSelector } from "react-redux";
-
-const columns = [
-  { field: "_id", headerName: "ID", width: 90 },
-  {
-    field: "categoryId",
-    headerName: "Category",
-    width: 150,
-    // editable: true,
-    valueGetter: (value) => value?.name ?? "-NoCategory",
-  },
-  {
-    field: "brandId",
-    headerName: "Brand",
-    width: 150,
-    // editable: true,
-    valueGetter: (value) => value?.name || "-NoBrand",
-  },
-  {
-    field: "name",
-    headerName: "Product Name",
-    // type: "number",
-    width: 120,
-    // editable: true,
-  },
-  {
-    field: "quantity",
-    headerName: "Stock",
-    type: "number",
-    width: 110,
-    // editable: true,
-  },
-  {
-    field: "actions",
-    headerName: "Action",
-    // description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    width: 110,
-    valueGetter: (value, row) => `${row.firstName || ""} ${row.lastName || ""}`,
-  },
-];
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import useStockCall from "../../hooks/useStockCall";
 
 // const rows = [
 //   { id: 1, lastName: "Snow", firstName: "Jon", age: 14 },
@@ -61,7 +23,53 @@ function getRowId(row) {
 }
 
 export default function ProductTable() {
+  const { deleteStockData } = useStockCall();
+  const columns = [
+    { field: "_id", headerName: "ID", width: 90 },
+    {
+      field: "categoryId",
+      headerName: "Category",
+      width: 150,
+      // editable: true,
+      valueGetter: (value) => value?.name ?? "-NoCategory",
+    },
+    {
+      field: "brandId",
+      headerName: "Brand",
+      width: 150,
+      // editable: true,
+      valueGetter: (value) => value?.name || "-NoBrand",
+    },
+    {
+      field: "name",
+      headerName: "Product Name",
+      // type: "number",
+      width: 120,
+      // editable: true,
+    },
+    {
+      field: "quantity",
+      headerName: "Stock",
+      type: "number",
+      width: 110,
+      // editable: true,
+    },
+    {
+      field: "actions",
+      headerName: "Action",
+      // description: "This column has a value getter and is not sortable.",
+      sortable: false,
+      width: 160,
+      renderCell: (params) => (
+        <DeleteOutlineIcon
+          onClick={() => deleteStockData("products", params.id)}
+          style={{ cursor: "pointer" }}
+        />
+      ),
+    },
+  ];
   const { products } = useSelector((state) => state.stock);
+
   return (
     <Box sx={{ height: 400, width: "100%" }}>
       <DataGrid
