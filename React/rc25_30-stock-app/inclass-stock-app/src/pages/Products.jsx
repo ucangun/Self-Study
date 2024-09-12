@@ -8,7 +8,7 @@ import ProductModal from "../components/Modals/ProductModal";
 import ProductTable from "../components/Tables/ProductTable";
 
 const Products = () => {
-  const { getStockData } = useStockCall();
+  const { getStockData, getProCatBrand } = useStockCall();
   const { products, loading } = useSelector((state) => state.stock);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -27,12 +27,11 @@ const Products = () => {
     brandId: "",
   });
 
-  console.log("Products:", products);
-  console.log("Products:", initialState);
+  // console.log("Products:", products);
+  // console.log("Products:", initialState);
+
   useEffect(() => {
-    getStockData("products");
-    getStockData("brands");
-    getStockData("categories");
+    getProCatBrand();
   }, []);
 
   return (
