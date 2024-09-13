@@ -7,6 +7,7 @@ import {
   getProCatBrandSuccess,
   getProPurcFirBrandsSuccess,
   getProSalBrandsSuccess,
+  getPurSalesSuccess,
   // firmSuccess,
   getStockSuccess,
 } from "../features/stockSlice";
@@ -186,6 +187,19 @@ const useStockCall = () => {
     }
   };
 
+  const getPurSales = async () => {
+    dispatch(fetchStart());
+    try {
+      const [purchases, sales] = await Promise.all([
+        axiosWithToken("purchases"),
+        axiosWithToken("sales"),
+      ]);
+      dispatch(getPurSalesSuccess([purchases?.data, sales?.data]));
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+
   return {
     // getFirms,
     // getBrands,
@@ -196,6 +210,7 @@ const useStockCall = () => {
     getProCatBrand,
     getProSalBrands,
     getProPurcFirBrands,
+    getPurSales,
   };
 };
 
