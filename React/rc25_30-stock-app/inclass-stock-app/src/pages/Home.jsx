@@ -1,5 +1,7 @@
 import { Container, Typography } from "@mui/material";
 import React from "react";
+import KpiCards from "../components/KpiCards";
+import Charts from "../components/Charts";
 
 const Home = () => {
   return (
@@ -12,6 +14,8 @@ const Home = () => {
       >
         Dashboard
       </Typography>
+      <KpiCards />
+      <Charts />
     </Container>
   );
 };
