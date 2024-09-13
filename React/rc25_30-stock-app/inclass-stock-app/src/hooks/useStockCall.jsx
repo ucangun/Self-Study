@@ -12,6 +12,7 @@ import {
 } from "../features/stockSlice";
 import axios from "axios";
 import useAxios from "./useAxios";
+import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 
 const useStockCall = () => {
   const dispatch = useDispatch();
@@ -79,6 +80,7 @@ const useStockCall = () => {
       //     },
       //   })
       await axiosWithToken.delete(`${endpoint}/${id}`);
+      toastSuccessNotify(`${endpoint} is successfully deleted!`);
       // getStockData(endpoint)
     } catch (error) {
       console.log(error);
@@ -92,8 +94,11 @@ const useStockCall = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosWithToken.post(endpoint, info);
+      toastSuccessNotify(`${endpoint} is successfully recorded!`);
     } catch (error) {
       console.log(error);
+      console.log(error.response.data.message);
+      toastErrorNotify(error.response.data.message);
       dispatch(fetchFail());
     } finally {
       getStockData(endpoint);
@@ -107,6 +112,7 @@ const useStockCall = () => {
         `${endpoint}/${info._id}`,
         info
       );
+      toastSuccessNotify(`${endpoint} is successfully updated!`);
     } catch (error) {
       console.log(error);
       dispatch(fetchFail());
