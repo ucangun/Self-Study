@@ -115,15 +115,43 @@ Sizes[101]; // XXLarge
 
 // ? any
 
+/*
 let h: any = 1;
 h = "Hello";
 
 let k: boolean = h;
+*/
 
 // ? unknown
 
+/*
 let j: unknown = 5;
 j = "5";
 
 let m: string = j;
 let n: string = j as string; // type assertions
+*/
+
+// ? void type
+
+/*
+function warnUser(): void {
+  console.log("Warning");
+}
+
+function warnUser2(): void {
+  console.log("Warning");
+  return warn;
+} // Error
+
+let myFunction = warnUser();
+console.log(myFunction);
+*/
+
+// ? never type
+
+/*
+function throwError(): never {
+  throw new Error("Error");
+}
+*/
