@@ -1,60 +1,28 @@
 console.log("Cohort De09");
 var b = 5;
 var c = 2;
-// b = "5" //Type 'string' is not assignable to type 'number'.
-/*
-let e : string = 'Hello'
-let f = "World!"
-
-let g : boolean;
-let h; // any atar otomatik olarak
-
-let x,y,z: string; // tek satırda birden fazla değişkene type belirtemiyoruz, baştakileri any olarak kabul ediyor sonrakine asıl tip ataması yapıyor.
-x="Merhaba"
-y=5
-z = "Oldu"
-z = 5 // error
-*/
-//* Arrays
-/*
-let nums: number[] = [1, 2, "Hi"];
-
-nums.push("Merhaba");
-nums.push(5);
-nums.push(false);
-
-console.log(nums);
-
-nums.forEach((item) => item.toLowerCase());
-*/
-/*
-
-let usernames: string[] = ["Umut", "Can"];
-usernames.push("ayse");
-usernames.push(1907); // Argument of type 'number' is not assignable to parameter of type 'string'.
-
-let surnames: string[] = [];
-surnames.push("Kara");
-surnames.push(5); //  Argument of type 'number' is not assignable to parameter of type 'string'.
-surnames.push("25");
-
-// type decleration 2.yol
-
-let nums2: Array<number> = [5, 6];
-console.log(surnames);
-*/
-//* Tuples
-var myTuple = [5, "merhaba", false];
-console.log(myTuple);
-var myTuple2;
-myTuple2 = [5, "merhaba"]; // eksik eleman
-console.log(myTuple2);
-// Tuples of Array
-var myTuple3;
-myTuple3 = [
-    [5, "5"],
-    [6, "6"],
-];
-myTuple3.push([7, "7"]);
-myTuple3.push(false); // ts error
-console.log(myTuple3);
+var currentUser = 3 /* Role.DbAdmin */;
+currentUser = 4 /* Role.Tester */;
+console.log(currentUser);
+var StatusCodes;
+(function (StatusCodes) {
+    StatusCodes[StatusCodes["NotFound"] = 404] = "NotFound";
+    StatusCodes[StatusCodes["Created"] = 201] = "Created";
+    StatusCodes[StatusCodes["Accepted"] = 202] = "Accepted";
+    StatusCodes[StatusCodes["BadRequest"] = 500] = "BadRequest";
+    StatusCodes[StatusCodes["NoContent"] = 204] = "NoContent";
+    StatusCodes[StatusCodes["Success"] = 200] = "Success";
+})(StatusCodes || (StatusCodes = {}));
+var response = StatusCodes.Success;
+console.log(response);
+var Sizes;
+(function (Sizes) {
+    Sizes["Small"] = "S";
+    Sizes["Medium"] = "M";
+    Sizes["Large"] = "L";
+    Sizes[Sizes["XLarge"] = 100] = "XLarge";
+    Sizes[Sizes["XXLarge"] = 101] = "XXLarge";
+})(Sizes || (Sizes = {}));
+Sizes.Medium;
+Sizes["Medium"]; // "M"
+Sizes[101]; // XXLarge

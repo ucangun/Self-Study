@@ -73,3 +73,42 @@ myTuple3.push(false); // ts error
 
 console.log(myTuple3);
 */
+
+// ? Enum
+
+/*
+const enum Role {
+  User, // User = 0
+  Admin, // Admin = 1
+  DbAdmin = Admin * 3,
+  Tester, // Tester = 4
+}
+
+let currentUser: Role = Role.DbAdmin;
+currentUser = Role.Tester;
+console.log(currentUser);
+
+enum StatusCodes {
+  NotFound = 404,
+  Created = 201,
+  Accepted = 202,
+  BadRequest = 500,
+  NoContent = 204,
+  Success = 200,
+}
+
+const response: StatusCodes = StatusCodes.Success;
+console.log(response);
+
+enum Sizes {
+  Small = "S",
+  Medium = "M",
+  Large = "L",
+  XLarge = 100,
+  XXLarge,
+}
+
+Sizes.Medium;
+Sizes["Medium"]; // "M"
+Sizes[101]; // XXLarge
+*/
