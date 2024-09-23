@@ -146,4 +146,13 @@ myId = "5";
 var model = "1996";
 model = 1996;
 var car1 = "BMW";
-car1: "Honda";
+car1 = "Honda"; // Error
+car1 = "Toyota"; // Error
+car1 = "Mercedes"; // Ok
+car1 = "Audi"; // Ok
+// ? function
+function sayHello(name) {
+    return "Hello, ".concat(name);
+}
+console.log(sayHello(5));
+console.log(sayHello("Umut"));

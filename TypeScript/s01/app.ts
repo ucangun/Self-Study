@@ -183,3 +183,12 @@ car1 = "Toyota"; // Error
 
 car1 = "Mercedes"; // Ok
 car1 = "Audi"; // Ok
+
+// ? function
+
+function sayHello(name: string): string {
+  return `Hello, ${name}`;
+}
+
+console.log(sayHello("Umut"));
+console.log(sayHello(5)); // ts Error
