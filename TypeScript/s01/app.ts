@@ -155,3 +155,31 @@ function throwError(): never {
   throw new Error("Error");
 }
 */
+
+// ? Union Type
+
+let id: string | number = "a";
+id = 1;
+id = false; // Type 'boolean' is not assignable to type 'string | number'.
+
+// ? Type Aliases
+
+type Id = number | string;
+
+let myId: Id = 5;
+myId = "5";
+
+let model: Id = "1996";
+model = 1996;
+
+// ? String Literals
+
+type Car = "BMW" | "Mercedes" | "Audi";
+
+let car1: Car = "BMW";
+
+car1 = "Honda"; // Error
+car1 = "Toyota"; // Error
+
+car1 = "Mercedes"; // Ok
+car1 = "Audi"; // Ok

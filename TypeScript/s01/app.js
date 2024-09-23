@@ -118,16 +118,32 @@ let m: string = j;
 let n: string = j as string; // type assertions
 */
 // ? void type
-function warnUser() {
-    console.log("Warning");
+/*
+function warnUser(): void {
+  console.log("Warning");
 }
-function warnUser2() {
-    console.log("Warning");
-    return warn;
+
+function warnUser2(): void {
+  console.log("Warning");
+  return warn;
 } // Error
-var myFunction = warnUser();
+
+let myFunction = warnUser();
 console.log(myFunction);
-// never type
-function throwError() {
-    throw new Error("Error");
+*/
+// ? never type
+/*
+function throwError(): never {
+  throw new Error("Error");
 }
+*/
+// ? Union Type
+var id = "a";
+id = 1;
+id = false; // Type 'boolean' is not assignable to type 'string | number'.
+var myId = 5;
+myId = "5";
+var model = "1996";
+model = 1996;
+var car1 = "BMW";
+car1: "Honda";
