@@ -164,6 +164,7 @@ id = false; // Type 'boolean' is not assignable to type 'string | number'.
 
 // ? Type Aliases
 
+/*
 type Id = number | string;
 
 let myId: Id = 5;
@@ -171,9 +172,11 @@ myId = "5";
 
 let model: Id = "1996";
 model = 1996;
+*/
 
 // ? String Literals
 
+/*
 type Car = "BMW" | "Mercedes" | "Audi";
 
 let car1: Car = "BMW";
@@ -183,6 +186,7 @@ car1 = "Toyota"; // Error
 
 car1 = "Mercedes"; // Ok
 car1 = "Audi"; // Ok
+*/
 
 // ? function
 
@@ -197,6 +201,7 @@ console.log(sayHello(5)); // ts Error
 
 // * function overloading
 
+/*
 function add(a: string, b: string): string;
 function add(a: number, b: number): number;
 function add(a: string, b: number): string;
@@ -212,3 +217,4 @@ console.log(add("3", "5"));
 console.log(add("3", 5));
 
 console.log(add(3, "5")); // error
+*/
