@@ -150,9 +150,11 @@ car1 = "Honda"; // Error
 car1 = "Toyota"; // Error
 car1 = "Mercedes"; // Ok
 car1 = "Audi"; // Ok
-// ? function
-function sayHello(name) {
-    return "Hello, ".concat(name);
+// overloading icin en son asil fonksiyonu yazarken parametrelere any vermemiz gerekiyor. parametrelere any versek de
+function add(a, b) {
+    return a + b;
 }
-console.log(sayHello(5));
-console.log(sayHello("Umut"));
+console.log(add(3, 5));
+console.log(add("3", "5"));
+console.log(add("3", 5));
+console.log(add(3, "5")); // error

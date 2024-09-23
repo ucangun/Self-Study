@@ -186,9 +186,29 @@ car1 = "Audi"; // Ok
 
 // ? function
 
+/*
 function sayHello(name: string): string {
   return `Hello, ${name}`;
 }
 
 console.log(sayHello("Umut"));
 console.log(sayHello(5)); // ts Error
+*/
+
+// * function overloading
+
+function add(a: string, b: string): string;
+function add(a: number, b: number): number;
+function add(a: string, b: number): string;
+
+// overloading için en son asıl fonksiyonu yazarken parametrelere any vermemiz gerekiyor. parametrelere any versek de çalışırken overloading olan fonksiyonlardaki parametrelerin typeına göre kabul ediyor.
+
+function add(a: any, b: any) {
+  return a + b;
+}
+
+console.log(add(3, 5));
+console.log(add("3", "5"));
+console.log(add("3", 5));
+
+console.log(add(3, "5")); // error
