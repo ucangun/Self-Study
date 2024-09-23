@@ -112,3 +112,18 @@ Sizes.Medium;
 Sizes["Medium"]; // "M"
 Sizes[101]; // XXLarge
 */
+
+// ? any
+
+let h: any = 1;
+h = "Hello";
+
+let k: boolean = h;
+
+// ? unknown
+
+let j: unknown = 5;
+j = "5";
+
+let m: string = j;
+let n: string = j as string; // type assertions
