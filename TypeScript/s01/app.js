@@ -27,13 +27,34 @@ console.log(nums);
 
 nums.forEach((item) => item.toLowerCase());
 */
-var usernames = ["Umut", "Can"];
+/*
+
+let usernames: string[] = ["Umut", "Can"];
 usernames.push("ayse");
 usernames.push(1907); // Argument of type 'number' is not assignable to parameter of type 'string'.
-var surnames = [];
+
+let surnames: string[] = [];
 surnames.push("Kara");
 surnames.push(5); //  Argument of type 'number' is not assignable to parameter of type 'string'.
 surnames.push("25");
+
 // type decleration 2.yol
-var nums2 = [5, 6];
+
+let nums2: Array<number> = [5, 6];
 console.log(surnames);
+*/
+//* Tuples
+var myTuple = [5, "merhaba", false];
+console.log(myTuple);
+var myTuple2;
+myTuple2 = [5, "merhaba"]; // eksik eleman
+console.log(myTuple2);
+// Tuples of Array
+var myTuple3;
+myTuple3 = [
+    [5, "5"],
+    [6, "6"],
+];
+myTuple3.push([7, "7"]);
+myTuple3.push(false); // ts error
+console.log(myTuple3);
