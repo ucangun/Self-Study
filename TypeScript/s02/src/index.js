@@ -40,3 +40,16 @@ const users = [];
 // users.push(5);
 // users.push("5");
 users.push({ username: "as", firstName: "as", lastName: "as", getName() { } });
+//! Type Infrence
+let myName = "Anthony";
+// myName = 1234;
+let arr = []; // any[]
+let myArr = [
+    {
+        username: "asd",
+        department: "asdf",
+        salary: 3000,
+    },
+];
+// myArr.push(5);
+myArr.push({ username: "asdf", department: "sdfg", salary: 4000 });
