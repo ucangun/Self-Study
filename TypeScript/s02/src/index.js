@@ -75,3 +75,17 @@ const testGenerics3 = {
     createdAt: new Date(),
     extra: [{ id: 1, title: "asdfsdf" }],
 };
+const testGenerics4 = {
+    id: 1,
+    title: "asda",
+    content: "adsdasd",
+    createdAt: new Date(),
+    extra: [{ id: 2, title: "deneme" }],
+};
+const testGenerics5 = {
+    id: 1,
+    title: "asda",
+    content: "adsdasd",
+    createdAt: new Date(),
+    extra: [{ id: 2, username: "admin" }],
+};

@@ -179,3 +179,19 @@ const testGenerics3: PostBetter<{ id: number; title: string }> = {
   createdAt: new Date(),
   extra: [{ id: 1, title: "asdfsdf" }],
 };
+
+const testGenerics4: PostBetter<Category> = {
+  id: 1,
+  title: "asda",
+  content: "adsdasd",
+  createdAt: new Date(),
+  extra: [{ id: 2, title: "deneme" }],
+};
+
+const testGenerics5: PostBetter<Auth> = {
+  id: 1,
+  title: "asda",
+  content: "adsdasd",
+  createdAt: new Date(),
+  extra: [{ id: 2, username: "admin" }],
+};
