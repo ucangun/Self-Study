@@ -58,4 +58,36 @@ const user1: IUser = {
   },
 };
 
-interface IAdminUser {}
+// interface IAdminUser {
+//   username: string;
+//   firstName: string;
+//   lastName: string;
+//   getName: () => void;
+//   isAdmin: boolean;
+//   password: string;
+// }
+
+interface IManagerUser {
+  username: string;
+  firstName: string;
+  lastName: string;
+  getName: () => void;
+  isManager: boolean;
+  department: string;
+}
+
+// extend method with interface
+
+interface IAdminUser2 extends IUser {
+  isAdmin: boolean;
+  password: string;
+}
+
+const adminUser: IAdminUser2 = {
+  username: "admin",
+  firstName: "admin",
+  lastName: "admin",
+  isAdmin: true,
+  password: "1234",
+  getName: () => console.log("admin"),
+};

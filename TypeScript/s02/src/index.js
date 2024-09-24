@@ -25,3 +25,11 @@ const user1 = {
         console.log("Hello");
     },
 };
+const adminUser = {
+    username: "admin",
+    firstName: "admin",
+    lastName: "admin",
+    isAdmin: true,
+    password: "1234",
+    getName: () => console.log("admin"),
+};
