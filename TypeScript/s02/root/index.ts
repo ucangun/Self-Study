@@ -49,6 +49,10 @@ interface IUser {
   getName: () => void;
 }
 
+/* ---------------------------------- */
+/*                                    */
+/* ---------------------------------- */
+
 const user1: IUser = {
   username: "ucan",
   firstName: " Umut",
@@ -91,3 +95,10 @@ const adminUser: IAdminUser2 = {
   password: "1234",
   getName: () => console.log("admin"),
 };
+
+const users: IUser[] = [];
+
+// users.push(5);
+// users.push("5");
+
+users.push({ username: "as", firstName: "as", lastName: "as", getName() {} });

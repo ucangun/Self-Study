@@ -17,6 +17,9 @@ const redCar = {
     color: "red",
     getName: () => "BMW",
 };
+/* ---------------------------------- */
+/*                                    */
+/* ---------------------------------- */
 const user1 = {
     username: "ucan",
     firstName: " Umut",
@@ -33,3 +36,7 @@ const adminUser = {
     password: "1234",
     getName: () => console.log("admin"),
 };
+const users = [];
+// users.push(5);
+// users.push("5");
+users.push({ username: "as", firstName: "as", lastName: "as", getName() { } });
