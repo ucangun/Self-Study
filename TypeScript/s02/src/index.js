@@ -53,3 +53,25 @@ let myArr = [
 ];
 // myArr.push(5);
 myArr.push({ username: "asdf", department: "sdfg", salary: 4000 });
+const myArr2 = [...myArr, ...users]; // myArr | IUser iki tipi de birlestirmis oldu.
+const testGenerics = {
+    id: 1,
+    title: "test",
+    content: "test",
+    createdAt: new Date(),
+    extra: ["extra", "asdfsadf", "generic"],
+};
+const testGenerics2 = {
+    id: 1,
+    title: "test",
+    content: "test",
+    createdAt: new Date(),
+    extra: [5, 7, 9],
+};
+const testGenerics3 = {
+    id: 1,
+    title: "test",
+    content: "test",
+    createdAt: new Date(),
+    extra: [{ id: 1, title: "asdfsdf" }],
+};

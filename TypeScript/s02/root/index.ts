@@ -121,3 +121,61 @@ let myArr = [
 
 // myArr.push(5);
 myArr.push({ username: "asdf", department: "sdfg", salary: 4000 });
+
+const myArr2 = [...myArr, ...users]; // myArr | IUser iki tipi de birlestirmis oldu.
+
+// myArr2.push(2);
+
+//! Generics
+
+//* generic kullanmadan
+interface Auth {
+  id: number;
+  username: string;
+}
+
+interface Category {
+  id: number;
+  title: string;
+}
+
+interface Post {
+  id: number;
+  title: string;
+  content: string;
+  createdAt: Date;
+  extra: Auth[] | Category[];
+}
+
+//* generic kullanarak
+interface PostBetter<T> {
+  id: number;
+  title: string;
+  content: string;
+  createdAt: Date;
+  extra: T[];
+}
+
+const testGenerics: PostBetter<string> = {
+  id: 1,
+  title: "test",
+  content: "test",
+  createdAt: new Date(),
+  extra: ["extra", "asdfsadf", "generic"],
+};
+
+const testGenerics2: PostBetter<number> = {
+  id: 1,
+  title: "test",
+  content: "test",
+  createdAt: new Date(),
+  extra: [5, 7, 9],
+};
+
+const testGenerics3: PostBetter<{ id: number; title: string }> = {
+  id: 1,
+  title: "test",
+  content: "test",
+  createdAt: new Date(),
+  extra: [{ id: 1, title: "asdfsdf" }],
+};
