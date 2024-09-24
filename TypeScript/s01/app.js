@@ -141,20 +141,52 @@ function throwError(): never {
 var id = "a";
 id = 1;
 id = false; // Type 'boolean' is not assignable to type 'string | number'.
-var myId = 5;
+// ? Type Aliases
+/*
+type Id = number | string;
+
+let myId: Id = 5;
 myId = "5";
-var model = "1996";
+
+let model: Id = "1996";
 model = 1996;
-var car1 = "BMW";
+*/
+// ? String Literals
+/*
+type Car = "BMW" | "Mercedes" | "Audi";
+
+let car1: Car = "BMW";
+
 car1 = "Honda"; // Error
 car1 = "Toyota"; // Error
+
 car1 = "Mercedes"; // Ok
 car1 = "Audi"; // Ok
-// overloading icin en son asil fonksiyonu yazarken parametrelere any vermemiz gerekiyor. parametrelere any versek de
-function add(a, b) {
-    return a + b;
+*/
+// ? function
+/*
+function sayHello(name: string): string {
+  return `Hello, ${name}`;
 }
+
+console.log(sayHello("Umut"));
+console.log(sayHello(5)); // ts Error
+*/
+// * function overloading
+/*
+function add(a: string, b: string): string;
+function add(a: number, b: number): number;
+function add(a: string, b: number): string;
+
+// overloading için en son asıl fonksiyonu yazarken parametrelere any vermemiz gerekiyor. parametrelere any versek de çalışırken overloading olan fonksiyonlardaki parametrelerin typeına göre kabul ediyor.
+
+function add(a: any, b: any) {
+  return a + b;
+}
+
 console.log(add(3, 5));
 console.log(add("3", "5"));
 console.log(add("3", 5));
+
 console.log(add(3, "5")); // error
+*/

@@ -157,11 +157,11 @@ function throwError(): never {
 */
 
 // ? Union Type
-
+/*
 let id: string | number = "a";
 id = 1;
 id = false; // Type 'boolean' is not assignable to type 'string | number'.
-
+*/
 // ? Type Aliases
 
 /*
