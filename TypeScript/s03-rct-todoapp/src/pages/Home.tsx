@@ -1,8 +1,8 @@
-import { Container } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import AddTodoComp from "../components/AddTodoComp";
 import TodoList from "../components/TodoList";
-import { useEffect, useState } from "react";
+import { Button, Container } from "@mui/material";
 import axios from "axios";
 
 const url = "https://634ac3fc5df952851418480f.mockapi.io/api/todos";
@@ -14,9 +14,9 @@ interface ITodoType {
 }
 
 const Home = () => {
-  // const [todos, setTodos] = useState([] as ITodoType[]);
-  // const [todos, setTodos] = useState<Array<ITodoType>>([]);
-  const [todos, setTodos] = useState<ITodoType[]>([]);
+  //    const [todos,setTodos] = useState([] as ITodoType[]);
+  //    const [todos,setTodos] = useState<Array<ITodoType>>([]);
+  const [todos, setTodos] = useState<ITodoType[]>([]); //* yaygın olan kullanım
 
   const getTodos = async () => {
     try {
@@ -28,11 +28,24 @@ const Home = () => {
     }
   };
 
-  const addTodo = async (text: string) => {
+  //*1.yol
+  //    const addTodo = async (text:string) => {
+  //     try {
+  //         await axios.post(url,{task:text,isDone:false})
+  //         getTodos()
+  //     } catch (error) {
+  //         console.log(error)
+  //     }
+  //    }
+
+  //2.yol
+  type AddFn = (text: string) => Promise<void>;
+  const addTodo: AddFn = async (text) => {
     try {
       await axios.post(url, { task: text, isDone: false });
+      getTodos();
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
