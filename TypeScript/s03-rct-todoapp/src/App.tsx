@@ -1,10 +1,12 @@
-import Container from "@mui/material/Container"
+import Container from "@mui/material/Container";
+import Home from "./pages/Home";
 
 function App() {
-
   return (
-    <Container>Todo</Container>
-  )
+    <Container>
+      <Home />
+    </Container>
+  );
 }
 
-export default App
+export default App;
