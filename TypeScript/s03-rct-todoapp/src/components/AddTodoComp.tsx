@@ -40,7 +40,8 @@ import { useState } from "react";
 
 //* 2. Kullanım yolu props type
 interface IAddTodoComp {
-  addTodo: (text: string) => Promise<void>;
+  // addTodo: (text: string) => Promise<void>;
+  addTodo: AddFn;
 }
 
 const AddTodoComp = ({ addTodo }: IAddTodoComp) => {
@@ -51,17 +52,27 @@ const AddTodoComp = ({ addTodo }: IAddTodoComp) => {
     setText("");
   };
   return (
-    <Box>
+    <Box
+      sx={{
+        display: { xs: "block", sm: "flex" },
+        justifyContent: { xs: "flex-start", sm: "center" },
+        m: { xs: 1, sm: "auto" },
+        height: { xs: "120px", sm: "80px" },
+      }}
+    >
       <TextField
         id="outlined-disabled"
         label="New Todo"
         variant="outlined"
+        color="success"
+        sx={{ minWidth: { xs: "100%", sm: "50%" }, height: "50px", m: 1 }}
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
       <Button
         variant="contained"
         color="success"
+        sx={{ minWidth: { xs: "100%", sm: "15%" }, height: "55px", m: 1 }}
         disabled={!text.trim()}
         onClick={handleClick}
         endIcon={<SaveIcon />}
