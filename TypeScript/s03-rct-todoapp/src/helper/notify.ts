@@ -13,4 +13,6 @@ export const notify = (msg: string, icon: SweetAlertIcons) =>
     text: msg,
     icon: icon,
     confirmButtonText: "OK",
+    timer: 3000,
+    timerProgressBar: true,
   });

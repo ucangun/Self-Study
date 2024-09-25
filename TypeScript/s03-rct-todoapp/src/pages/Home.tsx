@@ -4,6 +4,7 @@ import AddTodoComp from "../components/AddTodoComp";
 import TodoList from "../components/TodoList";
 import { Container } from "@mui/material";
 import axios from "axios";
+import { notify, SweetAlertIcons } from "../helper/notify";
 
 const url = "https://634ac3fc5df952851418480f.mockapi.io/api/todos";
 
@@ -37,8 +38,10 @@ const Home = () => {
   const addTodo: AddFn = async (text) => {
     try {
       await axios.post(url, { task: text, isDone: false });
+      notify("Todo created successfully!", SweetAlertIcons.SUCCESS);
       getTodos();
     } catch (error) {
+      notify("Todo not created!", SweetAlertIcons.ERROR);
       console.log(error);
     }
   };
