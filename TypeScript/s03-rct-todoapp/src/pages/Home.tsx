@@ -39,7 +39,7 @@ const Home = () => {
   //    }
 
   //2.yol
-  type AddFn = (text: string) => Promise<void>;
+  // type AddFn = (text: string) => Promise<void>;
   const addTodo: AddFn = async (text) => {
     try {
       await axios.post(url, { task: text, isDone: false });
