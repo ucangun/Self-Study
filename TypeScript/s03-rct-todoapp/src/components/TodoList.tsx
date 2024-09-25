@@ -60,6 +60,7 @@ const TodoList: React.FC<ITodoList> = ({ todos, toggleTodo, deleteTodo }) => {
         {progressTodos.length ? (
           progressTodos.map((todo) => (
             <TodoListItem
+              key={todo.id}
               todo={todo}
               toggleTodo={toggleTodo}
               deleteTodo={deleteTodo}
@@ -94,6 +95,7 @@ const TodoList: React.FC<ITodoList> = ({ todos, toggleTodo, deleteTodo }) => {
         {completedTodos.length ? (
           completedTodos.map((todo) => (
             <TodoListItem
+              key={todo.id}
               todo={todo}
               toggleTodo={toggleTodo}
               deleteTodo={deleteTodo}

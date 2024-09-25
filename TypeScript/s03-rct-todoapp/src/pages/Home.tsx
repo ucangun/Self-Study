@@ -45,7 +45,7 @@ const Home = () => {
 
   const toggleTodo: ToggleFn = async (todo) => {
     try {
-      await axios.put(url, { ...todo, isDone: !todo.isDone });
+      await axios.put(`${url}/${todo.id}`, { ...todo, isDone: !todo.isDone });
     } catch (error) {
       console.log(error);
     } finally {
