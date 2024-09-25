@@ -3,6 +3,7 @@ import { Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import React from "react";
 import TodoListItem from "./TodoListItem";
+import "./todolist.css";
 
 interface ITodoList {
   todos: ITodoType[];

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import AddTodoComp from "../components/AddTodoComp";
 import TodoList from "../components/TodoList";
-import { Button, Container } from "@mui/material";
+import { Container } from "@mui/material";
 import axios from "axios";
 
 const url = "https://634ac3fc5df952851418480f.mockapi.io/api/todos";
