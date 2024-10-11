@@ -1,11 +1,12 @@
 {
-  "name": "setup-nodjs",
+  "name": "04_nodejs-setup",
   "version": "1.0.0",
-  "description": "this is a node setup class",
+  "description": "-- # NodeJS",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Umut Can Gün",
+  "keywords": [],
+  "author": "",
   "license": "ISC"
 }
