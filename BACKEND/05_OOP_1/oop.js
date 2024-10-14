@@ -169,7 +169,75 @@ console.log(year, brand, model, others);
 console.log("*****************************");
 
 console.log(Car);
-*/
+
 
 const { year, brand: marka, model, ...others } = Car;
 console.log(year, marka, model, others);
+*/
+
+// Spread
+
+/*
+
+const newCar = {
+  ...Car,
+  newKey: "value",
+};
+
+console.log(newCar);
+
+*/
+
+// Obj to Json
+
+/*
+const jsonCar = JSON.stringify(Car);
+console.log(jsonCar);
+console.log(typeof jsonCar);
+console.log(typeof Car);
+*/
+
+// Json to Obj
+
+/*
+const objCar = JSON.parse(jsonCar);
+console.log(objCar);
+*/
+
+// Object to array
+
+/*
+const arrayCar = Object.keys(Car);
+console.log(arrayCar);
+
+const arrayCar2 = Object.values(Car);
+console.log(arrayCar2);
+
+const arrayCar3 = Object.entries(Car);
+console.log(arrayCar3);
+*/
+
+// Construction
+
+const constructionFunction = function () {
+  this.property = "value";
+};
+
+const carConstruction = function (brand, model, year) {
+  this.brand = brand;
+  this.model = model;
+  this.year = year;
+  this.startEngine = function (param) {
+    return `${param} started`;
+  };
+};
+
+const newCar1 = new carConstruction("Volkswagen", "Passat", "2024");
+
+console.log(newCar1.startEngine("key"));
+console.log(typeof newCar1, newCar1);
+
+const newCar2 = new carConstruction("Audi", "A4", "2024");
+console.log(newCar2.startEngine("key"));
+console.log(typeof newCar2, newCar2);
+//console.log(typeof carConstruction);  // function
