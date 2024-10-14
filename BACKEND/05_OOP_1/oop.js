@@ -95,7 +95,32 @@ const Car = {
   },
 };
 
+/*
 console.log(Car.detailFunction().brand);
 console.log(Car.detailFunction());
+*/
 
 // console.log(Car.arrowMethod());  // anlamsiz
+
+//? Array Destructuring
+
+const sampleArray = ["val1", "val2", "val3", "val4", "val5"];
+
+/*
+const v1 = sampleArray[0];
+const v2 = sampleArray[1];
+const v3 = sampleArray[2];
+const v4 = sampleArray.slice(2, 3);
+*/
+
+// console.log(v4);
+
+// rest Operator => esitligin solunda olacak
+
+const [v1, v2, ...vN] = sampleArray;
+console.log(vN);
+
+// spread operator => esitligin saginda olacak
+
+const newArray = ["valx", "valy", ...sampleArray, "valz"];
+console.log(newArray);
