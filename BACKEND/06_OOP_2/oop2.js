@@ -172,7 +172,7 @@ console.log(Bmw.getDetail("test"));
 // ? PUBLIC        Parent = YES , Child= YES , Instance = YES
 // ? #PRIVATE      Parent = YES , Child= NO , Instance = NO
 // ? _PROTECTED    Parent = YES , Child= YES , Instance = NO
-
+/*
 class Vehicle {
   publicProp = "this is public property";
   #privateProp = "this is private property";
@@ -218,6 +218,7 @@ const Bmw = new Car("BMW", "E30", 2024, "Car");
 console.log(Bmw.publicProp);
 // console.log(Bmw.#privateProp);
 console.log(Bmw._protectedProp); //!
+*/
 
 /*
 Sonuç:
@@ -230,3 +231,35 @@ _protectedProp: Teknik olarak her yerden erişilebilir, ancak konvansiyon gereğ
 
 JavaScript'te gerçekten korumalı özellikler oluşturmak için ek yöntemler kullanabilirsiniz, ancak bu yöntemler tamamen güvenli değildir. En iyi uygulama, _ ön eki ile isimlendirilmiş özelliklere dışarıdan erişimi engellemek için takım içinde anlaşmalar yapmaktır.
 */
+
+// ? GETTER && SETTER
+
+class Car {
+  isRunning = false;
+  #price = 1000;
+  constructor(brand = "noname", model, year = 1900) {
+    this.brand = brand;
+    this.model = model;
+    this.year = year;
+  }
+  runEngine() {
+    this.isRunning = true;
+    return this.isRunning;
+  }
+  // getPrice() {
+  //   return this.#price;
+  // }
+
+  get getPrice() {
+    return this.#price;
+  }
+  set setPrice(price) {
+    this.#price = price;
+    return this.#price;
+  }
+}
+const Mercedes = new Car("Mersedes", "E200", 2023);
+// console.log(Mercedes.getPrice());
+console.log(Mercedes.getPrice);
+Mercedes.setPrice = 2000;
+console.log(Mercedes.getPrice);
