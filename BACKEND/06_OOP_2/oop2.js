@@ -218,3 +218,15 @@ const Bmw = new Car("BMW", "E30", 2024, "Car");
 console.log(Bmw.publicProp);
 // console.log(Bmw.#privateProp);
 console.log(Bmw._protectedProp); //!
+
+/*
+Sonuç:
+
+publicProp: Her yerden erişilebilir.
+
+#privateProp: Sadece Vehicle sınıfı içinde erişilebilir. Car sınıfı ve dışarıdan erişim mümkün değildir.
+
+_protectedProp: Teknik olarak her yerden erişilebilir, ancak konvansiyon gereği korunmalıdır.
+
+JavaScript'te gerçekten korumalı özellikler oluşturmak için ek yöntemler kullanabilirsiniz, ancak bu yöntemler tamamen güvenli değildir. En iyi uygulama, _ ön eki ile isimlendirilmiş özelliklere dışarıdan erişimi engellemek için takım içinde anlaşmalar yapmaktır.
+*/
