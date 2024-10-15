@@ -233,6 +233,7 @@ JavaScript'te gerçekten korumalı özellikler oluşturmak için ek yöntemler k
 */
 
 // ? GETTER && SETTER
+// ? STATIC keyword class = YES , instance = NO
 
 class Car {
   isRunning = false;
@@ -257,9 +258,24 @@ class Car {
     this.#price = price;
     return this.#price;
   }
+  static staticProp = "static deger";
+  static staticMethod() {
+    return "this is static method";
+  }
 }
 const Mercedes = new Car("Mersedes", "E200", 2023);
+
+/*
 // console.log(Mercedes.getPrice());
 console.log(Mercedes.getPrice);
 Mercedes.setPrice = 2000;
 console.log(Mercedes.getPrice);
+*/
+
+// Class
+console.log(Car.staticProp); // YES
+console.log(Car.staticMethod); // YES
+
+// Instance
+console.log(Mercedes.staticProp); // NO   // undefined
+console.log(Mercedes.staticMethod); // NO   // undefined
