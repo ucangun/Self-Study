@@ -90,6 +90,7 @@ class Car extends Vehicle {
 const Bmw = new Car("BMW", "E30", 2024, "Car");
 console.log(Bmw);
 
+/*
 class Truck extends Vehicle {
   isRunning = false;
   maxCa;
@@ -104,3 +105,14 @@ class Truck extends Vehicle {
     return this.isRunning;
   }
 }
+*/
+
+class Accessory extends Car {
+  constructor(accessoryName, brand, model, year, vehicleType) {
+    super(brand, model, year, vehicleType);
+    this.accessoryName = accessoryName;
+  }
+}
+
+const Seat = new Accessory("Leather", "Mercedes", "s200", 2024, "Car");
+console.log(Seat);
