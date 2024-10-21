@@ -21,6 +21,46 @@ const app = express(); // express üzerine server calistir
 const PORT = process.env.PORT || 8000;
 const HOST = process.env.HOST || "127.0.0.1";
 
+// request and response
+app.get("/", (req, res) => {
+  //1
+  // res.write("Clarusway");
+  // res.end();
+
+  //2
+  // res.write(
+  //   JSON.stringify({
+  //     // objeyi direk basamaz
+  //     message: "Umut",
+  //   })
+  // );
+  // res.end();
+
+  //3
+  res.send(
+    JSON.stringify({
+      message: "Umut",
+    })
+  );
+});
+
+app.get("/", (req, res) => {
+  res.send("method GET");
+});
+
+app.post("/", (req, res) => {
+  res.send("method POST");
+});
+app.put("/", (req, res) => {
+  res.send("method PUT");
+});
+app.patch("/", (req, res) => {
+  res.send("method PATCH");
+});
+app.delete("/", (req, res) => {
+  res.send("method DELETE");
+});
+
 // app.listen (8000)
 app.listen(PORT, () =>
   console.log(`Server is running on http://${HOST}:${PORT}`)
