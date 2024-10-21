@@ -74,6 +74,7 @@ app.get("/abc", (req, res) => {
 });
 */
 
+/*
 app.get("/abc(x?)123", (req, res) => {
   res.send("Method GET");
 }); // arada x olabilir / olmayabilir
@@ -85,6 +86,22 @@ app.get("/abc(x+)123", (req, res) => {
 app.get("/abc(*)123", (req, res) => {
   res.send("Method GET");
 }); // arada ne olursa olsun
+
+*/
+
+// https://regexr.com/
+
+/*
+app.get(/abc/, (req, res) => {
+  res.send("Method GET");
+});
+*/
+
+// regexde pathe / ilave etme
+// app.get(/abc/,(req,res)=>{ res.send( ' method GET') }) // tek tırnaklar yok , iki / arasında
+// app.get(/abc/,(req,res)=>{ res.send( ' method GET') }) // abc içerirse
+// app.get(/abc$/,(req,res)=>{ res.send( ' method GET') }) // abc onune ne gelirse gelsin ama en az bir karakter olsun
+//app.get(/^\/abc/,(req,res)=>{ res.send( ' method GET') }) //  sonuna ne gelirse gelsin
 
 // app.listen (8000)
 app.listen(PORT, () =>
