@@ -26,7 +26,6 @@ app.get("/", (req, res) => {
   //1
   // res.write("Clarusway");
   // res.end();
-
   //2
   // res.write(
   //   JSON.stringify({
@@ -35,15 +34,15 @@ app.get("/", (req, res) => {
   //   })
   // );
   // res.end();
-
   //3
-  res.send(
-    JSON.stringify({
-      message: "Umut",
-    })
-  );
+  // res.send(
+  //   JSON.stringify({
+  //     message: "Umut",
+  //   })
+  // );
 });
 
+/*
 app.get("/", (req, res) => {
   res.send("method GET");
 });
@@ -51,15 +50,41 @@ app.get("/", (req, res) => {
 app.post("/", (req, res) => {
   res.send("method POST");
 });
+
 app.put("/", (req, res) => {
   res.send("method PUT");
 });
+
 app.patch("/", (req, res) => {
   res.send("method PATCH");
 });
+
 app.delete("/", (req, res) => {
   res.send("method DELETE");
 });
+
+app.all("/", (req, res) => {
+  res.send("method ALL");
+});
+*/
+
+/*
+app.get("/abc", (req, res) => {
+  res.send("Method GET");
+});
+*/
+
+app.get("/abc(x?)123", (req, res) => {
+  res.send("Method GET");
+}); // arada x olabilir / olmayabilir
+
+app.get("/abc(x+)123", (req, res) => {
+  res.send("Method GET");
+}); // n adet x alabilir
+
+app.get("/abc(*)123", (req, res) => {
+  res.send("Method GET");
+}); // arada ne olursa olsun
 
 // app.listen (8000)
 app.listen(PORT, () =>
