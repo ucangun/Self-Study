@@ -157,6 +157,20 @@ app.get("/show", (req, res) => {
   res.sendFile(__dirname + "/app.js");
 });
 
+//? Redirect 301 or 302
+
+//301 permanent redirect
+/*
+app.get("/perm", (req, res) => {
+  res.redirect(301, "https://www.clarusway.com");
+});
+*/
+
+//302 temporary redirect
+app.get("/temp", (req, res) => {
+  res.redirect(302, "https://clarusway.de/");
+});
+
 // app.listen (8000)
 app.listen(PORT, () =>
   console.log(`Server is running on http://${HOST}:${PORT}`)
