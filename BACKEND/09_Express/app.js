@@ -130,8 +130,31 @@ app.get("/user/:userId/:name", (req, res) => {
 
 // default status code 200
 
+/*
 app.get("/", (req, res) => {
   res.status(200).send({ message: "Hello World" });
+});
+
+app.get("/", (req, res) => {
+  res.status(200).send({ message: "Hello World" });
+});
+
+app.post("/", (req, res) => {
+  res.status(201).send({ message: "Hello World" });
+});
+*/
+
+//? Download
+//get istedigi geldiginde app.js dosyasini indir
+
+app.get("/download", (req, res) => {
+  res.download("./app.js");
+});
+
+//? Show File Content
+
+app.get("/show", (req, res) => {
+  res.sendFile(__dirname + "/app.js");
 });
 
 // app.listen (8000)
