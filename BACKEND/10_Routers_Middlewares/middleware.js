@@ -46,6 +46,7 @@ app.get("/", (req, res, next) => {
 });
 */
 
+/*
 app.get("/", (req, res, next) => {
   if (req.query.username == "clarusway") {
     req.message = "Welcome";
@@ -58,6 +59,28 @@ app.get("/", (req, res, next) => {
 app.get("/", (req, res, next) => {
   res.send({
     message: req.message,
+  });
+});
+*/
+
+app.get("/", (req, res, next) => {
+  req.message1 = "Message from mid1";
+  next();
+});
+app.get("/", (req, res, next) => {
+  req.message2 = "Message from mid2";
+  next();
+});
+app.get("/", (req, res, next) => {
+  req.message3 = "Message from mid3";
+  next();
+});
+
+app.get("/", (req, res, next) => {
+  res.send({
+    message1: req.message1,
+    message2: req.message2,
+    message3: req.message3,
   });
 });
 
