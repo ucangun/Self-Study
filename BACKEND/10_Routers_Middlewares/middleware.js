@@ -27,6 +27,7 @@ app.get("/", (req, res, next) => {
 });
 */
 
+/*
 app.get("/", (req, res, next) => {
   console.log("Middleware 1 calisti");
   if (req.query.username == "clarusway") {
@@ -41,6 +42,22 @@ app.get("/", (req, res, next) => {
 app.get("/", (req, res, next) => {
   res.send({
     message: "Welcome Clarusway",
+  });
+});
+*/
+
+app.get("/", (req, res, next) => {
+  if (req.query.username == "clarusway") {
+    req.message = "Welcome";
+  } else {
+    req.message = "username not exist";
+  }
+  next();
+});
+
+app.get("/", (req, res, next) => {
+  res.send({
+    message: req.message,
   });
 });
 
