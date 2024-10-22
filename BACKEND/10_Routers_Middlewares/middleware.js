@@ -111,6 +111,7 @@ const middleware2 = (req, res, next) => {
 };
 */
 
+/*
 const middleware1 = (req, res, next) => {
   console.log("mid1");
   next();
@@ -129,5 +130,22 @@ app.get("/", (req, res) => {
     message: "get",
   });
 });
+*/
+
+// app.get("/", [middleware1, middleware2]);
+
+const middlewares = require("./middlewares/index");
+
+app.get(
+  "/",
+  middlewares.middleware1,
+  middlewares.middleware2,
+  middlewares.middleware3,
+  (req, res) => {
+    res.send({
+      message: "get",
+    });
+  }
+);
 
 app.listen(PORT, () => console.log(`Server running on http://${HOST}:${PORT}`));
