@@ -14,7 +14,7 @@ const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT || 8000;
 
-/* ------------------------------------------------*/
+/* ------------------------------------------------*
 
 app.get("/user/:id", (req, res) => {
   const { id } = req.params;
@@ -30,6 +30,39 @@ app.get("/user/:id", (req, res) => {
       message: "User found",
       id,
     });
+  }
+});
+
+/*---------------------------------------------------
+
+// TRY - CATCH
+
+app.get("/user/:id", (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    if (isNaN(id)) {
+      res.errorStatusCode = 400;
+      throw new Error("Invalid ID: ID should be a number", {
+        cause: "params.id",
+      });
+    } else {
+      res.send({
+        error: false,
+        message: "User found",
+        id,
+      });
+    }
+  } catch (error) {
+    next(error);
+
+    // const statusCode = res?.errorStatusCode ?? 500;
+
+    //   res.status(statusCode).send({
+    //     error: true,
+    //     message: error.message,
+    //     cause: error.cause,
+    //   });
   }
 });
 
