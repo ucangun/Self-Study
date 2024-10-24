@@ -12,7 +12,9 @@ const PORT = process.env.PORT || 8000;
 /* ------------------------------------------------*/
 
 // Receiving Data
-app.use(express.json());
+app.use(express.json()); // parse data which is coming in body
+app.use(express.text()); // parse data which is coming in text
+app.use(express.urlencoded()); // parse data which is coming in Form-encode
 
 app.all("/:id", (req, res) => {
   const { params, query, body, headers } = req;
