@@ -35,7 +35,7 @@ app.get("/user/:id", (req, res) => {
 
 /*---------------------------------------------------
 
-// TRY - CATCH
+//* TRY - CATCH
 
 app.get("/user/:id", (req, res, next) => {
   try {
@@ -68,7 +68,7 @@ app.get("/user/:id", (req, res, next) => {
 
 /*---------------------------------------------------*
 
-// ASYNC
+//* ASYNC
 
 const asyncFunction = async () => {
   throw new Error("This error message from async function !", {
@@ -84,7 +84,11 @@ app.get("/async", async (req, res, next) => {
     message: "Async function executed",
   });
 });
-/*---------------------------------------------------*/
+/*---------------------------------------------------
+
+
+//* ASYNC TRY - CATCH
+
 
 const asyncFunction = async () => {
   throw new Error("This error message from async function !", {
@@ -104,6 +108,20 @@ app.get("/async", async (req, res, next) => {
   }
 });
 
+
+/*---------------------------------------------------*/
+
+//* express-async-errors
+
+require("express-async-errors");
+
+app.get("/async", async (req, res, next) => {
+  res.errorStatusCode = 400;
+  throw new Error("Created error in async-func");
+});
+
+/*---------------------------------------------------*/
+
 const errorHandler = (error, req, res, next) => {
   const statusCode = res?.errorStatusCode ?? 500;
   // console.error(error.message);
@@ -111,6 +129,7 @@ const errorHandler = (error, req, res, next) => {
     error: true,
     message: error.message,
     cause: error.cause,
+    stack: error.stack,
   });
 };
 
