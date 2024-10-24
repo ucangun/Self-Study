@@ -28,4 +28,6 @@ app.all("/:id", (req, res) => {
   });
 });
 
+app.use("/public", express.static("./images"));
+
 app.listen(PORT, () => console.log(`Running on http://127.0.0.1:${PORT}`));
