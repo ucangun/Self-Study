@@ -66,7 +66,43 @@ app.get("/user/:id", (req, res, next) => {
   }
 });
 
+/*---------------------------------------------------*
+
+// ASYNC
+
+const asyncFunction = async () => {
+  throw new Error("This error message from async function !", {
+    cause: "This is async cause message",
+  });
+};
+
+app.get("/async", async (req, res, next) => {
+  await asyncFunction().catch(next);
+
+  res.send({
+    error: false,
+    message: "Async function executed",
+  });
+});
 /*---------------------------------------------------*/
+
+const asyncFunction = async () => {
+  throw new Error("This error message from async function !", {
+    cause: "This is async cause message",
+  });
+};
+
+app.get("/async", async (req, res, next) => {
+  try {
+    await asyncFunction();
+    res.send({
+      error: false,
+      message: "Async function executed",
+    });
+  } catch (error) {
+    next(error);
+  }
+});
 
 const errorHandler = (error, req, res, next) => {
   const statusCode = res?.errorStatusCode ?? 500;
