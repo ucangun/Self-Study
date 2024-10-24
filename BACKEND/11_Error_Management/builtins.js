@@ -9,6 +9,11 @@ const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT || 8000;
 
+/* ------------------------------------------------*/
+
+// Receiving Data
+app.use(express.json());
+
 app.all("/:id", (req, res) => {
   const { params, query, body, headers } = req;
 
