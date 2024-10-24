@@ -20,7 +20,7 @@ app.get("/user/:id", (req, res) => {
   const { id } = req.params;
 
   if (isNaN(id)) {
-    // res.errorStatusCode = 400;
+    res.errorStatusCode = 400;
     throw new Error("Invalid ID: ID should be a number", {
       cause: "params.id",
     });
@@ -38,7 +38,7 @@ app.get("/user/:id", (req, res) => {
 const errorHandler = (error, req, res, next) => {
   const statusCode = res?.errorStatusCode ?? 500;
   // console.error(error.message);
-  res.status(res.errorStatusCode).send({
+  res.status(statusCode).send({
     error: true,
     message: error.message,
     cause: error.cause,
