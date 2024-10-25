@@ -65,7 +65,8 @@ sequelize.define("todos", {
 
 // Sync
 
-sequelize.sync();
+//sequelize.sync(); // executing model
+sequelize.sync({ force: true }); // drop table and create new
 
 // Connecting to DB
 const testConnection = async () => {
