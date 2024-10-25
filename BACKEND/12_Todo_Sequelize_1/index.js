@@ -63,6 +63,10 @@ sequelize.define("todos", {
   // No need to define createdAt and updatedAt (auto)
 });
 
+// Sync
+
+sequelize.sync();
+
 // Connecting to DB
 const testConnection = async () => {
   try {
