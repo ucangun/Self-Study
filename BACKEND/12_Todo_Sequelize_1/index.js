@@ -21,8 +21,10 @@ app.all("/", (req, res) => {
 // Sequlize
 const { Sequelize, DataTypes } = require("sequelize");
 
+// Creating new instance
 const sequelize = new Sequelize("sqlite:./db.sqlite3");
 
+// Connecting to DB
 const testConnection = async () => {
   try {
     await sequelize.authenticate();
