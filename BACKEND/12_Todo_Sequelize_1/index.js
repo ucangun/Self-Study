@@ -24,6 +24,45 @@ const { Sequelize, DataTypes } = require("sequelize");
 // Creating new instance
 const sequelize = new Sequelize("sqlite:./db.sqlite3");
 
+//* Crerating Model
+// sequelize.define("todos", { attributes });
+
+sequelize.define("todos", {
+  /*
+  id: {
+    // this att. created auto
+    type: DataTypes.INTEGER,
+    allowNull: false, // default : true
+    unique: true, // default : false
+    comment: "this is comment",
+    primaryKey: true, // default : false
+    autoIncrement: true, // default : false
+    field: "custom_name",
+    defaultValue: 0, // default : null
+  },*/
+  title: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+
+  description: DataTypes.TEXT, //shorthand using
+
+  priority: {
+    // -1: low , 0: normal , 1:high
+    type: DataTypes.TINYINT,
+    allowNull: false,
+    defaultValue: 0,
+  },
+
+  isDone: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  },
+
+  // No need to define createdAt and updatedAt (auto)
+});
+
 // Connecting to DB
 const testConnection = async () => {
   try {
