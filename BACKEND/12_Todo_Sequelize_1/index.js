@@ -14,9 +14,11 @@ const PORT = process.env.PORT || 8000;
 // Accept json data:
 app.use(express.json());
 
+/*
 app.all("/", (req, res) => {
   res.send("WELCOME TO TODO API");
 });
+*/
 
 /* ------------------------------------------------------- */
 
@@ -29,7 +31,7 @@ const sequelize = new Sequelize("sqlite:./db.sqlite3"); // define your db and th
 //* Crerating Model
 // sequelize.define("modelName", { fields});
 
-sequelize.define("todos", {
+const Todo = sequelize.define("todos", {
   /*
   id: {
     // this att. created auto
@@ -88,6 +90,27 @@ const testConnection = async () => {
 };
 
 testConnection();
+
+/* ------------------------------------------------------- */
+
+//* Routes
+
+const router = express.Router();
+
+router.post("/todo", async (req, res) => {
+  await Todo.create({
+    title: req.body.title,
+    description: req.body.description,
+    priority: req.body.priority,
+    isDone: req.body.isDone,
+  });
+
+  res.send({
+    error: false,
+  });
+});
+
+app.use(router);
 
 /* ------------------------------------------------------- */
 
