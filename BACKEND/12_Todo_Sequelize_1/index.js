@@ -6,6 +6,7 @@
 const express = require("express");
 const app = express();
 
+require("express-async-errors");
 require("dotenv").config();
 const PORT = process.env.PORT || 8000;
 
@@ -98,15 +99,11 @@ testConnection();
 const router = express.Router();
 
 router.post("/todo", async (req, res) => {
-  await Todo.create({
-    title: req.body.title,
-    description: req.body.description,
-    priority: req.body.priority,
-    isDone: req.body.isDone,
-  });
+  const result = await Todo.create(req.body);
 
   res.send({
     error: false,
+    data: result,
   });
 });
 
