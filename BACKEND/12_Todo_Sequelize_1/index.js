@@ -101,7 +101,8 @@ testConnection();
 const router = express.Router();
 
 router.get("/todo", async (req, res) => {
-  const result = await Todo.findAll();
+  // const result = await Todo.findAll();
+  const result = await Todo.findAndCountAll();
 
   res.status(200).send({
     error: false,
