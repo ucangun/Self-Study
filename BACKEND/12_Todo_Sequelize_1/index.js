@@ -98,6 +98,15 @@ testConnection();
 
 const router = express.Router();
 
+router.get("/todo", async (req, res) => {
+  const result = await Todo.findAll();
+
+  res.send({
+    error: false,
+    data: result,
+  });
+});
+
 router.post("/todo", async (req, res) => {
   const result = await Todo.create(req.body);
 
