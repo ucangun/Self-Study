@@ -10,6 +10,7 @@ require("dotenv").config();
 const PORT = process.env.PORT || 8000;
 
 /* ------------------------------------------------------- */
+
 // Accept json data:
 app.use(express.json());
 
@@ -18,14 +19,15 @@ app.all("/", (req, res) => {
 });
 
 /* ------------------------------------------------------- */
+
 // Sequlize
 const { Sequelize, DataTypes } = require("sequelize");
 
 // Creating new instance
-const sequelize = new Sequelize("sqlite:./db.sqlite3");
+const sequelize = new Sequelize("sqlite:./db.sqlite3"); // define your db and the path
 
 //* Crerating Model
-// sequelize.define("todos", { attributes });
+// sequelize.define("modelName", { fields});
 
 sequelize.define("todos", {
   /*
@@ -63,14 +65,19 @@ sequelize.define("todos", {
   // No need to define createdAt and updatedAt (auto)
 });
 
-// Sync - Just execute once
+/* ------------------------------------------------------- */
+
+// Sync - Just execute once to update model then comment again
 
 //sequelize.sync(); // executing model
 //sequelize.sync({ force: true }); // drop table and create new
 // sequelize.sync({ alter: true }); // to backup & drop table & create new table from backup
 // sequelize.sync({ alter: true }); // to backup & drop table & create new table from backup
 
+/* ------------------------------------------------------- */
+
 // Connecting to DB
+
 const testConnection = async () => {
   try {
     await sequelize.authenticate();
@@ -95,5 +102,7 @@ const errorHandler = (err, req, res, next) => {
   });
 };
 app.use(errorHandler);
+
 /* ------------------------------------------------------- */
+
 app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
