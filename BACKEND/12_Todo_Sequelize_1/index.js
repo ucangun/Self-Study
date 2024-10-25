@@ -9,6 +9,8 @@ const app = express();
 require("express-async-errors");
 require("dotenv").config();
 const PORT = process.env.PORT || 8000;
+const DB_PATH = process.env.DB_PATH || "./db.sqlite3";
+const DB_NAME = process.env.DB_NAME || "sqlite";
 
 /* ------------------------------------------------------- */
 
@@ -27,7 +29,7 @@ app.all("/", (req, res) => {
 const { Sequelize, DataTypes } = require("sequelize");
 
 // Creating new instance
-const sequelize = new Sequelize("sqlite:./db.sqlite3"); // define your db and the path
+const sequelize = new Sequelize(`${DB_NAME}:${DB_PATH}`); // define your db and the path
 
 //* Crerating Model
 // sequelize.define("modelName", { fields});
@@ -101,7 +103,7 @@ const router = express.Router();
 router.get("/todo", async (req, res) => {
   const result = await Todo.findAll();
 
-  res.send({
+  res.status(200).send({
     error: false,
     data: result,
   });
@@ -110,10 +112,11 @@ router.get("/todo", async (req, res) => {
 router.post("/todo", async (req, res) => {
   const result = await Todo.create(req.body);
 
-  res.send({
-    error: false,
-    data: result,
-  });
+  res.status(201),
+    send({
+      error: false,
+      data: result,
+    });
 });
 
 app.use(router);
