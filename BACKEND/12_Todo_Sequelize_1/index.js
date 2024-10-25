@@ -17,12 +17,29 @@ app.all("/", (req, res) => {
   res.send("WELCOME TO TODO API");
 });
 
-// continue from here...
+/* ------------------------------------------------------- */
+// Sequlize
+const { Sequelize, DataTypes } = require("sequelize");
+
+const sequelize = new Sequelize("sqlite:./db.sqlite3");
+
+const testConnection = async () => {
+  try {
+    await sequelize.authenticate();
+    console.log("Connection has been established successfully.");
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
+  }
+};
+
+testConnection();
+
+/* ------------------------------------------------------- */
 
 const errorHandler = (err, req, res, next) => {
-  const errorStatusCode = res.errorStatusCode ?? 500;
+  const statusCode = res.errorStatusCode ?? 500;
   console.log("errorHandler worked.");
-  res.status(errorStatusCode).send({
+  res.status(statusCode).send({
     error: true, // special data
     message: err.message, // error string message
     cause: err.cause, // error option cause
