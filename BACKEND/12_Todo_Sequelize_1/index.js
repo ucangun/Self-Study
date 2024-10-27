@@ -121,22 +121,36 @@ router.post("/todo", async (req, res) => {
 
 router.put("/todo/:id", async (req, res) => {
   const id = req.params.id;
-  const result = await Todo.update(req.body, { where: { id: id } });
 
-  res.status(200).send({
-    error: false,
-    data: result,
-  });
+  const [updated] = await Todo.update(req.body, { where: { id } });
+
+  if (updated) {
+    const updatedTodo = await Todo.findOne({ where: { id } });
+    res.status(200).send({
+      error: false,
+      message: "Todo updated successfully",
+      data: updatedTodo,
+    });
+  } else {
+    res.status(404).send({
+      error: true,
+      message: "Todo not found",
+    });
+  }
 });
 
 router.delete("/todo/:id", async (req, res) => {
   const id = req.params.id;
-  const result = await Todo.destroy({ where: { id } });
+  const deleted = await Todo.destroy({ where: { id } });
 
-  res.status(204).send({
-    error: false,
-    data: result,
-  });
+  if (deleted) {
+    return res.status(204).send(); // Başarıyla silindiyse yanıt gövdesi yok
+  } else {
+    res.status(404).send({
+      error: true,
+      message: "Todo not found",
+    });
+  }
 });
 
 app.use(router);
