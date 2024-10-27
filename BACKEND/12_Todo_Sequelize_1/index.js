@@ -113,11 +113,20 @@ router.get("/todo", async (req, res) => {
 router.post("/todo", async (req, res) => {
   const result = await Todo.create(req.body);
 
-  res.status(201),
-    send({
-      error: false,
-      data: result,
-    });
+  res.status(201).send({
+    error: false,
+    data: result,
+  });
+});
+
+router.delete("/todo/:id", async (req, res) => {
+  const id = req.params.id;
+  const result = await Todo.destroy({ where: { id } });
+
+  res.status(200).send({
+    error: false,
+    data: result,
+  });
 });
 
 app.use(router);
