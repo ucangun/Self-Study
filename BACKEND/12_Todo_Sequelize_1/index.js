@@ -119,11 +119,21 @@ router.post("/todo", async (req, res) => {
   });
 });
 
+router.put("/todo/:id", async (req, res) => {
+  const id = req.params.id;
+  const result = await Todo.update(req.body, { where: { id: id } });
+
+  res.status(200).send({
+    error: false,
+    data: result,
+  });
+});
+
 router.delete("/todo/:id", async (req, res) => {
   const id = req.params.id;
   const result = await Todo.destroy({ where: { id } });
 
-  res.status(200).send({
+  res.status(204).send({
     error: false,
     data: result,
   });
