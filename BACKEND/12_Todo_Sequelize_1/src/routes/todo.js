@@ -15,6 +15,8 @@ const {
 
 // const todo = require("../controllers/todo");
 
+/*
+
 // List Todo:
 
 router.get("/todo", list);
@@ -32,5 +34,18 @@ router.put("/todo/:id", update);
 
 // Delete Todo
 router.delete("/todo/:id", deleteTodo);
+
+*/
+
+router
+  .route("/todo")
+  .get(list) // List Todos
+  .post(create); // Create Todo
+
+router
+  .route("/todo/:id")
+  .get(read) // Read Todo
+  .put(update) // Update Todo
+  .delete(deleteTodo); // Delete Todo
 
 module.exports = router;
