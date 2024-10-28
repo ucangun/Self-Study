@@ -4,7 +4,8 @@
 ------------------------------------------------------- */
 const express = require("express");
 const router = express.Router();
-const Todo = require("../models/todo");
+
+// Controllers
 const {
   list,
   create,

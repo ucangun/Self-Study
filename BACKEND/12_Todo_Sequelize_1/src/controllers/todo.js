@@ -3,6 +3,9 @@
     EXPRESSJS - TODO Project with Sequelize
 ------------------------------------------------------- */
 
+// model
+const Todo = require("../models/todo");
+
 module.exports = {
   list: async (req, res) => {
     // const result = await Todo.findAll();
