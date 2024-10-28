@@ -100,6 +100,8 @@ testConnection();
 
 const router = express.Router();
 
+// List Todo:
+
 router.get("/todo", async (req, res) => {
   // const result = await Todo.findAll();
   const result = await Todo.findAndCountAll();
@@ -110,6 +112,9 @@ router.get("/todo", async (req, res) => {
   });
 });
 
+// Crud Operations - Create - Read - Update - Delete //
+
+// Create Todo
 router.post("/todo", async (req, res) => {
   const result = await Todo.create(req.body);
 
@@ -119,6 +124,27 @@ router.post("/todo", async (req, res) => {
   });
 });
 
+// Read Todo
+router.get("/todo/:id", async (req, res) => {
+  const id = req.params.id;
+  // const result = await Todo.findOne({ where: { id } });
+  const result = await Todo.findByPk(id);
+
+  if (result) {
+    res.status(200).send({
+      error: false,
+      message: "Todo found successfully",
+      data: result,
+    });
+  } else {
+    res.status(404).send({
+      error: true,
+      message: "Todo not found",
+    });
+  }
+});
+
+// Update Todo
 router.put("/todo/:id", async (req, res) => {
   const id = req.params.id;
 
@@ -126,7 +152,7 @@ router.put("/todo/:id", async (req, res) => {
 
   if (updated) {
     const updatedTodo = await Todo.findOne({ where: { id } });
-    res.status(200).send({
+    res.status(202).send({
       error: false,
       message: "Todo updated successfully",
       data: updatedTodo,
@@ -139,6 +165,7 @@ router.put("/todo/:id", async (req, res) => {
   }
 });
 
+// Delete Todo
 router.delete("/todo/:id", async (req, res) => {
   const id = req.params.id;
   const deleted = await Todo.destroy({ where: { id } });
