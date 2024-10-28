@@ -127,7 +127,6 @@ router.post("/todo", async (req, res) => {
 // Read Todo
 router.get("/todo/:id", async (req, res) => {
   const id = req.params.id;
-  // const result = await Todo.findOne({ where: { id } });
   const result = await Todo.findByPk(id);
 
   if (result) {
@@ -137,10 +136,8 @@ router.get("/todo/:id", async (req, res) => {
       data: result,
     });
   } else {
-    res.status(404).send({
-      error: true,
-      message: "Todo not found",
-    });
+    res.errorStatusCode = 404;
+    throw new Error("Todo not found");
   }
 });
 
@@ -158,10 +155,8 @@ router.put("/todo/:id", async (req, res) => {
       data: updatedTodo,
     });
   } else {
-    res.status(404).send({
-      error: true,
-      message: "Todo not found",
-    });
+    res.errorStatusCode = 404;
+    throw new Error("Todo not found");
   }
 });
 
@@ -173,10 +168,8 @@ router.delete("/todo/:id", async (req, res) => {
   if (deleted) {
     return res.status(204).send();
   } else {
-    res.status(404).send({
-      error: true,
-      message: "Todo not found",
-    });
+    res.errorStatusCode = 404;
+    throw new Error("Todo not found");
   }
 });
 
