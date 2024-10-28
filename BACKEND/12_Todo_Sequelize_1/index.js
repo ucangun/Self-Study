@@ -229,17 +229,7 @@ router
 app.use(router);
 
 /* ------------------------------------------------------- */
-
-const errorHandler = (err, req, res, next) => {
-  const statusCode = res.errorStatusCode ?? 500;
-  console.log("errorHandler worked.");
-  res.status(statusCode).send({
-    error: true, // special data
-    message: err.message, // error string message
-    cause: err.cause, // error option cause
-    // stack: err.stack, // error details
-  });
-};
+const errorHandler = require("./src/middlewares/errorHandler");
 app.use(errorHandler);
 
 /* ------------------------------------------------------- */
