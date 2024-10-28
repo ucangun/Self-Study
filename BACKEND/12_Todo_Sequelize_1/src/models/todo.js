@@ -74,3 +74,5 @@ const testConnection = async () => {
 };
 
 testConnection();
+
+module.exports = Todo;
