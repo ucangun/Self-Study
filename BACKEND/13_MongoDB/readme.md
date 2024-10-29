@@ -38,3 +38,4 @@ MongoDB Compass: https://www.mongodb.com/try/download/compass
 Linux:
 
 https://www.mongodb.com/docs/manual/administration/install-on-linux/
+mongo
