@@ -23,7 +23,7 @@ app.all("/", (req, res) => {
 });
 
 // Catch Errors:
-app.use(require("./src/errorHandler"));
+app.use(require("./src/middlewares/errorHandler"));
 
 /* ------------------------------------------------------- */
 
