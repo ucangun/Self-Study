@@ -12,7 +12,7 @@ const mongoose = require("mongoose");
 
 const schemaName = new mongoose.Schema(
   {
-    // _id: ObjectId,
+    // _id: ObjectId, // hexadecimal format id 
     fieldName: {
       type: Number,
       default: null, // if value not send
@@ -61,4 +61,32 @@ const BlogCategorySchema = new mongoose.Schema(
 
 const BlogCategory = mongoose.model("BlogCategory", BlogCategorySchema);
 
-module.exports = BlogCategory;
+// Blog Post Schema
+
+const BlogPostSchema = new mongoose.Schema(
+  {
+    categoryId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "BlogCategory",
+      required: true,
+    },
+    title: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    content: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+  },
+  {
+    collection: "blogPosts",
+    timestamps: true,
+  }
+);
+
+const BlogPost = mongoose.model("BlogPost", BlogPostSchema);
+
+module.exports = { BlogCategory, BlogPost };
