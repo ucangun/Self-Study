@@ -18,6 +18,12 @@ const PORT = process.env.PORT || 8000;
 app.use(express.json());
 require("express-async-errors");
 
+// DB Connection
+
+require("./src/configs/dbConnection");
+
+/* ------------------------------------------------------- */
+// Routes:
 app.all("/", (req, res) => {
   res.send("WELCOME TO BLOG API");
 });
