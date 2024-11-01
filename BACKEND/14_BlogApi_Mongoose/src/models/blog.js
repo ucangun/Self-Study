@@ -42,3 +42,23 @@ const schemaName = new mongoose.Schema(
 );
 
 /*************************************************** */
+
+// Blog Category Schema
+
+const BlogCategorySchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+  },
+  {
+    collection: "blogCategories",
+    timestamps: true,
+  }
+);
+
+const BlogCategory = mongoose.model("BlogCategory", BlogCategorySchema);
+
+module.exports = BlogCategory;
