@@ -28,6 +28,8 @@ app.all("/", (req, res) => {
   res.send("WELCOME TO BLOG API");
 });
 
+app.use("/blog", require("./src/routes/blog"));
+
 // Catch Errors:
 app.use(require("./src/middlewares/errorHandler"));
 

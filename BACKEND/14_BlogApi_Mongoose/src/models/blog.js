@@ -66,9 +66,11 @@ const BlogCategory = mongoose.model("BlogCategory", BlogCategorySchema);
 const BlogPostSchema = new mongoose.Schema(
   {
     categoryId: {
+      // Default relation is ManyToOne
       type: mongoose.Schema.Types.ObjectId,
       ref: "BlogCategory",
       required: true,
+      // unique: true, // convert one to one
     },
     title: {
       type: String,
