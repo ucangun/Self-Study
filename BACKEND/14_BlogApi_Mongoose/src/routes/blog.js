@@ -11,6 +11,6 @@ const router = express.Router();
 
 const { blogCategory, blogPost } = require("../controllers/blog");
 
-router.route("category").post(blogCategory.create);
+router.route("/category").post(blogCategory.create);
 
 module.exports = router;
