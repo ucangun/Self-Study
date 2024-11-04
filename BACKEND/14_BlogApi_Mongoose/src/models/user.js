@@ -6,6 +6,25 @@
 
 const { Schema, model } = require("mongoose");
 
+/*************************************************** */
+
+const crypto = require("crypto");
+
+// paramaters
+
+const keyCode = "kjsndfkjsdnfklasjdsakjdnsakldj"; // secretKey
+const loopCount = 10_000; // number if of loop
+const charCount = 32; // write 32 for 64
+const encType = "sha512";
+
+const passwordEncrypt = (password) => {
+  return crypto
+    .pbkdf2Sync(password, keyCode, loopCount, charCount, encType)
+    .toString("hex");
+};
+
+/*************************************************** */
+
 const UserSchema = new Schema(
   {
     email: {
@@ -29,6 +48,12 @@ const UserSchema = new Schema(
       type: String,
       trim: true,
       required: true,
+      // set: (password) => {
+      //   return "customPassword";
+      // },
+      set: (password) => {
+        return passwordEncrypt(password);
+      },
     },
     userName: {
       type: String,
