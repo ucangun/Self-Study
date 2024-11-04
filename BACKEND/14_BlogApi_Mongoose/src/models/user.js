@@ -13,6 +13,17 @@ const UserSchema = new Schema(
       trim: true,
       required: true,
       unique: true,
+      // validate: (email) => {
+      //   if (email.includes("@") && email.includes(".")) {
+      //     return true;
+      //   } else {
+      //     return false;
+      //   }
+      // },
+      validate: [
+        (email) => email.includes("@") && email.includes("."),
+        "Please enter a valid email address",
+      ],
     },
     password: {
       type: String,
