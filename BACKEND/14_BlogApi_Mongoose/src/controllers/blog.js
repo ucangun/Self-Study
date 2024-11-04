@@ -31,7 +31,20 @@ module.exports.blogCategory = {
     res.status(200).send(category);
   },
 
-  update: async (req, res) => {},
+  update: async (req, res) => {
+    const category = await BlogCategory.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    if (!category) {
+      return res.status(404).send({ message: "Category not found" });
+    }
+    res.status(200).send({
+      message: "Blog Category updated successfully",
+      data: category,
+    });
+  },
   delete: async (req, res) => {},
 };
 
