@@ -48,13 +48,37 @@ const UserSchema = new Schema(
       type: String,
       trim: true,
       required: true,
+      /*************************************************** */
+
       // set: (password) => {
       //   return "customPassword";
       // },
+      // validate: (password) => {
+      //   if (password.length < 5) {
+      //     return false;
+      //   } else true;
+      // },
+
+      /*************************************************** *
+
       set: (password) => {
-        return passwordEncrypt(password);
+        if (password.length < 5) {
+          return "InvalidPassword";
+        } else {
+          return passwordEncrypt(password);
+        }
       },
+      validate: (password) => {
+        if (password === "InvalidPassword") {
+          return false;
+        } else true;
+      },
+      /*************************************************** */
+      set: (password) =>
+        password.length > 5 ? passwordEncrypt(password) : "InvalidPassword",
+      validate: (password) => password !== "InvalidPassword",
     },
+
     userName: {
       type: String,
       trim: true,
