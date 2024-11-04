@@ -50,7 +50,7 @@ module.exports.blogCategory = {
     if (!category) {
       return res.status(404).send({ message: "Category not found" });
     }
-    res.status(200).send({
+    res.status(202).send({
       message: "Blog Category updated successfully",
       data: category,
     });
@@ -61,7 +61,7 @@ module.exports.blogCategory = {
     if (!category) {
       return res.status(404).send({ message: "Category not found" });
     }
-    res.status(200).send({
+    res.status(204).send({
       message: "Blog Category deleted successfully",
     });
   },
