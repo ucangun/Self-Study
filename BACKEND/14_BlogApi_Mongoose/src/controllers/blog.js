@@ -91,7 +91,7 @@ module.exports.blogPost = {
   },
 
   read: async (req, res) => {
-    const result = await BlogPost.findById(req.params.categoryId);
+    const result = await BlogPost.findById(req.params.id);
 
     res.status(200).send({
       error: false,
@@ -114,7 +114,7 @@ module.exports.blogPost = {
 
   delete: async (req, res) => {
     const { deletedCount } = await BlogPost.deleteOne({
-      _id: req.params.categoryId,
+      _id: req.params.id,
     });
 
     if (deletedCount) res.sendStatus(204);
