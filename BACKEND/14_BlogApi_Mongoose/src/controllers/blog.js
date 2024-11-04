@@ -13,8 +13,13 @@ const { BlogCategory, BlogPost } = require("../models/blog");
 module.exports.blogCategory = {
   list: async (req, res) => {
     const categories = await BlogCategory.find();
-    res.status(200).send(categories);
+    res.status(200).send({
+      error: false,
+      message: "Blog Categories",
+      data: categories,
+    });
   },
+
   create: async (req, res) => {
     const result = await BlogCategory.create(req.body);
 
@@ -23,12 +28,17 @@ module.exports.blogCategory = {
       data: result,
     });
   },
+
   read: async (req, res) => {
     const category = await BlogCategory.findById(req.params.id);
     if (!category) {
       throw new Error("Category not found");
     }
-    res.status(200).send(category);
+    res.status(200).send({
+      error: false,
+      message: "Blog Category",
+      data: category,
+    });
   },
 
   update: async (req, res) => {
@@ -45,6 +55,7 @@ module.exports.blogCategory = {
       data: category,
     });
   },
+
   delete: async (req, res) => {
     const category = await BlogCategory.findByIdAndDelete(req.params.id);
     if (!category) {
