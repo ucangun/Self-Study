@@ -13,6 +13,10 @@ const { blogCategory, blogPost } = require("../controllers/blog");
 
 router.route("/category").get(blogCategory.list).post(blogCategory.create);
 
-router.route("/category/:id").get(blogCategory.read);
+router
+  .route("/category/:id")
+  .get(blogCategory.read)
+  .put(blogCategory.update)
+  .delete(blogCategory.delete);
 
 module.exports = router;

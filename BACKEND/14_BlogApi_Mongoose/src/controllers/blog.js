@@ -45,7 +45,15 @@ module.exports.blogCategory = {
       data: category,
     });
   },
-  delete: async (req, res) => {},
+  delete: async (req, res) => {
+    const category = await BlogCategory.findByIdAndDelete(req.params.id);
+    if (!category) {
+      return res.status(404).send({ message: "Category not found" });
+    }
+    res.status(200).send({
+      message: "Blog Category deleted successfully",
+    });
+  },
 };
 
 /*************************************************** */
