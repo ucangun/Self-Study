@@ -82,6 +82,7 @@ module.exports.blogPost = {
   },
 
   create: async (req, res) => {
+    req.body.userId = req.user._id;
     const result = await BlogPost.create(req.body);
 
     res.status(201).send({

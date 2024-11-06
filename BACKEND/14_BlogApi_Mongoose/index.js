@@ -25,7 +25,7 @@ const session = require("cookie-session");
 app.use(
   session({
     secret: process.env.KEY_CODE,
-    maxAge: 1000 * 60 * 60 * 24 * 2,
+    // maxAge: 1000 * 60 * 60 * 24 * 2,
   })
 );
 
@@ -43,7 +43,7 @@ app.all("/", (req, res) => {
   res.send({
     message: "Welcome to the Blog API",
     session: req.session,
-    isLogin: req.user,
+    isLogin: req.user ? true : false,
   });
 });
 
