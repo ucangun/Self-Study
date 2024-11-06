@@ -5,10 +5,12 @@
 
 const router = require("express").Router();
 
-const { login } = require("../controllers/authController");
+const { login, logout } = require("../controllers/authController");
 
 // URL : /auth
 
 router.post("/login", login);
+
+router.all("/logout", logout);
 
 module.exports = router;

@@ -15,6 +15,8 @@ module.exports = {
       if (user) {
         // password === sifrelenmeFonksiyonu(password)
         if (user.password === passwordEncrypt(password)) {
+          req.session.user = user;
+
           res.status(202).send({
             error: false,
             message: "Login Success",
@@ -34,5 +36,12 @@ module.exports = {
     }
   },
 
-  logout: async (req, res) => {},
+  logout: async (req, res) => {
+    req.session = null;
+
+    res.status(200).send({
+      error: false,
+      message: "Logout Success",
+    });
+  },
 };
