@@ -12,10 +12,10 @@ const crypto = require("crypto");
 
 // paramaters
 
-const keyCode = "kjsndfkjsdnfklasjdsakjdnsakldj"; // secretKey
-const loopCount = 10_000; // number if of loop
-const charCount = 32; // write 32 for 64
-const encType = "sha512";
+const keyCode = process.env.KEY_CODE; // secretKey
+const loopCount = Number(process.env.LOOP_COUNT); // number if of loop
+const charCount = Number(process.env.CHAR_COUNT); // write 32 for 64
+const encType = process.env.ENC_TYPE;
 
 const passwordEncrypt = (password) => {
   return crypto
