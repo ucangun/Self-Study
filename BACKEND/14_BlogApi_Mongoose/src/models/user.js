@@ -5,8 +5,9 @@
 /*************************************************** */
 
 const { Schema, model } = require("mongoose");
+const passwordEncrypt = require("../helpers/passwordEncrypt");
 
-/*************************************************** */
+/*************************************************** *
 
 const crypto = require("crypto");
 

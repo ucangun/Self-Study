@@ -4,21 +4,26 @@
 ------------------------------------------------------- */
 
 const User = require("../models/user");
+const passwordEncrypt = require("../helpers/passwordEncrypt");
 
 module.exports = {
   login: async (req, res) => {
     const { email, password } = req.body;
 
     if (email && password) {
-      const user = await User.findOne({ email });
-
+      const user = await User.findOne({ email }); // check data from database
       if (user) {
         // password === sifrelenmeFonksiyonu(password)
-
-        res.status(202).send({
-          error: false,
-          data: user,
-        });
+        if (user.password === passwordEncrypt(password)) {
+          res.status(202).send({
+            error: false,
+            message: "Login Success",
+            data: user,
+          });
+        } else {
+          res.errorStatusCode = 401;
+          throw new Error("Wrong password or email.");
+        }
       } else {
         res.errorStatusCode = 401;
         throw new Error("Wrong password or email.");
