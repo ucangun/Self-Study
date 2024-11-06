@@ -15,7 +15,14 @@ module.exports = {
       if (user) {
         // password === sifrelenmeFonksiyonu(password)
         if (user.password === passwordEncrypt(password)) {
-          req.session.user = user;
+          //Session
+          req.session._id = user._id;
+          req.session.password = user.password;
+
+          // Cookie
+          if (req.body.rememberMe === true) {
+            req.sessionOptions.maxAge = 100 * 60 * 60 * 24 * 2;
+          }
 
           res.status(202).send({
             error: false,
