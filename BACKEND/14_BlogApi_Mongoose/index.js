@@ -18,14 +18,27 @@ const PORT = process.env.PORT || 8000;
 app.use(express.json());
 require("express-async-errors");
 
-// DB Connection
+// Session Cookies
+const session = require("cookie-session");
+app.use(
+  session({
+    secret: process.env.KEY_CODE,
+  })
+);
 
+// DB Connection
 require("./src/configs/dbConnection");
 
 /* ------------------------------------------------------- */
 // Routes:
 app.all("/", (req, res) => {
-  res.send("WELCOME TO BLOG API");
+  // req.session.user = { name: "Umut" };
+  // req.session = null;
+  res.send({
+    message: "Welcome to the Blog API",
+    // session: req.session,
+    isLogin: req.session?.user ? true : false,
+  });
 });
 
 app.use("/blog", require("./src/routes/blog"));
