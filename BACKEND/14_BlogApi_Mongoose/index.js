@@ -10,7 +10,6 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 
-const User = require("./src/models/user");
 const PORT = process.env.PORT || 8000;
 
 /* ------------------------------------------------------- */
@@ -31,22 +30,7 @@ app.use(
 );
 
 //authentication middleware
-
-const authentication = async (req, res, next) => {
-  req.user = null;
-
-  if (req.session._id) {
-    const user = await User.findById(req.session._id);
-    if (user & (user.password === req.session.password)) {
-      req.user = user;
-    } else {
-      req.session = null;
-    }
-  }
-  next();
-};
-
-app.use(authentication);
+app.use(require("./src/middlewares/authentication"));
 
 // DB Connection
 require("./src/configs/dbConnection");
