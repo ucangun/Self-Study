@@ -53,5 +53,21 @@ module.exports = async (req, res, next) => {
       .populate(populate);
   };
 
+  res.getModelListDetails = async function (Model) {
+    const data = Model.find({ ...filter, ...search });
+
+    const details = {
+      // filter,
+      // search,
+      // sort,
+      // skip,
+      limit,
+      page,
+      totalRecord: data.length,
+    };
+
+    return details;
+  };
+
   next();
 };

@@ -133,7 +133,7 @@ module.exports.blogPost = {
 
     res.status(200).send({
       error: false,
-      results: result.length,
+      details: await res.getModelListDetails(BlogPost),
       data: result,
     });
   },
