@@ -74,6 +74,8 @@ module.exports.blogCategory = {
 
 module.exports.blogPost = {
   list: async (req, res) => {
+    /*************************************************** /
+
     //  FILTERING & SEARCHING & SORTING & PAGINATION
 
     // console.log("line 79 => ", req.query);
@@ -118,6 +120,7 @@ module.exports.blogPost = {
       .sort(sort)
       .skip(skip)
       .limit(limit);
+/*************************************************** */
 
     // SELECT & POPULATE
     // const result =await BlogCategory.find({...filter} , {...select})
@@ -125,12 +128,11 @@ module.exports.blogPost = {
     //   {},
     //   { categoryId: 1, title: 1, content: 1, _id: false }
     // ).populate("categoryId");
-    // const result = await BlogPost.find();
+
+    const result = await res.getModelList(BlogPost, "categoryId");
 
     res.status(200).send({
       error: false,
-      page,
-      limit,
       results: result.length,
       data: result,
     });

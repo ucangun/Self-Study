@@ -32,6 +32,9 @@ app.use(
 //authentication middleware
 app.use(require("./src/middlewares/authentication"));
 
+//Query Handler:
+app.use(require("./src/middlewares/queryHandler"));
+
 // DB Connection
 require("./src/configs/dbConnection");
 
