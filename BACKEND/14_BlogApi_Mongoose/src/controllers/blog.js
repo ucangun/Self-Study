@@ -101,7 +101,7 @@ module.exports.blogPost = {
     //* LIMIT
 
     const limit = Number(req.query?.limit);
-    limit = limit > 0 ? limit : 20;
+    limit = limit > 0 ? limit : Number(process.env.PAGE_SIZE || 20);
 
     //* PAGINATION
     // URL?page=2&limit=10
