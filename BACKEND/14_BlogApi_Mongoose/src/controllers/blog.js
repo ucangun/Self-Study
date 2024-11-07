@@ -103,10 +103,17 @@ module.exports.blogPost = {
     const limit = req.query?.limit || 20;
     console.log(limit);
 
+    //* PAGINATION
+    // URL?page=2&limit=10
+
+    const page = Number(req.query.page) || 1;
+    const skip = (page - 1) * limit;
+
     console.log("line 101 => ", req.query);
 
     const result = await BlogPost.find({ ...filter, ...search })
       .sort(sort)
+      .skip(skip)
       .limit(limit);
 
     // SELECT & POPULATE
@@ -119,7 +126,10 @@ module.exports.blogPost = {
 
     res.status(200).send({
       error: false,
-      result,
+      page,
+      limit,
+      results: result.length,
+      data: result,
     });
   },
 
