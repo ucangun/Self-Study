@@ -78,11 +78,11 @@ module.exports.blogPost = {
 
     console.log("line 79 => ", req.query);
 
-    // FILTERING
+    //* FILTERING
     // URL?filter[fieldName1]=value1&filter[fieladName2]=value2
     const filter = req.query?.filter || {};
 
-    // SEARCHING
+    //* SEARCHING
     // URL?search[fieldName1]=value1&search[fieldName2]=value2
     // { "<field>": { "$regex": "pattern", "$options": "<options>" } }
 
@@ -90,10 +90,17 @@ module.exports.blogPost = {
 
     for (let key in search) {
       search[key] = { $regex: search[key] };
-      console.log(search[key]);
+      // console.log(search[key]);
     }
 
-    const result = await BlogPost.find({ ...filter, ...search });
+    //* SORTING
+    // URL?sort[fieldName]=asc&sort[fieldName2]=desc
+
+    const sort = req.query?.sort || {};
+
+    console.log("line 101 => ", req.query);
+
+    const result = await BlogPost.find({ ...filter, ...search }).sort(sort);
 
     // SELECT & POPULATE
     // const result =await BlogCategory.find({...filter} , {...select})
