@@ -76,7 +76,7 @@ module.exports.blogPost = {
   list: async (req, res) => {
     //  FILTERING & SEARCHING & SORTING & PAGINATION
 
-    console.log("line 79 => ", req.query);
+    // console.log("line 79 => ", req.query);
 
     //* FILTERING
     // URL?filter[fieldName1]=value1&filter[fieladName2]=value2
@@ -98,9 +98,16 @@ module.exports.blogPost = {
 
     const sort = req.query?.sort || {};
 
+    //* LIMIT
+
+    const limit = req.query?.limit || 20;
+    console.log(limit);
+
     console.log("line 101 => ", req.query);
 
-    const result = await BlogPost.find({ ...filter, ...search }).sort(sort);
+    const result = await BlogPost.find({ ...filter, ...search })
+      .sort(sort)
+      .limit(limit);
 
     // SELECT & POPULATE
     // const result =await BlogCategory.find({...filter} , {...select})
