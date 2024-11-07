@@ -12,6 +12,7 @@ const { BlogCategory, BlogPost } = require("../models/blog");
 
 module.exports.blogCategory = {
   list: async (req, res) => {
+    // const result =await BlogCategory.find({...filter} , {...select})
     const categories = await BlogCategory.find();
     res.status(200).send({
       error: false,
@@ -73,7 +74,34 @@ module.exports.blogCategory = {
 
 module.exports.blogPost = {
   list: async (req, res) => {
-    const result = await BlogPost.find();
+    //  FILTERING & SEARCHING & SORTING & PAGINATION
+
+    console.log("line 79 => ", req.query);
+
+    // FILTERING
+    // URL?filter[fieldName1]=value1&filter[fieladName2]=value2
+    const filter = req.query?.filter || {};
+
+    // SEARCHING
+    // URL?search[fieldName1]=value1&search[fieldName2]=value2
+    // { "<field>": { "$regex": "pattern", "$options": "<options>" } }
+
+    const search = req.query?.search || {};
+
+    for (let key in search) {
+      search[key] = { $regex: search[key] };
+      console.log(search[key]);
+    }
+
+    const result = await BlogPost.find({ ...filter, ...search });
+
+    // SELECT & POPULATE
+    // const result =await BlogCategory.find({...filter} , {...select})
+    // const result = await BlogPost.find(
+    //   {},
+    //   { categoryId: 1, title: 1, content: 1, _id: false }
+    // ).populate("categoryId");
+    // const result = await BlogPost.find();
 
     res.status(200).send({
       error: false,
