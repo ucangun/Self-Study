@@ -44,6 +44,9 @@ app.all("/", (req, res) => {
 // Department
 app.use("/departments", require("./src/routes/department"));
 
+// Personnnel
+app.use("/personnels", require("./src/routes/personnel"));
+
 // errorHandler:
 app.use(require("./src/middlewares/errorHandler"));
 
