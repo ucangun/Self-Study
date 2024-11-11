@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     EXPRESS - Personnel API
 ------------------------------------------------------- */
@@ -15,42 +15,40 @@ const PORT = process.env.PORT || 8000;
 
 /* ------------------------------------------------------- */
 // Middlewares:
-app.use(express.json())
-require('express-async-errors')
+app.use(express.json());
+require("express-async-errors");
 
 // Session-Cookies
-const session = require('cookie-session');
+const session = require("cookie-session");
 
-app.use(session({
+app.use(
+  session({
     secret: process.env.SECRET_KEY,
-}))
-
-
+  })
+);
 
 // Query Handler
-app.use(require('./src/middlewares/queryHandler'))
+app.use(require("./src/middlewares/queryHandler"));
 
 // DB connection:
-require('./src/configs/dbConnection')
-
+require("./src/configs/dbConnection");
 
 /* ------------------------------------------------------- */
 // Routes:
-app.all('/', (req, res) => {
+app.all("/", (req, res) => {
+  res.send({
+    message: "WELCOME TO PERSONNEL API",
+  });
+});
 
-    res.send({
-        message: 'WELCOME TO PERSONNEL API',
-    })
-})
-
-
-
+// Department
+app.use("/departments", require("./src/routes/department"));
 
 // errorHandler:
-app.use(require('./src/middlewares/errorHandler'))
+app.use(require("./src/middlewares/errorHandler"));
 
 // RUN SERVER:
-app.listen(PORT, () => console.log('Running: http://127.0.0.1:' + PORT))
+app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
 
 /* ------------------------------------------------------- */
 //! Syncronization : Run it only once.
