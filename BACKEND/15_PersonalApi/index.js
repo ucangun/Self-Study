@@ -47,6 +47,14 @@ app.use("/departments", require("./src/routes/department"));
 // Personnnel
 app.use("/personnels", require("./src/routes/personnel"));
 
+// Not Found
+app.use("*", (req, res) => {
+  res.status(404).send({
+    error: true,
+    message: "Route Not Found",
+  });
+});
+
 // errorHandler:
 app.use(require("./src/middlewares/errorHandler"));
 
