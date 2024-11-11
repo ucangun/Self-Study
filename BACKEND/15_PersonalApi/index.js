@@ -19,11 +19,16 @@ app.use(express.json());
 require("express-async-errors");
 
 // Session-Cookies
-const session = require("cookie-session");
 
+const session = require("cookie-session");
 app.use(
   session({
     secret: process.env.SECRET_KEY,
+    cookie: {
+      // "cookeie" yerine "cookie" olmalı
+      secure: true, // true olduğunda sadece HTTPS üzerinden erişim sağlar
+      httpOnly: true, // true olduğunda tarayıcı tarafından erişimi engeller
+    },
   })
 );
 
@@ -35,23 +40,28 @@ require("./src/configs/dbConnection");
 
 /* ------------------------------------------------------- */
 // Routes:
+
+// main
 app.all("/", (req, res) => {
   res.send({
     message: "WELCOME TO PERSONNEL API",
+    isLogin: req.session.id ? true : false,
+    session: req.session,
   });
 });
 
-// Department
+// department
 app.use("/departments", require("./src/routes/department"));
-
-// Personnnel
+// personnel
 app.use("/personnels", require("./src/routes/personnel"));
+// auth
+app.use("/auth", require("./src/routes/auth"));
 
 // Not Found
 app.use("*", (req, res) => {
   res.status(404).send({
     error: true,
-    message: "Route Not Found",
+    message: "This route is not found !",
   });
 });
 
@@ -63,4 +73,4 @@ app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
 
 /* ------------------------------------------------------- */
 //! Syncronization : Run it only once.
-// require("./src/helpers/sync")();
+// require('./src/helpers/sync')()
