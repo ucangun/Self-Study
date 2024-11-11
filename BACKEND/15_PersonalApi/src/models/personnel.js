@@ -4,6 +4,7 @@
 ------------------------------------------------------- */
 
 const { Schema, model } = require("mongoose");
+const passwordEncrypt = require("../helpers/passwordEncrypt");
 
 const PersonnelSchema = new Schema(
   {
@@ -96,6 +97,10 @@ const PersonnelSchema = new Schema(
   { collection: "personnels", timestamps: true }
 );
 
+/* ------------------------------------------------------- */
+
+// Extra:
+
 // PersonnelSchema.set("toJSON", {
 //   transform: (doc, ret) => {
 //     ret.id = ret._id;
@@ -106,14 +111,14 @@ const PersonnelSchema = new Schema(
 //   },
 // });
 
-// function capitalize(str) {
-//   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-// }
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
 
-// PersonnelSchema.virtual("fullname").get(function () {
-//   return `${this.firstname} ${this.lastname}`;
-//   // return `${capitalize(this.firstname)} ${capitalize(this.lastname)}`;
-// });
+PersonnelSchema.virtual("fullname").get(function () {
+  //   return `${this.firstname} ${this.lastname}`;
+  return `${capitalize(this.firstname)} ${capitalize(this.lastname)}`;
+});
 
 /* ------------------------------------------------------- */
 
