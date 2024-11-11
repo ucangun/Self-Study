@@ -63,4 +63,4 @@ app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
 
 /* ------------------------------------------------------- */
 //! Syncronization : Run it only once.
-// require('./src/helpers/sync')()
+// require("./src/helpers/sync")();
