@@ -11,6 +11,7 @@ const {
   read,
   update,
   delete: deleteDepartment,
+  personnels,
 } = require("../controllers/department");
 
 router.route("/").get(list).post(create);
@@ -21,6 +22,8 @@ router
   .put(update)
   .patch(update)
   .delete(deleteDepartment);
+
+router.route("/:id/personnels").get(personnels);
 
 /* ------------------------------------------------------- */
 module.exports = router;

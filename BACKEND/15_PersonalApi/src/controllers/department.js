@@ -1,9 +1,11 @@
 "use strict";
+
 /* -------------------------------------------------------
     EXPRESS - Personnel API
 ------------------------------------------------------- */
 
 const Department = require("../models/department");
+const Personnel = require("../models/personnel");
 
 module.exports = {
   list: async (req, res) => {
@@ -61,6 +63,23 @@ module.exports = {
     const result = await Department.deleteOne({ _id: req.params.id });
     res.status(result.deletedCount ? 204 : 404).send({
       error: !result.deletedCount,
+      result,
+    });
+  },
+
+  personnels: async (req, res) => {
+    // const result = await Personnel.find({
+    //   departmentId: req.params.id,
+    // }).populate("departmentId");
+
+    const result = await res.getModelList(
+      Personnel,
+      { departmentId: req.params.id },
+      "departmentId"
+    );
+
+    res.status(202).send({
+      error: false,
       result,
     });
   },
