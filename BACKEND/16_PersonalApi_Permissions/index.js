@@ -30,6 +30,9 @@ app.use(
   })
 );
 
+// Authentication Middleware
+app.use(require("./src/middlewares/authentication"));
+
 // Query Handler
 app.use(require("./src/middlewares/queryHandler"));
 
@@ -43,8 +46,9 @@ require("./src/configs/dbConnection");
 app.all("/", (req, res) => {
   res.send({
     message: "WELCOME TO PERSONNEL API",
-    isLogin: req.session.id ? true : false,
-    session: req.session,
+    // isLogin: req.session.id ? true : false,
+    isLogin: req.user ? true : false,
+    // session: req.session,
   });
 });
 
