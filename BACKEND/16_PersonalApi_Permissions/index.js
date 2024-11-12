@@ -49,6 +49,7 @@ app.all("/", (req, res) => {
     // isLogin: req.session.id ? true : false,
     isLogin: req.user ? true : false,
     // session: req.session,
+    user: req.user,
   });
 });
 
