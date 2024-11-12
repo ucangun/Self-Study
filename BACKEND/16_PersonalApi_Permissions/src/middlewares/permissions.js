@@ -22,7 +22,14 @@ module.exports = {
   },
 
   isAdminOrLead: (req, res, next) => {
-    if (req.user && req.user.isActive && (req.user.isAdmin || req.user.isLead))
+    const departmentId = req.params?.id;
+
+    if (
+      req.user &&
+      req.user.isActive &&
+      (req.user.isAdmin ||
+        (req.user.isLead && req.user.departmentId === departmentId))
+    )
       next();
     else {
       res.errorStatusCode = 403;
