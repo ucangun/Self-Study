@@ -1,25 +1,40 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     EXPRESS - Personnel API
 ------------------------------------------------------- */
-const router = require('express').Router()
+const router = require("express").Router();
 /* ------------------------------------------------------- */
 
-const { list, create, read, update, delete: deleteDepartment, personnels } = require('../controllers/department')
+const {
+  list,
+  create,
+  read,
+  update,
+  delete: deleteDepartment,
+  personnels,
+} = require("../controllers/department");
 
 // URL : /departments
 
-router.route('/')
-    .get(list)
-    .post(create)
+const isAdmin = (req, res, next) => {
+  if (req.user && req.user.isActive && req.user.isAdmin) {
+    next();
+  } else {
+    res.errorStatusCode = 403;
+    throw new Error("No Permission:You must login and to be admin");
+  }
+};
 
-router.route('/:id')
-    .get(read)
-    .put(update)
-    .patch(update)
-    .delete(deleteDepartment)
+router.route("/").get(isAdmin, list).post(create);
 
-router.get('/:id/personnels', personnels)
+router
+  .route("/:id")
+  .get(read)
+  .put(update)
+  .patch(update)
+  .delete(deleteDepartment);
+
+router.get("/:id/personnels", personnels);
 
 /* ------------------------------------------------------- */
-module.exports = router
+module.exports = router;
