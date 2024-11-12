@@ -15,6 +15,7 @@ const PORT = process.env.PORT || 8000;
 
 /* ------------------------------------------------------- */
 // Middlewares:
+
 app.use(express.json());
 require("express-async-errors");
 
@@ -23,14 +24,12 @@ const session = require("cookie-session");
 app.use(
   session({
     secret: process.env.SECRET_KEY,
-    // cookie: {
-    //     secure: true, // default false
-    //     httpOnly: false // default false
-    // }
+    // secure: true, //  only sent over HTTPS
+    // httpOnly: true // not accessible via JavaScript
   })
 );
 
-// Authentication Middleware
+// Authentication
 app.use(require("./src/middlewares/authentication"));
 
 // Query Handler
@@ -47,18 +46,21 @@ app.all("/", (req, res) => {
   res.send({
     message: "WELCOME TO PERSONNEL API",
     // isLogin: req.session.id ? true : false,
+    // session: req.session
     isLogin: req.user ? true : false,
-    // session: req.session,
     user: req.user,
   });
 });
 
 // auth
 app.use("/auth", require("./src/routes/auth"));
-// tokens
+
+// token
 app.use("/tokens", require("./src/routes/token"));
+
 // department
 app.use("/departments", require("./src/routes/department"));
+
 // personnel
 app.use("/personnels", require("./src/routes/personnel"));
 
