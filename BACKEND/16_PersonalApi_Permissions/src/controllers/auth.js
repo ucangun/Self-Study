@@ -1,9 +1,19 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     EXPRESS - Personnel API
 ------------------------------------------------------- */
-const Personnel = require("../models/personnel")
-const passwordEncrypt = require('../helpers/passwordEncrypt')
+
+const Personnel = require("../models/personnel");
+const passwordEncrypt = require("../helpers/passwordEncrypt");
+
+module.exports = {
+  login: async (req, res) => {},
+
+  logout: async (req, res) => {},
+};
+
+/* ------------------------------------------------------- *
+// Seesion 
 
 module.exports = {
 
@@ -62,3 +72,5 @@ module.exports = {
     },
 
 }
+
+/* ------------------------------------------------------- */
