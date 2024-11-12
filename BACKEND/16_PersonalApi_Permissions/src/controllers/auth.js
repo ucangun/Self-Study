@@ -22,7 +22,7 @@ module.exports = {
           console.log(tokenData);
 
           if (!tokenData) {
-            tokenData = Token.create({
+            tokenData = await Token.create({
               userId: user._id,
               token: passwordEncrypt(user._id + Date.now()),
             });
