@@ -28,6 +28,37 @@ app.use(
     // httpOnly: true // not accessible via JavaScript
   })
 );
+/* ------------------------------------------------------- */
+// DOCUMENTATION:
+// $ npm i swagger-autogen # JSON creator
+// $ npm i swagger-ui-express
+// $ npm i redoc-express
+
+// JSON:
+app.use("/documents/json", (req, res) => {
+  res.sendFile("swagger.json", { root: "." });
+});
+
+// Swagger
+const swaggerUi = require("swagger-ui-express");
+const swaggerJson = require("./swagger.json");
+
+app.use(
+  "/documents/swagger",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerJson, {
+    swaggerOptions: { persistAuthorization: true },
+  })
+);
+
+// Redoc
+const redoc = require("redoc-express");
+app.use(
+  "/documents/redoc",
+  redoc({ specUrl: "/documents/json", title: "Redoc UI" })
+);
+
+/* ------------------------------------------------------- */
 
 // Morgan
 app.use(require("./src/middlewares/logger"));
