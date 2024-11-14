@@ -30,14 +30,7 @@ app.use(
 );
 
 // Morgan
-const morgan = require("morgan");
-// app.use(morgan("combined"));
-// Custom Log:
-app.use(
-  morgan(
-    'TIME=":date[iso]" - URL=":url" - Method=":method" - IP=":remote-addr" - Status=":status" - Sign=":user-agent" (:response-time[digits] ms) '
-  )
-);
+app.use(require("./src/middlewares/logger"));
 
 // Authentication
 app.use(require("./src/middlewares/authentication"));

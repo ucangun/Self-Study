@@ -1,10 +1,10 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     EXPRESS - Personnel API
 ------------------------------------------------------- */
-const Personnel = require("../models/personnel")
-const passwordEncrypt = require('../helpers/passwordEncrypt')
-const Token = require('../models/token')
+const Personnel = require("../models/personnel");
+const passwordEncrypt = require("../helpers/passwordEncrypt");
+const Token = require("../models/token");
 
 /* ------------------------------------------------------- *
 // Seesion 
@@ -69,66 +69,54 @@ module.exports = {
 
 /* ------------------------------------------------------- */
 
-
 module.exports = {
+  login: async (req, res) => {
+    const { username, password } = req.body;
 
-    login: async (req, res) => {
+    if (username && password) {
+      const user = await Personnel.findOne({ username, password });
 
-        const { username, password } = req.body
+      if (user) {
+        if (user.isActive) {
+          /* TOKEN */
 
-        if (username && password) {
+          let tokenData = await Token.findOne({ userId: user._id });
 
-            const user = await Personnel.findOne({ username, password })
+          if (!tokenData) {
+            tokenData = await Token.create({
+              userId: user._id,
+              token: passwordEncrypt(user._id + Date.now()),
+            });
+          }
 
-            if (user) {
-
-                if (user.isActive) {
-
-                    /* TOKEN */
-
-                    let tokenData = await Token.findOne({ userId: user._id })
-
-                    if (!tokenData) {
-                        tokenData = Token.create({
-                            userId: user._id,
-                            token: passwordEncrypt(user._id + Date.now())
-                        })
-                    }
-
-
-                    res.status(201).send({
-                        error: false,
-                        token: tokenData.token,
-                        user
-                    })
-
-                } else {
-                    res.errorStatusCode = 401
-                    throw new Error("This user is not active.")
-                }
-
-
-
-            } else {
-                res.errorStatusCode = 401
-                throw new Error("Wrong username or password.")
-            }
-
-        } else {
-            res.errorStatusCode = 401
-            throw new Error("Please enter username and password.")
-        }
-
-    },
-
-    logout: async (req, res) => {
-
-        const data = req.user ? await Token.deleteOne({ userId: req.user._id }) : null
-
-        res.status(200).send({
+          res.status(201).send({
             error: false,
-            message: 'Logout Success.',
-            data
-        })
-    },
-}
+            token: tokenData.token,
+            user,
+          });
+        } else {
+          res.errorStatusCode = 401;
+          throw new Error("This user is not active.");
+        }
+      } else {
+        res.errorStatusCode = 401;
+        throw new Error("Wrong username or password.");
+      }
+    } else {
+      res.errorStatusCode = 401;
+      throw new Error("Please enter username and password.");
+    }
+  },
+
+  logout: async (req, res) => {
+    const data = req.user
+      ? await Token.deleteOne({ userId: req.user._id })
+      : null;
+
+    res.status(200).send({
+      error: false,
+      message: "Logout Success.",
+      data,
+    });
+  },
+};
