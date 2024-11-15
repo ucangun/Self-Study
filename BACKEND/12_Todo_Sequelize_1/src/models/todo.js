@@ -58,7 +58,6 @@ const Todo = sequelize.define("todos", {
 //sequelize.sync(); // executing model
 //sequelize.sync({ force: true }); // drop table and create new
 // sequelize.sync({ alter: true }); // to backup & drop table & create new table from backup
-// sequelize.sync({ alter: true }); // to backup & drop table & create new table from backup
 
 /* ------------------------------------------------------- */
 
