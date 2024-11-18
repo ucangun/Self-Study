@@ -101,7 +101,7 @@ module.exports = {
     });
   },
 
-  delete: async (req, res) => {
+  deleteDepartment: async (req, res) => {
     /*
             #swagger.tags = ["Departments"]
             #swagger.summary = "Delete Department"
