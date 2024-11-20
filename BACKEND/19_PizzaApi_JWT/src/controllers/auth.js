@@ -110,12 +110,20 @@ module.exports = {
 
     const auth = req.headers?.authorization; //"Token fgdgfhg623gjhbksj"
     const tokenKey = auth ? auth.split(" ") : null; // [ "Token", tokenKey]
-    const result = await Token.deleteOne({ token: tokenKey[1] });
 
-    res.send({
-      error: false,
-      message: "Token deleted.",
-      result,
-    });
+    if (tokenKey[0] === "Token") {
+      const result = await Token.deleteOne({ token: tokenKey[1] });
+
+      res.send({
+        error: false,
+        message: "Token deleted.",
+        result,
+      });
+    } else if (tokenKey[0] == "Bearer") {
+      res.send({
+        error: false,
+        message: "JWT: No need any process for logout. You can delete Tokens.",
+      });
+    }
   },
 };
