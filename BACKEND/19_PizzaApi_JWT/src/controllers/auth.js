@@ -101,6 +101,59 @@ module.exports = {
       user,
     });
   },
+
+  refresh: async (req, res) => {
+    /*
+            #swagger.tags = ["Authentication"]
+            #swagger.summary = "Refresh"
+            #swagger.description = 'Refresh with refreshToken for get accessToken'
+            #swagger.parameters["body"] = {
+                in: "body",
+                required: true,
+                schema: {
+                    "bearer": {
+                        refresh: '...refresh_token...'
+                    }
+                }
+            }
+    */
+
+    const refreshToken = req.body?.bearer?.refresh;
+
+    if (!refreshToken) {
+      res.errorStatusCode = 401;
+      throw new Error("Please enter bearer.refresh");
+    }
+
+    const refreshData = await jwt.verify(refreshToken, process.env.REFRESH_KEY);
+
+    if (!refreshData) {
+      res.errorStatusCode = 401;
+      throw new Error("Invalid refresh token");
+    }
+
+    const user = await User.findOne({ _id: refreshData._id });
+
+    if (!(user && user.password === refreshData.password)) {
+      res.errorStatusCode = 401;
+      throw new Error("Wrong id or password");
+    }
+
+    if (!user.isActive) {
+      res.errorStatusCode = 401;
+      throw new Error("Your account is not active.");
+    }
+
+    res.status(200).send({
+      error: false,
+      bearer: {
+        access: jwt.sign(user.toJSON(), process.env.ACCESS_KEY, {
+          expiresIn: "30m",
+        }),
+      },
+    });
+  },
+
   logout: async (req, res) => {
     /*
             #swagger.tags = ["Authentication"]
