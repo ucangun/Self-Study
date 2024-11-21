@@ -74,6 +74,10 @@ module.exports = {
               #swagger.summary = "Update Pizza"
           */
 
+    if (req.file) {
+      req.body.image = req.file.filename;
+    }
+
     const data = await Pizza.updateOne({ _id: req.params.id }, req.body, {
       runValidators: true,
     });
