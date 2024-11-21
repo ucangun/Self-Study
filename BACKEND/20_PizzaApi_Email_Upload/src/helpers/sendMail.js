@@ -2,14 +2,8 @@
 /* -------------------------------------------------------
     | FULLSTACK TEAM | NODEJS / EXPRESS |
 ------------------------------------------------------- */
-// E - MAIL:
-// npm i nodemailer
 
-const nodemailer = require("nodemailer");
-("use strict");
-/* -------------------------------------------------------
-    | FULLSTACK TEAM | NODEJS / EXPRESS |
-------------------------------------------------------- */
+// npm i nodemailer
 
 const nodemailer = require("nodemailer");
 
