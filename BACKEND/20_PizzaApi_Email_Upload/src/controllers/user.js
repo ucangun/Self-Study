@@ -1,14 +1,13 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     | FULLSTACK TEAM | NODEJS / EXPRESS |
 ------------------------------------------------------- */
 
-const User = require('../models/user')
+const User = require("../models/user");
 
 module.exports = {
-
-    list: async (req, res) => {
-        /*
+  list: async (req, res) => {
+    /*
             #swagger.tags = ["Users"]
             #swagger.summary = "List Users"
             #swagger.description = `
@@ -22,74 +21,86 @@ module.exports = {
             `
         */
 
-        const result = await res.getModelList(User);
+    const result = await res.getModelList(User);
 
-        res.status(200).send({
-            error: false,
-            details: await res.getModelListDetails(User),
-            result
-        })
-    },
+    res.status(200).send({
+      error: false,
+      details: await res.getModelListDetails(User),
+      result,
+    });
+  },
 
-    create: async (req, res) => {
-        /*
+  create: async (req, res) => {
+    /*
              #swagger.tags = ["Users"]
              #swagger.summary = "Create User"
      */
 
-        if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(req.body.password)) {
-            throw new Error("Password must be at least 8 characters long and contain at least one special character and at least one uppercase character")
-        }
+    if (
+      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(
+        req.body.password
+      )
+    ) {
+      throw new Error(
+        "Password must be at least 8 characters long and contain at least one special character and at least one uppercase character"
+      );
+    }
 
-        const result = await User.create(req.body);
+    const result = await User.create(req.body);
 
-        res.status(200).send({
-            error: false,
-            result
-        })
-    },
+    SendMail(
+      result.email,
+      `Welcome ${result.userName} to Pizza Store 😊`,
+      `<h1>Welcome ${result.userName}</h1>
+        <h2>Your profile succesfully created!</h2>`
+    );
 
-    read: async (req, res) => {
+    res.status(200).send({
+      error: false,
+      result,
+    });
+  },
 
-        /*
+  read: async (req, res) => {
+    /*
            #swagger.tags = ["Users"]
            #swagger.summary = "Get Single User"
    */
 
-        const result = await User.findOne({ _id: req.params.id })
+    const result = await User.findOne({ _id: req.params.id });
 
+    res.status(200).send({
+      error: false,
+      result,
+    });
+  },
 
-        res.status(200).send({
-            error: false,
-            result
-        })
-    },
-
-    update: async (req, res) => {
-        /*
+  update: async (req, res) => {
+    /*
            #swagger.tags = ["Users"]
            #swagger.summary = "Update User"
      */
 
-        const result = await User.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
+    const result = await User.updateOne({ _id: req.params.id }, req.body, {
+      runValidators: true,
+    });
 
-        res.status(200).send({
-            error: false,
-            result
-        })
-    },
+    res.status(200).send({
+      error: false,
+      result,
+    });
+  },
 
-    deleteUser: async (req, res) => {
-        /*
+  deleteUser: async (req, res) => {
+    /*
             #swagger.tags = ["Users"]
             #swagger.summary = "Delete User"
       */
 
-        const { deletedCount } = await User.deleteOne({ _id: req.params.id })
+    const { deletedCount } = await User.deleteOne({ _id: req.params.id });
 
-        res.status(deletedCount ? 204 : 404).send({
-            error: !deletedCount,
-        })
-    },
-
-}
+    res.status(deletedCount ? 204 : 404).send({
+      error: !deletedCount,
+    });
+  },
+};
