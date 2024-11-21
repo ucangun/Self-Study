@@ -111,6 +111,29 @@ const nodemailer = require("nodemailer");
 //       );
 // });
 
+//* GoggleMail (gmail)
+//* Google -> AccountHome -> Security -> Two-Step-Verify -> App-Passwords
+
+// const transporter = nodemailer.createTransport({
+//   service: "gmail",
+//   auth: {
+//     user: "ucangun76@gmail.com",
+//     pass: "xtcg irat zdvc ywul",
+//   },
+// });
+
+// const mailOptions = {
+//   from: "ucangun76@gmail.com",
+//   to: "dilara_okudur@hotmail.com",
+//   subject: "Hello World!",
+//   text: "Hello there , how are you ?",
+//   html: "<p><b>Hello There</b> <br> How are you ? </p>",
+// };
+
+// transporter.sendMail(mailOptions, (error, success) => {
+//   success ? console.log("SUCCESS:", success) : console.log("ERROR:", error);
+// });
+
 /* ------------------------------------------------------- */
 // Routes:
 
