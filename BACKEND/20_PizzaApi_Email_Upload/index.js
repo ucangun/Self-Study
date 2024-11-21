@@ -31,15 +31,15 @@ require("express-async-errors");
 const { dbConnection } = require("./src/configs/dbConnection");
 dbConnection();
 
-/* // Cross-origin resource sharing (CORS): $ npm i cors
-const cors = require('cors')
+//  Cross-origin resource sharing (CORS): $ npm i cors
+const cors = require("cors");
 const defaultCorsOptions = {
-    origin: "*",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
-    optionsSuccessStatus: 204
-}
-app.use(cors()) */
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+};
+app.use(cors());
 
 /* ------------------------------------------------------- */
 // Middlewares:
