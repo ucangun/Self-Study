@@ -1,12 +1,12 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     | FULLSTACK TEAM | NODEJS / EXPRESS |
 ------------------------------------------------------- */
 const Pizza = require("../models/pizza");
 
 module.exports = {
-    list: async (req, res) => {
-      /*
+  list: async (req, res) => {
+    /*
               #swagger.tags = ["Pizzas"]
               #swagger.summary = "List Pizzas"
               #swagger.description = `
@@ -19,79 +19,83 @@ module.exports = {
                   </ul>
               `
           */
-  
-      const data = await res.getModelList(Pizza, {}, "toppingIds");
-  
-      res.status(200).send({
-        error: false,
-        details: await res.getModelListDetails(Pizza),
-        data,
-      });
-    },
-  
-    // CRUD:
-  
-    create: async (req, res) => {
-      /*
+
+    const data = await res.getModelList(Pizza, {}, "toppingIds");
+
+    res.status(200).send({
+      error: false,
+      details: await res.getModelListDetails(Pizza),
+      data,
+    });
+  },
+
+  // CRUD:
+
+  create: async (req, res) => {
+    /*
               #swagger.tags = ["Pizzas"]
               #swagger.summary = "Create Pizza"
           */
-        
-      let { toppingIds } = req.body;
-      req.body.toppingIds = [...new Set(toppingIds)]; // [1,1,2,2,3,3,5]=>[1,2,3,5]
-  
-      const data = await Pizza.create(req.body);
-  
-      res.status(201).send({
-        error: false,
-        data,
-      });
-    },
-  
-    read: async (req, res) => {
-      /*
+
+    let { toppingIds } = req.body;
+    req.body.toppingIds = [...new Set(toppingIds)]; // [1,1,2,2,3,3,5]=>[1,2,3,5]
+
+    if (req.file) {
+      req.body.image = req.file.filename;
+    }
+
+    const data = await Pizza.create(req.body);
+
+    res.status(201).send({
+      error: false,
+      data,
+    });
+  },
+
+  read: async (req, res) => {
+    /*
               #swagger.tags = ["Pizzas"]
               #swagger.summary = "Get Single Pizza"
           */
-  
-      const data = await Pizza.findOne({ _id: req.params.id }).populate(
-        "toppingIds",
-      );
-  
-      res.status(200).send({
-        error: false,
-        data,
-      });
-    },
-  
-    update: async (req, res) => {
-      /*
+
+    const data = await Pizza.findOne({ _id: req.params.id }).populate(
+      "toppingIds"
+    );
+
+    res.status(200).send({
+      error: false,
+      data,
+    });
+  },
+
+  update: async (req, res) => {
+    /*
               #swagger.tags = ["Pizzas"]
               #swagger.summary = "Update Pizza"
           */
-  
-      const data = await Pizza.updateOne({ _id: req.params.id }, req.body, {
-        runValidators: true,
-      });
-  
-      res.status(202).send({
-        error: false,
-        data,
-        new: await Pizza.findOne({ _id: req.params.id }),
-      });
-    },
-  
-    deletePizza: async (req, res) => {
-      /*
+
+    const data = await Pizza.updateOne({ _id: req.params.id }, req.body, {
+      runValidators: true,
+    });
+
+    res.status(202).send({
+      error: false,
+      data,
+      new: await Pizza.findOne({ _id: req.params.id }),
+    });
+  },
+
+  deletePizza: async (req, res) => {
+    /*
               #swagger.tags = ["Pizzas"]
               #swagger.summary = "Delete Pizza"
           */
-  
-      const data = await Pizza.deleteOne({ _id: req.params.id });
-  
-      res.status(data.deletedCount ? 204 : 404).send({
-        error: !data.deletedCount,
-        data,
-      });
-    },
-  };
+
+    const data = await Pizza.deleteOne({ _id: req.params.id });
+
+    res.status(data.deletedCount ? 204 : 404).send({
+      error: !data.deletedCount,
+      data,
+    });
+  },
+};

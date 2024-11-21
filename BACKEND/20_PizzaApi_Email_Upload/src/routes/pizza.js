@@ -22,9 +22,9 @@ const upload = multer({
   storage: multer.diskStorage({
     destination: "./uploads",
     filename: (req, file, returnCallback) => {
-      console.log("file", file);
+      //   console.log("file", file);
       // returnCallback(error ,filename) syntax
-      returnCallback(null, file.originalname);
+      returnCallback(null, Date.now() + "_" + file.originalname);
     },
   }),
 });
