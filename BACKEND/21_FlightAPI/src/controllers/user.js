@@ -34,6 +34,19 @@ module.exports = {
     /*
              #swagger.tags = ["Users"]
              #swagger.summary = "Create User"
+             #swagger.parameters['body'] = {
+              in: 'body',
+              required: true,
+              schema : {
+              {
+                "username": "test",
+                "password": "1234",
+                "email": "test@site.com",
+                "isActive": true,
+                "isStaff": false,
+                "isAdmin": false,
+            }}                      
+             }
      */
     if (
       !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(
@@ -46,13 +59,6 @@ module.exports = {
     }
 
     const result = await User.create(req.body);
-
-    sendMail(
-      result.email,
-      `Welcome ${result.userName} to Flight API 😊`,
-      `<h1>Welcome ${result.userName}</h1>
-        <h2>Your profile succesfully created!</h2>`
-    );
 
     res.status(200).send({
       error: false,
