@@ -85,6 +85,7 @@ module.exports = {
            #swagger.summary = "Update User"
      */
     const result = await User.updateOne({ _id: req.params.id }, req.body, {
+      new: true,
       runValidators: true,
     });
 
