@@ -45,12 +45,11 @@ app.all("/", (req, res) => {
   res.send({
     error: false,
     message: "Welcome to FLIGHT RESERVATION API",
-    documents: "/documents",
-    user: req.user,
   });
 });
 
 // Index Route:
+app.use(require("./src/routes/index"));
 
 /* ------------------------------------------------------- */
 
