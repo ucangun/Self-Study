@@ -5,19 +5,21 @@
 const router = require("express").Router();
 /* ------------------------------------------------------- */
 
-const {
-  list,
-  create,
-  read,
-  update,
-  deleteUser,
-} = require("../controllers/user");
+const { isAdmin } = require("../middlewares/permissions");
+const user = require("../controllers/user");
 
 // URL: /users
 
-router.route("/").get(list).post(create);
+router.use(isAdmin);
 
-router.route("/:id").get(read).put(update).patch(update).delete(deleteUser);
+router.route("/").get(user.list).post(user.create);
+
+router
+  .route("/:id")
+  .get(user.read)
+  .put(user.update)
+  .patch(user.update)
+  .delete(user.deleteUser);
 
 /* ------------------------------------------------------- */
 module.exports = router;

@@ -1,13 +1,14 @@
-"use strict";
+"use strict"
 /* -------------------------------------------------------
     NODEJS EXPRESS | Flight API
 ------------------------------------------------------- */
 // User Controller:
 
-const User = require("../models/user");
+const User = require('../models/user')
 
 module.exports = {
-  /*
+    list: async (req, res) => {
+        /* 
             #swagger.tags = ["Users"]
             #swagger.summary = "List Users"
             #swagger.description = `
@@ -20,90 +21,115 @@ module.exports = {
                 </ul>
             `
         */
-  list: async (req, res) => {
-    const result = await res.getModelList(User);
 
-    res.status(200).send({
-      error: false,
-      details: await res.getModelListDetails(User),
-      result,
-    });
-  },
+        // const result = await User.find()
+        const result = await res.getModelList(User)
 
-  create: async (req, res) => {
-    /*
-             #swagger.tags = ["Users"]
-             #swagger.summary = "Create User"
-             #swagger.parameters['body'] = {
-              in: 'body',
-              required: true,
-              schema : {
-              {
-                "username": "test",
-                "password": "1234",
-                "email": "test@site.com",
-                "isActive": true,
-                "isStaff": false,
-                "isAdmin": false,
-            }}                      
-             }
-     */
-    if (
-      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(
-        req.body.password
-      )
-    ) {
-      throw new Error(
-        "Password must be at least 8 characters long and contain at least one special character and at least one uppercase character"
-      );
-    }
+        res.status(200).send({
+            error: false,
+            details: await res.getModelListDetails(User),
+            result
 
-    const result = await User.create(req.body);
+        })
+    },
 
-    res.status(200).send({
-      error: false,
-      result,
-    });
-  },
+    create: async (req, res) => {
+        // $ref: '#/definitions/User'
+        /* 
+            #swagger.tags = ["Users"]
+            #swagger.summary = "Create User"
+            #swagger.parameters['body'] = {
+                in:'body',
+                required: true,
+                schema: {
+                    "username": "test",
+                    "password": "1234",
+                    "email": "test@site.com",
+                    "isActive": true,
+                    "isStaff": false,
+                    "isAdmin": false,
+                }
+            }
+        */
 
-  read: async (req, res) => {
-    /*
-           #swagger.tags = ["Users"]
-           #swagger.summary = "Get Single User"
-   */
-    const result = await User.findOne({ _id: req.params.id });
+        //* First solution
+        /*   if (req.body.password.length > 5) {
+              const result = await User.create(req.body)
+              res.status(200).send({
+                  error: false,
+                  result
+  
+              })
+          } else {
+              res.errorStatusCode = 401
+              throw new Error('Password must be at least 6 characther')
+          } */
 
-    res.status(200).send({
-      error: false,
-      result,
-    });
-  },
+        //* Second solution
+        if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(req.body.password)) {
+            throw new Error("Password must be at least 8 characters long and contain at least one special character and at least one uppercase character")
+        }
 
-  update: async (req, res) => {
-    /*
-           #swagger.tags = ["Users"]
-           #swagger.summary = "Update User"
-     */
-    const result = await User.updateOne({ _id: req.params.id }, req.body, {
-      new: true,
-      runValidators: true,
-    });
+        const result = await User.create(req.body)
 
-    res.status(200).send({
-      error: false,
-      result,
-    });
-  },
+        res.status(200).send({
+            error: false,
+            result
+        })
 
-  deleteUser: async (req, res) => {
-    /*
+    },
+
+    read: async (req, res) => {
+        /* 
+            #swagger.tags = ["Users"]
+            #swagger.summary = "Read User"
+        */
+
+        const result = await User.findOne({ _id: req.params.id })
+
+        res.status(200).send({
+            error: false,
+            result
+
+        })
+    },
+
+    update: async (req, res) => {
+        /*
+            #swagger.tags = ["Users"]
+            #swagger.summary = "Update User"
+            #swagger.parameters['body'] = {
+                in: 'body',
+                required: true,
+                schema: {
+                    "username": "test",
+                    "password": "1234",
+                    "email": "test@site.com",
+                    "isActive": true,
+                    "isStaff": false,
+                    "isAdmin": false,
+                }
+            }
+        */
+
+        const result = await User.updateOne({ _id: req.params.id }, req.body, { new: true, runValidators: true })
+
+        res.status(202).send({
+            error: false,
+            result
+        })
+    },
+
+    deleteUser: async () => {
+        /*
             #swagger.tags = ["Users"]
             #swagger.summary = "Delete User"
-      */
-    const { deletedCount } = await User.deleteOne({ _id: req.params.id });
+        */
 
-    res.status(deletedCount ? 204 : 404).send({
-      error: !deletedCount,
-    });
-  },
-};
+        const { deletedCount } = await User.deleteOne({ _id: req.params.id })
+
+        res.status(deletedCount ? 204 : 404).send({
+            error: !deletedCount
+        })
+    }
+}
