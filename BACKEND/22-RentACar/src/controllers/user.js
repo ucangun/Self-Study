@@ -21,7 +21,10 @@ module.exports = {
             `
         */
 
-    const data = await res.getModelList(User);
+    let customFilter = {};
+    if (!req.user.isAdmin) customFilter = { isAdmin: false };
+
+    const data = await res.getModelList(User, customFilter);
 
     res.status(200).send({
       error: false,
