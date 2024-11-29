@@ -6,23 +6,25 @@
 const message = "Your account is not active. Please contact support.";
 const CustomError = require("../errors/customError");
 
+function getUserInfo(req) {
+  let user = req.user;
+  let isActive = req.user?.isActive;
+  let isAdmin = req.user?.isAdmin;
+  let isStaff = req.user?.isStaff;
+
+  return { user, isActive, isAdmin, isStaff };
+}
+
 module.exports = {
   isLogin: (req, res, next) => {
-    if (!req.user) {
+    const { user, isActive } = getUserInfo(req);
+
+    if (user && isActive) next();
+    else
       throw new CustomError(
         "AuthenticationError: You must be logged in to access this resource.",
         403
       );
-    }
-
-    if (!req.user?.isActive) {
-      throw new CustomError(
-        "Your account is not active. Please contact support.",
-        403
-      );
-    }
-
-    next();
   },
 
   isStaffOrisAdmin: (req, res, next) => {
@@ -49,15 +51,6 @@ module.exports = {
       res.errorStatusCode = 403;
       throw new Error(
         "AuthorizationError: You must be an Admin to access this resource."
-      );
-    }
-  },
-
-  isActive: (req, res, next) => {
-    if (!req.user?.isActive) {
-      throw new CustomError(
-        "Your account is not active. Please contact support.",
-        403
       );
     }
   },

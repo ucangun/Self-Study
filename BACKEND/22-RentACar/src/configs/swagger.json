@@ -272,6 +272,21 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "createdId": {
+                  "example": "any"
+                },
+                "updatedId": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -435,6 +450,21 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "createdId": {
+                  "example": "any"
+                },
+                "updatedId": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -572,6 +602,21 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "createdId": {
+                  "example": "any"
+                },
+                "updatedId": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -653,10 +698,6 @@
             },
             "set": {
               "type": "function"
-            },
-            "select": {
-              "type": "boolean",
-              "example": false
             }
           }
         },
