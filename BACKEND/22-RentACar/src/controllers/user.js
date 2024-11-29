@@ -6,6 +6,7 @@
 
 const User = require("../models/user");
 const passwordValidation = require("../helpers/passwordValidation");
+const CustomError = require("../errors/customError");
 module.exports = {
   list: async (req, res) => {
     /*
@@ -28,7 +29,7 @@ module.exports = {
 
     res.status(200).send({
       error: false,
-      details: await res.getModelListDetails(User),
+      details: await res.getModelListDetails(User, customFilter),
       data,
     });
   },
@@ -51,6 +52,11 @@ module.exports = {
             }
         */
     passwordValidation(req?.body?.password);
+
+    req.body.isAdmin = false;
+    // req.body.isStaff = false;
+    req.body.isStaff = req.user.isAdmin ? req.body.isStaff : false;
+
     const data = await User.create(req.body);
 
     res.status(201).send({
@@ -98,10 +104,13 @@ module.exports = {
             }
         */
 
+    passwordValidation(req?.body?.password);
+    delete req.body.isAdmin;
+
     //? Yetkisiz kullanıcının başka bir kullanıcıyı yönetmesini engelle (sadece kendi verileri):
     if (!req.user.isAdmin && req.params.id !== req.user._id) {
-      res.errorStatusCode = 401;
-      throw new Error("You can not update someone else info!");
+      // res.errorStatusCode = 401;
+      throw new CustomError("You can not update someone else info!", 401);
     }
     const data = await User.updateOne({ _id: req.params.id }, req.body, {
       runValidators: true,

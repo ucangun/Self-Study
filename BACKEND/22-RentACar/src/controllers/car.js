@@ -21,11 +21,17 @@ module.exports = {
             `
         */
 
-    const data = await res.getModelList(Car);
+    // dont show cars ehich are not avaliable
+
+    let customFilter = { isAvailable: true };
+
+    if (req.user.isAdmin || req.user.isStaff) customFilter = {};
+
+    const data = await res.getModelList(Car, customFilter);
 
     res.status(200).send({
       error: false,
-      details: await res.getModelListDetails(Car),
+      details: await res.getModelListDetails(Car, customFilter),
       data,
     });
   },
@@ -42,6 +48,10 @@ module.exports = {
                 }
             }
         */
+
+    // moved to authentication middleware
+    // req.body.createdId = req.user._id;
+    // req.body.updatedId = req.user._id;
 
     const data = await Car.create(req.body);
 
@@ -102,4 +112,18 @@ module.exports = {
       data,
     });
   },
+
+  // destroy: async (req, res) => {
+  //   /*
+  //           #swagger.tags = ["Cars"]
+  //           #swagger.summary = "Delete Car"
+  //       */
+
+  //   const data = await Car.deleteOne({ _id: req.params.id });
+
+  //   res.status(data.deletedCount ? 204 : 404).send({
+  //     error: !data.deletedCount,
+  //     data,
+  //   });
+  // },
 };
