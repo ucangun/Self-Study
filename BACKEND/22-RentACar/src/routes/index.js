@@ -16,7 +16,7 @@ router.use("/user", require("./user"));
 router.use("/token", require("./token"));
 
 // car:
-router.use("/car", require("./car"));
+router.use("/cars", require("./car"));
 // reservation:
 router.use("/reservation", require("./reservation"));
 
