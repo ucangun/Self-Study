@@ -51,7 +51,7 @@ module.exports = {
     // });
 
     const data = await res.getModelList(Car, customFilter, [
-      { path: "vreatedId", select: "username" },
+      { path: "createdId", select: "username" },
       { path: "updatedId", select: "username" },
     ]);
 

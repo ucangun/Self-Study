@@ -4,6 +4,7 @@
 ------------------------------------------------------- */
 // Reservation Controller:
 const Reservation = require("../models/reservation");
+const Car = require("../models/car");
 const dateValidation = require("../helpers/dateValidation");
 const CustomError = require("../errors/customError");
 
@@ -24,9 +25,8 @@ module.exports = {
 
     let customFilter = {};
 
-    if (!req.user.isAdmin || !req.user.isStaff) {
+    if (!req.user.isAdmin || !req.user.isStaff)
       customFilter = { userId: req.user._id };
-    }
 
     const data = await res.getModelList(Reservation, customFilter, [
       { path: "userId", select: "username firstName lastName" },
@@ -67,13 +67,14 @@ module.exports = {
       req.body?.endDate
     );
 
+    // check if car reserved in requested dates
     const isReserved = await Reservation.findOne({
       carId: req.body.carId,
       startDate: { $lte: req.body?.endDate },
       endDate: { $gte: req.body?.startDate },
     });
 
-    // check if car reserved in requested dates
+    // dont allow to make reservation if already reserved.
     if (isReserved) {
       throw new CustomError(
         "The car is already reserved for the given dates",
@@ -81,7 +82,29 @@ module.exports = {
       );
     }
 
-    console.log(start, end, reservedDays);
+    // check if user reserved any car in requested dates.
+    const userReservationInDates = await Reservation.findOne({
+      userId: req.body.userId,
+      startDate: { $lte: req.body?.endDate },
+      endDate: { $gte: req.body?.startDate },
+    });
+
+    // dont allow to make another reservation under same user.
+    if (userReservationInDates) {
+      throw new CustomError(
+        "The user already reserved another car for given dates",
+        400
+      );
+    }
+
+    const dailyCost = await Car.findOne(
+      { _id: req.body?.carId },
+      { _id: 0, pricePerDay: 1 }
+    ).then((car) => Number(car.pricePerDay));
+
+    // const dailyCost = Number(carInfo.pricePerDay)
+
+    req.body.amount = reservedDays * dailyCost;
 
     const data = await Reservation.create(req.body);
 
@@ -98,9 +121,9 @@ module.exports = {
         */
 
     let customFilter = {};
-    if (!req.user.isAdmin || !req.user.isStaff) {
+
+    if (!req.user.isAdmin || !req.user.isStaff)
       customFilter = { userId: req.user._id };
-    }
 
     const data = await Reservation.findOne({
       _id: req.params.id,
