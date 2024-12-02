@@ -4,6 +4,8 @@
 ------------------------------------------------------- */
 // Reservation Controller:
 const Reservation = require("../models/reservation");
+const dateValidation = require("../helpers/dateValidation");
+const CustomError = require("../errors/customError");
 
 module.exports = {
   list: async (req, res) => {
@@ -26,11 +28,16 @@ module.exports = {
       customFilter = { userId: req.user._id };
     }
 
-    const data = await res.getModelList(Reservation, customFilter);
+    const data = await res.getModelList(Reservation, customFilter, [
+      { path: "userId", select: "username firstName lastName" },
+      { path: "carId", select: "brand model" },
+      { path: "createdId", select: "username" },
+      { path: "updatedId", select: "username" },
+    ]);
 
     res.status(200).send({
       error: false,
-      details: await res.getModelListDetails(Reservation),
+      details: await res.getModelListDetails(Reservation, customFilter),
       data,
     });
   },
@@ -48,11 +55,33 @@ module.exports = {
             }
         */
 
+    // if user is not admin or not staff
     if (!req.user.isAdmin || !req.user.isStaff) {
       req.body.userId = req.user._id;
     } else if (!req.body.userId) {
       req.body.userId = req.user._id;
     }
+
+    const [start, end, reservedDays] = dateValidation(
+      req.body?.startDate,
+      req.body?.endDate
+    );
+
+    const isReserved = await Reservation.findOne({
+      carId: req.body.carId,
+      startDate: { $lte: req.body?.endDate },
+      endDate: { $gte: req.body?.startDate },
+    });
+
+    // check if car reserved in requested dates
+    if (isReserved) {
+      throw new CustomError(
+        "The car is already reserved for the given dates",
+        400
+      );
+    }
+
+    console.log(start, end, reservedDays);
 
     const data = await Reservation.create(req.body);
 
