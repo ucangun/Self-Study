@@ -6,14 +6,14 @@ import AddBilgi from "../components/AddBilgi";
 const Home = () => {
   const [tutorials, setTutorials] = useState([]);
 
-  const url = "https://tutorial-api.fullstack.clarusway.com/tutorials/";
-  // const url = "http:";
+  // const url = "https://tutorial-api.fullstack.clarusway.com/tutorials/";
+  const url = "http://localhost:8000/todo/";
 
   //! GET - READ
 
   const getBilgiler = async () => {
     const res = await axios.get(url);
-    setTutorials(res.data);
+    setTutorials(res.data.data);
   };
 
   useEffect(() => {

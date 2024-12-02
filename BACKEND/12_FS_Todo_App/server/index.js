@@ -1,44 +1,46 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     EXPRESS - Todo API
 ------------------------------------------------------- */
 
-const express = require('express')
-const app = express()
-
+const express = require("express");
+const app = express();
 
 //* Required Modules:
-require('dotenv').config()
-const PORT = process.env?.PORT || 8000
+require("dotenv").config();
+const PORT = process.env?.PORT || 8000;
 
-require('express-async-errors')
+require("express-async-errors");
 
 //* Configrations:
 
-require('./src/configs/dbConnection')()
+require("./src/configs/dbConnection")();
 
 //* Middlewares:
 
-app.use(express.json())
+app.use(express.json());
 
+//CORS: npm i cors
+const cors = require("cors");
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
-//
+// Routes:
 
+app.all("/", (req, res) => {
+  res.send({
+    error: false,
+    message: "Welcome to TODO API",
+  });
+});
 
-//* Routes:
+app.use("/todo", require("./src/routers/todo"));
 
-app.all('/', (req, res) => {
-    res.send({
-        error: false,
-        message: 'Welcome to TODO API',
-    })
-})
+app.use(require("./src/middlewares/errorHandler"));
 
-
-app.use('/todo', require('./src/routers/todo'))
-
-
-
-app.use(require('./src/middlewares/errorHandler'))
-
-app.listen(PORT, () => console.log('Listening at http://127.0.0.1:' + PORT))
+app.listen(PORT, () => console.log("Listening at http://127.0.0.1:" + PORT));
