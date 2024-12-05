@@ -4,21 +4,20 @@
 ------------------------------------------------------- */
 const { mongoose } = require("../configs/dbConnection");
 const passwordEncrypt = require("../helpers/passwordEncrypt");
-
-/* ----------------------------------------------------- *
+/* ------------------------------------------------------- *
 {
-  "username": "admin",
-  "password": "aA?123456",
-  "email": "admin@site.com",
-  "firstName": "admin",
-  "lastName": "admin",
-  "isActive": true,
-  "isStaff": true,
-  "isAdmin": true
+    "username": "admin",
+    "password": "aA?123456",
+    "email": "admin@site.com",
+    "firstName": "admin",
+    "lastName": "admin",
+    "isActive": true,
+    "isStaff": true,
+    "isAdmin": true
 }
-/* ----------------------------------------------------- */
+/* ------------------------------------------------------- */
 
-const UserSchema = new mongoose.Schema(
+const Userschema = new mongoose.Schema(
   {
     username: {
       type: String,
@@ -75,19 +74,25 @@ const UserSchema = new mongoose.Schema(
   }
 );
 
-/* ----------------------------------------------------- */
+/* ------------------------------------------------------- */
 
-UserSchema.pre(["save", "updateOne"], function (next) {
-  // run before saving db
-  const data = this?._update ?? this;
+Userschema.pre(["save", "updateOne"], function (next) {
+  // database kaydetmeden hemen once calisir
 
-  // Email Control
+  // console.log('Pre-save run !');
+  // console.log(this);
+
+  const data = this?._update ?? this; // database kaydedilecek olan veri -> this - fakat updateOne da ise bu -> this._update
+
+  //Email Control:
+
   const isEmailValidated = data.email
     ? /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(data.email)
     : true;
 
   if (!isEmailValidated) {
-    next(new Error("Email is not validated"));
+    // throw new Error('Email is not validated')
+    next(new Error("Email is not validated")); // Error Handler middlewarine yonlendirmek icin kullaniyoruz
   }
 
   const isPasswordValidated = data.password
@@ -99,20 +104,22 @@ UserSchema.pre(["save", "updateOne"], function (next) {
   if (!isPasswordValidated) {
     next(
       new Error(
-        "Password must be at least 8 characters long and include at least one lowercase letter, one uppercase letter, one number, and one special character"
+        "Password must be at least 8 characters long and contain at least one special character and  at least one uppercase character."
       )
     );
   }
 
   if (data.password) {
     if (this?._update) {
+      // Update
       this._update.password = passwordEncrypt(data.password);
+    } else {
+      // Create
+      this.password = passwordEncrypt(data.password);
     }
-  } else {
-    this.password = passwordEncrypt(data.password);
   }
 
   next();
 });
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("User", Userschema);
