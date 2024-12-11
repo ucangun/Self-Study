@@ -44,11 +44,16 @@
               <td><%= todo.isDone %></td>
               <td><%= todo.createdAt.toLocaleDateString('tr') %></td>
               <td>
-                <a href="/view/<%= todo.id %>" class="btn btn-sm btn-secondary"
+                <a class="btn btn-sm btn-secondary" href="/view/<%= todo.id %>"
                   >Read</a
                 >
-                <a href="" class="btn btn-sm btn-primary">Update</a>
-                <a href="" class="btn btn-sm btn-danger">Delete</a>
+                <a class="btn btn-sm btn-primary" href="">Update</a>
+                <a
+                  class="btn btn-sm btn-danger"
+                  href="/view/<%= todo.id %>/delete"
+                  onclick="confirm('Are you sure?')"
+                  >Delete</a
+                >
               </td>
             </tr>
             <% } %>

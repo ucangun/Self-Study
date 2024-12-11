@@ -58,7 +58,7 @@ module.exports = {
     const isDeleted = await Todo.destroy({ where: { id: req.params.id } });
 
     if (isDeleted) {
-      res.sendStatus(204);
+      res.redirect("/view");
     } else {
       res.errorStatusCode = 404;
       throw new Error("Can not deleted! or Maybe already deleted.");

@@ -21,6 +21,9 @@ const {
 router.get("/", list);
 router.all("/create", create);
 
-router.route("/:id").get(read).put(update).delete(deleteTodo);
+// router.route("/:id").get(read).put(update).delete(deleteTodo);
+
+router.get("/:id", read);
+router.get("/:id/delete", deleteTodo);
 
 module.exports = router;
