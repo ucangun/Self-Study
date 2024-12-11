@@ -44,7 +44,9 @@
               <td><%= todo.isDone %></td>
               <td><%= todo.createdAt.toLocaleDateString('tr') %></td>
               <td>
-                <a href="" class="btn btn-sm btn-secondary">Read</a>
+                <a href="/view/<%= todo.id %>" class="btn btn-sm btn-secondary"
+                  >Read</a
+                >
                 <a href="" class="btn btn-sm btn-primary">Update</a>
                 <a href="" class="btn btn-sm btn-danger">Delete</a>
               </td>

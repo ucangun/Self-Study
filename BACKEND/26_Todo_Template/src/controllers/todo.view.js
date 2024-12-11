@@ -36,10 +36,7 @@ module.exports = {
     // const result = await Todo.findOne({ where: { id: req.params.id } })
     const result = await Todo.findByPk(req.params.id);
 
-    res.status(200).send({
-      error: false,
-      result,
-    });
+    res.render("todoRead", { todo: result, priorities: PRIORITIES });
   },
 
   update: async (req, res) => {
