@@ -28,12 +28,12 @@ app.set("views", "./public");
 /* ------------------------------------------------------- */
 // Routes
 app.all("/", (req, res) => {
-  res.render("index");
+  // res.render("index");
 
-  // res.send(`
-  //       <p><a href="/view"> Todo Template</a></p>
-  //       <p><a href="/api"> Todo RestAPI</a></p>
-  //       `);
+  res.send(`
+        <p><a href="/view"> Todo Template</a></p>
+        <p><a href="/api"> Todo RestAPI</a></p>
+        `);
 });
 
 app.use("/view", require("./src/routes/todo.view"));
