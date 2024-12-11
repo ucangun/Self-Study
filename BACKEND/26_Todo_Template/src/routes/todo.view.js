@@ -16,7 +16,10 @@ const {
   delete: deleteTodo,
 } = require("../controllers/todo.view");
 
-router.route("/").get(list).post(create);
+// router.route("/").get(list).post(create);
+
+router.get("/", list);
+router.all("/create", create);
 
 router.route("/:id").get(read).put(update).delete(deleteTodo);
 

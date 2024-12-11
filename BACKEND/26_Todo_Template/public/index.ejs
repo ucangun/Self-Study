@@ -29,6 +29,9 @@
               <th>Priority</th>
               <th>isDone</th>
               <th>CreatedAt</th>
+              <th>
+                <a href="/view/create" class="btn btn-primary">Create</a>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -37,9 +40,14 @@
               <td># <%= todo.id %></td>
               <td><%= todo.title %></td>
               <td><%= todo.description %></td>
-              <td><%= todo.priority %></td>
+              <td><%= priorities[todo.priority] %></td>
               <td><%= todo.isDone %></td>
               <td><%= todo.createdAt.toLocaleDateString('tr') %></td>
+              <td>
+                <a href="" class="btn btn-sm btn-secondary">Read</a>
+                <a href="" class="btn btn-sm btn-primary">Update</a>
+                <a href="" class="btn btn-sm btn-danger">Delete</a>
+              </td>
             </tr>
             <% } %>
           </tbody>
