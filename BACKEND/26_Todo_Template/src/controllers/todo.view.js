@@ -41,17 +41,21 @@ module.exports = {
 
   update: async (req, res) => {
     // const result = await Todo.update({...newData},{...filter})
-    const result = await Todo.update(req.body, {
-      where: { id: req.params.id },
-    });
 
-    const isUpated = result[0];
-
-    res.status(isUpated ? 202 : 404).send({
-      error: isUpated ? false : true,
-      message: isUpated ? "Updated" : "Something went wrong!",
-      updatedData: isUpated && (await Todo.findByPk(req.params.id)),
-    });
+    if (req.method == "POST") {
+      const result = await Todo.update(req.body, {
+        where: { id: req.params.id },
+      });
+      const isUpdated = result[0];
+      if (isUpdated) {
+        res.redirect("/view");
+      } else {
+        throw new Error("Something went wrong");
+      }
+    } else {
+      const result = await Todo.findByPk(req.params.id);
+      res.render("todoUpdate", { todo: result, priorities: PRIORITIES });
+    }
   },
 
   delete: async (req, res) => {
