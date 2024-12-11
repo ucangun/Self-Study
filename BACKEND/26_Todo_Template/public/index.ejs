@@ -41,7 +41,10 @@
               <td><%= todo.title %></td>
               <td><%= todo.description %></td>
               <td><%= priorities[todo.priority] %></td>
-              <td><%= todo.isDone %></td>
+              <td>
+                <%- (todo.isDone ? '<span class="text-success">YES</span>' :
+                '<span class="text-danger">NO</span>') %>
+              </td>
               <td><%= todo.createdAt.toLocaleDateString('tr') %></td>
               <td>
                 <a class="btn btn-sm btn-secondary" href="/view/<%= todo.id %>"
