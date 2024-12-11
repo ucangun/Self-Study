@@ -25,6 +25,7 @@ module.exports = {
 
   create: async (req, res) => {
     if (req.method == "POST") {
+      console.log(req.body);
       const result = await Todo.create(req.body);
       res.redirect("/view");
     } else {
@@ -46,14 +47,15 @@ module.exports = {
       const result = await Todo.update(req.body, {
         where: { id: req.params.id },
       });
-      const isUpdated = result[0];
-      if (isUpdated) {
+      const isUpated = result[0];
+      if (isUpated) {
         res.redirect("/view");
       } else {
-        throw new Error("Something went wrong");
+        throw new Error("Someting went wrong!");
       }
     } else {
       const result = await Todo.findByPk(req.params.id);
+
       res.render("todoUpdate", { todo: result, priorities: PRIORITIES });
     }
   },
