@@ -8,7 +8,7 @@
     class="btn btn-outline-primary rounded-pill {%= details.pages.previous ? '' : 'disabled' %}"
     href="?page=1"
   >
-    &laquo
+    1
   </a>
   <a
     class="btn btn-outline-primary rounded-pill {%= details.pages.previous ? '' : 'disabled' %}"
@@ -38,8 +38,9 @@
   <a
     class="btn btn-outline-primary rounded-pill {%= details.pages.next? '' : 'disabled' %}"
     href="?page={%= details.pages.total %}"
-    >&raquo;</a
   >
+    {%= details.pages.total %}
+  </a>
 
   {% } %}
 </nav>
