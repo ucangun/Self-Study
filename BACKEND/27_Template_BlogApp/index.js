@@ -19,6 +19,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 /* ------------------------------------------------------- */
 
+// <% %> - Default Delimiter
+
+// Change Delimiter
+// require("ejs");
+// ejs.delimiter = "#";
+// ejs.openDelimiter = '{'
+// ejs.closeDelimiter = '}'
+
+app.set("view engine ", "ejs");
+app.set("view options", {
+  // delimiter: "#",
+  openDelimiter: "{",
+  closeDelimiter: "}",
+});
+
+app.set("views", "./public");
+
 /* ------------------------------------------------------- */
 
 // Connect to MongoDB with Mongoose:
@@ -48,4 +65,4 @@ app.use(require("./src/middlewares/errorHandler"));
 app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
 
 //require('./src/helpers/sync')()
-require("./src/helpers/sync2")();
+// require("./src/helpers/sync2")();
