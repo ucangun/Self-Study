@@ -21,7 +21,13 @@ module.exports = {
     const categories = await BlogCategory.find();
     // list recent 3 posts
     const recentPosts = await BlogPost.find().sort({ createdAt: -1 }).limit(3);
-    res.render("index.ejs", { categories, posts: data, recentPosts });
+
+    // Get page details
+    const details = await res.getModelListDetails(BlogPost, {
+      published: true,
+    });
+
+    res.render("index.ejs", { categories, posts: data, recentPosts, details });
   },
 
   create: async (req, res) => {
