@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 8000;
 
 const session = require("cookie-session");
 app.use(
-  session({ secret: process.env.SECRET_KEY || "secret_keys_for_cookies" }),
+  session({ secret: process.env.SECRET_KEY || "secret_keys_for_cookies" })
 );
 /* ------------------------------------------------------- */
 // Accept json data & convert to object:
@@ -32,21 +32,25 @@ app.set("view engine", "ejs");
 
 app.set("view options", {
   // delimiter: '#',
-  openDelimiter: '{',
-  closeDelimiter: '}'
-})
+  openDelimiter: "{",
+  closeDelimiter: "}",
+});
 
-app.set('views', './public')
+app.set("views", "./public");
 
 /* ------------------------------------------------------- */
-
-
 
 // Connect to MongoDB with Mongoose:
 require("./src/dbConnection");
 
 // Searching&Sorting&Pagination:
 app.use(require("./src/middlewares/queryHandler"));
+
+// Ejs globalde degisken saklama yöntemi
+app.use((req, res, next) => {
+  res.locals.user = req.session?.user;
+  next();
+});
 
 // StaticFiles:
 app.use("/assets", express.static("./public/assets"));
