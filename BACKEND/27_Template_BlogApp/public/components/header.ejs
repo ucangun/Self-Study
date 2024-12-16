@@ -40,9 +40,18 @@
             >
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
+            {% if(user) { %}
+
+            <b class="me-2"> {%= user?.email %} </b>
+            <a class="btn btn-sm btn-outline-secondary" href="/blog/logout"
+              >Logout</a
+            >
+            {% } else{ %}
+
             <a class="btn btn-sm btn-outline-secondary" href="/blog/login"
               >Login</a
             >
+            {% } %}
           </div>
         </div>
       </header>

@@ -87,11 +87,7 @@ module.exports = {
             req.sessionOptions.maxAge = 1000 * 60 * 60 * 24 * 3; // 3 Days
           }
 
-          res.status(200).send({
-            error: false,
-            result: user,
-            session: req.session,
-          });
+          res.redirect("/blog/post");
         } else {
           res.errorStatusCode = 401;
           throw new Error("Login parameters are not true.");
@@ -108,9 +104,6 @@ module.exports = {
   logout: async (req, res) => {
     // Set session to null:
     req.session = null;
-    res.status(200).send({
-      error: false,
-      message: "Logout OK",
-    });
+    res.redirect("/blog/post");
   },
 };
