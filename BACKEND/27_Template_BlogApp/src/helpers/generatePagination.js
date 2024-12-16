@@ -2,9 +2,10 @@ module.exports = function generatePagination(
   previous,
   current,
   next,
-  totalPages
+  totalPages,
 ) {
-  let pagesList = [];
+  // 5
+  let pagesList = []; // --> [4, 5, 6]
 
   // Previous page
   if (previous) {

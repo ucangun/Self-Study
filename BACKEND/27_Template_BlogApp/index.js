@@ -11,32 +11,36 @@ const PORT = process.env.PORT || 8000;
 
 const session = require("cookie-session");
 app.use(
-  session({ secret: process.env.SECRET_KEY || "secret_keys_for_cookies" })
+  session({ secret: process.env.SECRET_KEY || "secret_keys_for_cookies" }),
 );
 /* ------------------------------------------------------- */
 // Accept json data & convert to object:
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 /* ------------------------------------------------------- */
 
 // <% %> - Default Delimiter
 
-// Change Delimiter
-// require("ejs");
-// ejs.delimiter = "#";
-// ejs.openDelimiter = '{'
-// ejs.closeDelimiter = '}'
+// Change Delimiter:
+/* const ejs = require('ejs')
+ejs.delimiter = '#'
+ejs.openDelimiter = '{'
+ejs.closeDelimiter = '}' */
 
-app.set("view engine ", "ejs");
+app.set("view engine", "ejs");
+
 app.set("view options", {
-  // delimiter: "#",
-  openDelimiter: "{",
-  closeDelimiter: "}",
-});
+  // delimiter: '#',
+  openDelimiter: '{',
+  closeDelimiter: '}'
+})
 
-app.set("views", "./public");
+app.set('views', './public')
 
 /* ------------------------------------------------------- */
+
+
 
 // Connect to MongoDB with Mongoose:
 require("./src/dbConnection");
@@ -64,5 +68,5 @@ app.use(require("./src/middlewares/errorHandler"));
 
 app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
 
-//require('./src/helpers/sync')()
+// require('./src/helpers/sync')()
 // require("./src/helpers/sync2")();

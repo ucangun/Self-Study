@@ -1,13 +1,19 @@
-<div class="py-1 mb-3 nav-scroller border-bottom">
-  <nav class="nav nav-underline justify-content-between">
-    {% if(categories.length > 0) { %} {% categories.forEach((category)=> { %}
+<div class="nav-scroller py-1 mb-3 border-bottom">
+    <nav class="nav nav-underline justify-content-between">
 
-    <a class="nav-item nav-link link-body-emphasis" href="#">
-      {%= category.name %}
-    </a>
+        {% if(categories.length > 0) { %} 
 
-    {% }) %} {% } else { %}
-    <p>No Category Found</p>
-    {% } %}
-  </nav>
+        {% categories.forEach((category)=> { %}
+
+        <a class="nav-item nav-link link-body-emphasis" href="#">
+            {%= category.name %}
+        </a>
+
+        {% }) %}
+
+        {% } else { %}
+        <p>No Category Found</p>
+        {% } %}
+
+    </nav>
 </div>
