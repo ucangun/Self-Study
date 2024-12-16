@@ -1,20 +1,13 @@
-"use strict";
-/* -------------------------------------------------------
-    EXPRESSJS - BLOG Project with Mongoose
-------------------------------------------------------- */
+'use strict'
 
-const router = require("express").Router();
+const router = require('express').Router();
 
-const user = require("../../controllers/view/userController");
+const user = require('../../controllers/view/userController')
 
-// Create a new user
-router.route("/register").post(user.register).get(user.register);
+router.route('/login').all(user.login)
 
-// Login and logout routes
-// Handle login (POST for form submission)
-router.route("/login").all(user.login);
+router.get('/logout', user.logout)
 
-// Handle logout (POST since it involves action)
-router.get("/logout", user.logout);
+router.route('/register').all(user.register)
 
-module.exports = router;
+module.exports = router

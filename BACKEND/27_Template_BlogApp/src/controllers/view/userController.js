@@ -65,7 +65,9 @@ module.exports = {
   },
 
   login: async (req, res) => {
-    if (req.method == "POST") {
+
+    if (req.method == 'POST') {
+
       const { email, password } = req.body;
 
       if (email && password) {
@@ -87,7 +89,7 @@ module.exports = {
             req.sessionOptions.maxAge = 1000 * 60 * 60 * 24 * 3; // 3 Days
           }
 
-          res.redirect("/blog/post");
+         res.redirect('/blog/post')
         } else {
           res.errorStatusCode = 401;
           throw new Error("Login parameters are not true.");
@@ -96,14 +98,16 @@ module.exports = {
         res.errorStatusCode = 401;
         throw new Error("Email and Password are required.");
       }
+
     } else {
-      res.render("loginForm");
+      res.render('loginForm')
     }
+
   },
 
   logout: async (req, res) => {
     // Set session to null:
     req.session = null;
-    res.redirect("/blog/post");
+    res.redirect('/blog/post')
   },
 };
