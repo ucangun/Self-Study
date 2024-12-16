@@ -3,7 +3,7 @@
 <!-- main start -->
 <main class="container">
     <div class="row g-5">
-        <div class="col-md-12 p-3">
+        <div class="p-3 col-md-12">
             <p>
                 <a class="btn btn-sm btn-secondary" href="/blog/post">Go Home</a>
             </p>
@@ -42,9 +42,9 @@
                         <tr>
                             <td>Content</td>
                             <td>
-                                <textarea name="content" class="form-control">
-                                    {%= post?.content  %}
-                                </textarea>
+                                <textarea id="tinymceEditor" name="content" class="form-control">
+                                    {%= post?.content %}</textarea
+                                    >
                             </td>
                         </tr>
                         <tr>
@@ -70,5 +70,18 @@
     </div>
 </main>
 <!-- main end -->
+
+<!-- Script element sourcing TinyMCE -->
+<script type="application/javascript" src="/tinymce/tinymce.min.js"></script>
+<!-- Script element sourcing the TinyMCE configuration -->
+<script type="application/javascript">
+  // https://www.tiny.cloud/docs/configure
+  tinymce.init({
+    selector: "textarea#tinymceEditor",
+    plugins: "lists link image table code wordcount",
+    height: 750,
+  });
+</script>
+
 
 {%- include('components/footer') %}

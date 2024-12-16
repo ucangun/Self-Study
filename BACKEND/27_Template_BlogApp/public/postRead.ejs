@@ -4,7 +4,7 @@
 <!-- main start -->
 <main class="container">
     <div class="row g-5">
-        <div class="col-md-12 p-3">
+        <div class="p-3 col-md-12">
             <!-- BlogPost Read -->
             <div class="admin-area text-end">
 
@@ -22,12 +22,12 @@
             <article class="blog-post">
                 <a href="/blog/post?filter[blogCategoryId]={%= post.blogCategoryId._id %}"># {%=
                     post.blogCategoryId.name %}</a>
-                <h2 class="display-5 mb-1">
+                <h2 class="mb-1 display-5">
                     <a href="/blog/post/{%= post._id %}" class="link-body-emphasis text-decoration-none">{%= post.title
                         %}</a>
                 </h2>
                 <p class="blog-post-meta">{%= post.createdAt.toUTCString() %}</p>
-                <p>{%= post.content %}</p>
+                <p>{%- post.content %}</p>
             </article>
         </div>
     </div>
