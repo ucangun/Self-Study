@@ -60,12 +60,11 @@ module.exports = {
       { runValidators: true }
     );
 
-    res.status(202).send({
-      error: false,
-      body: req.body,
-      result: data, // update infos
-      newData: await BlogPost.findOne({ _id: req.params.postId }),
-    });
+    if (req.method == "POST") {
+      const data = await BlogPost.updateOne(req.body);
+    } else {
+      res.render("postForm");
+    }
   },
 
   delete: async (req, res) => {
