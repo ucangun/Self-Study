@@ -18,7 +18,7 @@ const NotFound = () => {
         <div className="flex flex-wrap items-center justify-center gap-3">
           <button
             onClick={() => router.back()}
-            className="block py-2 px-4 text-white font-medium bg-main duration-150 hover:bg-orange-600 rounded-lg"
+            className="block py-2 px-4 text-white font-medium bg-orange-400 duration-150 hover:bg-orange-600 rounded-lg"
           >
             Go Back
           </button>

@@ -1,12 +1,13 @@
 {
-  "name": "s01-intro_and_routing",
+  "name": "s02-rendering_and_fetching",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "server": "json-server --watch db.json --port 8080"
   },
   "dependencies": {
     "react": "^19.0.0",
