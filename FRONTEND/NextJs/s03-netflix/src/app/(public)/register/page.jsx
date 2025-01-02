@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import GoogleIcon from "/public/icons/GoogleIcon";
+import { useAuthContext } from "@/context/AuthContext";
 
 const Register = () => {
   const [info, setInfo] = useState({
@@ -10,6 +11,10 @@ const Register = () => {
     password: "",
   });
 
+  const { email, password, firstName, lastName } = info;
+
+  const { createKullanici } = useAuthContext();
+
   const handleChange = (e) => {
     setInfo({ ...info, [e.target.name]: e.target.value });
   };
@@ -17,7 +22,9 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // firebase
+    const displayName = `${firstName} ${lastName}`;
+
+    createKullanici(email, password, displayName);
   };
 
   return (
