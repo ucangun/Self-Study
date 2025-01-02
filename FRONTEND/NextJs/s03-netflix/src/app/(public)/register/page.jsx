@@ -1,12 +1,30 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import GoogleIcon from "/public/icons/GoogleIcon";
 
 const Register = () => {
+  const [info, setInfo] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setInfo({ ...info, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // firebase
+  };
+
   return (
     <main className="relative h-screen w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover ">
       <div className="w-full h-full bg-black lg:bg-opacity-50">
         <div className="relative self-center w-full p-16 mx-auto bg-black rounded-md bg-opacity-70 top-28 lg:w-2/5 lg:max-w-md">
-          <form>
+          <form onSubmit={handleSubmit}>
             <h2 className="text-red-main text-2xl font-[500] text-center tracking-[0.1em] mb-3 ">
               Sign Up
             </h2>
@@ -17,6 +35,7 @@ const Register = () => {
                 required
                 placeholder=" "
                 name="firstName"
+                onChange={handleChange}
               />
               <label htmlFor="firstName">First Name</label>
             </div>
@@ -27,6 +46,7 @@ const Register = () => {
                 required
                 placeholder=" "
                 name="lastName"
+                onChange={handleChange}
               />
               <label htmlFor="lastName">Last Name</label>
             </div>
@@ -37,6 +57,7 @@ const Register = () => {
                 required
                 placeholder=" "
                 name="email"
+                onChange={handleChange}
               />
               <label htmlFor="email">Email</label>
             </div>
@@ -47,6 +68,7 @@ const Register = () => {
                 required
                 placeholder=" "
                 name="password"
+                onChange={handleChange}
               />
               <label htmlFor="password">Password</label>
             </div>
