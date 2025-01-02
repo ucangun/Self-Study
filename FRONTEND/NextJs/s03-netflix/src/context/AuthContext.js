@@ -4,7 +4,10 @@ import { auth } from "@/auth/firebase";
 import { toastErrorNotify, toastSuccessNotify } from "@/helpers/ToastNotify";
 import {
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { createContext, useContext } from "react";
@@ -55,12 +58,28 @@ const AuthContextProvider = ({ children }) => {
     }
   };
 
+  // Sign in and up with Google
+
+  const provider = new GoogleAuthProvider();
+
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        toastSuccessNotify("Logged in Successfully");
+        router.push("/profile");
+      })
+      .catch((err) => {
+        toastErrorNotify(err.message);
+      });
+  };
+
   return (
     <YetkiContext.Provider
       value={{
         createKullanici,
         signIn,
         logout,
+        signInWithGoogle,
       }}
     >
       {children}
