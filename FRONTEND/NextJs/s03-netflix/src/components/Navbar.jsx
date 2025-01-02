@@ -19,9 +19,7 @@ function classNames(...classes) {
 const Navbar = () => {
   const [showBackground, setShowBackground] = useState(false);
 
-  const currentUser = { displayName: "ashley miller" };
-
-  const { logout } = useAuthContext();
+  const { currentUser, logout } = useAuthContext();
 
   useEffect(() => {
     const handleScroll = () => {

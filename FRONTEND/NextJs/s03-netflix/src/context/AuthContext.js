@@ -12,7 +12,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { useRouter } from "next/navigation";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 // auth(yetki) işlemlerini yaptığımız context
 
@@ -96,6 +96,7 @@ const AuthContextProvider = ({ children }) => {
         signIn,
         logout,
         signInWithGoogle,
+        currentUser,
       }}
     >
       {children}
