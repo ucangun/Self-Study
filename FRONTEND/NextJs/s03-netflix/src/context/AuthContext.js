@@ -38,7 +38,18 @@ const AuthContextProvider = ({ children }) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toastSuccessNotify("Logged in Successfully");
-      router.push("/movies");
+      router.push("/profile");
+    } catch (error) {
+      toastErrorNotify(error.message);
+    }
+  };
+
+  // logout
+  const logout = async () => {
+    try {
+      await signOut(auth);
+      toastSuccessNotify("Logged out Successfully");
+      router.push("/login");
     } catch (error) {
       toastErrorNotify(error.message);
     }
@@ -49,6 +60,7 @@ const AuthContextProvider = ({ children }) => {
       value={{
         createKullanici,
         signIn,
+        logout,
       }}
     >
       {children}
