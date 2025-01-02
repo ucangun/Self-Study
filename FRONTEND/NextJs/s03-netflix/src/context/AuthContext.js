@@ -5,12 +5,14 @@ import { toastErrorNotify, toastSuccessNotify } from "@/helpers/ToastNotify";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { useRouter } from "next/navigation";
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 // auth(yetki) işlemlerini yaptığımız context
 
@@ -25,10 +27,24 @@ export const useAuthContext = () => {
 const AuthContextProvider = ({ children }) => {
   const router = useRouter();
 
+  const [currentUser, setCurrentUser] = useState("");
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        const { email, displayName, photoURL } = currentUser;
+        setCurrentUser({ email, displayName, photoURL });
+      } else {
+        setCurrentUser(false);
+      }
+    });
+  }, []);
+
   // register
   const register = async (email, password, displayName) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(auth.currentUser, { displayName: displayName });
       toastSuccessNotify("Registered Successfully");
       router.push("/login");
     } catch (error) {
