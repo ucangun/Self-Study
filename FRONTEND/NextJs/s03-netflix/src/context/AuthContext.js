@@ -3,6 +3,7 @@
 import { auth } from "@/auth/firebase";
 import { toastErrorNotify, toastSuccessNotify } from "@/helpers/ToastNotify";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from "next/navigation";
 import { createContext, useContext } from "react";
 
 // auth(yetki) işlemlerini yaptığımız context
@@ -16,12 +17,14 @@ export const useAuthContext = () => {
 };
 
 const AuthContextProvider = ({ children }) => {
-  // register
+  const router = useRouter();
 
+  // register
   const createKullanici = async (email, password, displayName) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       toastSuccessNotify("Registered Successfully");
+      router.push("/login");
     } catch (error) {
       toastErrorNotify(error.message);
     }
