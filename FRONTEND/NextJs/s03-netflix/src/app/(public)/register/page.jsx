@@ -13,7 +13,7 @@ const Register = () => {
 
   const { email, password, firstName, lastName } = info;
 
-  const { createKullanici } = useAuthContext();
+  const { register, signInWithGoogle } = useAuthContext();
 
   const handleChange = (e) => {
     setInfo({ ...info, [e.target.name]: e.target.value });
@@ -24,7 +24,7 @@ const Register = () => {
 
     const displayName = `${firstName} ${lastName}`;
 
-    createKullanici(email, password, displayName);
+    register(email, password, displayName);
   };
 
   return (
@@ -83,6 +83,7 @@ const Register = () => {
             <button
               type="button"
               className="flex justify-between text-center btn-danger "
+              onClick={signInWithGoogle}
             >
               Continue with Google
               <GoogleIcon />

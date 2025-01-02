@@ -26,7 +26,7 @@ const AuthContextProvider = ({ children }) => {
   const router = useRouter();
 
   // register
-  const createKullanici = async (email, password, displayName) => {
+  const register = async (email, password, displayName) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       toastSuccessNotify("Registered Successfully");
@@ -76,7 +76,7 @@ const AuthContextProvider = ({ children }) => {
   return (
     <YetkiContext.Provider
       value={{
-        createKullanici,
+        register,
         signIn,
         logout,
         signInWithGoogle,
