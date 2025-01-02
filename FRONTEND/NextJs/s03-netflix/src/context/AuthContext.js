@@ -2,7 +2,10 @@
 
 import { auth } from "@/auth/firebase";
 import { toastErrorNotify, toastSuccessNotify } from "@/helpers/ToastNotify";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { createContext, useContext } from "react";
 
@@ -30,10 +33,22 @@ const AuthContextProvider = ({ children }) => {
     }
   };
 
+  // login
+  const signIn = async (email, password) => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      toastSuccessNotify("Logged in Successfully");
+      router.push("/movies");
+    } catch (error) {
+      toastErrorNotify(error.message);
+    }
+  };
+
   return (
     <YetkiContext.Provider
       value={{
         createKullanici,
+        signIn,
       }}
     >
       {children}
