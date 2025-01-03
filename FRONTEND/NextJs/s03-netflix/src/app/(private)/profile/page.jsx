@@ -1,6 +1,11 @@
 import React from "react";
 import CardContainer from "./components/CardContainer";
 
+export const metaData = {
+  title: "Profile",
+  description: "A movie platform",
+};
+
 const Profile = () => {
   return (
     <div className="flex items-center justify-center pt-20">

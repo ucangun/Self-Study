@@ -34,8 +34,13 @@ const AuthContextProvider = ({ children }) => {
       if (currentUser) {
         const { email, displayName, photoURL } = currentUser;
         setCurrentUser({ email, displayName, photoURL });
+        sessionStorage.setItem(
+          "user",
+          JSON.stringify({ email, displayName, photoURL })
+        );
       } else {
         setCurrentUser(false);
+        sessionStorage.clear();
       }
     });
   }, []);
