@@ -5,8 +5,6 @@ import MovieCard from "./MovieCard";
 const MovieSection2 = async ({ title, type }) => {
   const films = await getMovies(type);
 
-  console.log(films);
-
   return (
     <div className="mb-4">
       <p className="mb-4 font-semibold text-white text-md lg:text-2xl">

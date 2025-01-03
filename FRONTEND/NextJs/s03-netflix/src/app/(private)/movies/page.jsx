@@ -5,7 +5,7 @@ import MovieSection2 from "./components/MovieSection2";
 const Movies = () => {
   return (
     <div>
-      {/* <MovieSection1 /> */}
+      <MovieSection1 />
       <MovieSection2 title="Top Rated" type="top_rated" />
       <MovieSection2 title="Upcoming" type="upcoming" />
       <MovieSection2 title="Popular" type="popular" />
